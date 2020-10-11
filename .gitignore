@@ -1,4 +1,3 @@
 # Jekyll artifacts that aren't needed
 *.lock
 site/.jekyll-cache
-_site
