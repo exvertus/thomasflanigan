@@ -12,7 +12,7 @@ Have a look at some of my working [projects].
 
 For more check out my academic & professional [resume].
 
-Contact me at [@username] or by [email].
+Contact me by [email].
 
 
 
