@@ -1,3 +1,4 @@
 baseURL = "https://thomasflanigan.com/"
 languageCode = "en-us"
 title = "Thomas Flanigan"
+theme = "hugo-sustain"
