@@ -1,44 +1,72 @@
-baseURL = "https://thomasflanigan.com/"
+baseurl = "https://thomasflanigan.com/"
 title = "Thomas Flanigan"
-languageCode = "en-US"
-# Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
-theme = "hugo-sustain"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
 
-[permalinks]
-  post = "/:year/:month/:day/:slug"
+paginate = 20
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
 
 [params]
-  avatar = "img/profile.png"
-  author = "Thomas Flanigan"
-  description = "Personal Site"
+  author = "Tom Flanigan"
+  info = "Developer and Dev Ops Specialist"
+  description = "Tom Flanigan's personal website"
+  keywords = "blog,developer,personal,resume"
+  avatarurl = "img/profile.png"
 
-  # Custom assets can be linked with their paths relative to static/
-  custom_css = []
-  custom_js  = []
+  favicon_32 = "/img/favicon-32x32.png"
+  favicon_16 = "/img/favicon-16x16.png"
 
-[params.social]
-  Github        = "exvertus"
-  Email         = "tom@thomasflanigan.com"
-  LinkedIn      = "thomas-flanigan"
-#   Stackoverflow = "username"
-#   Medium        = "username"
-#   Telegram      = "username"
-  RSS           = "/blog/index.xml"
+  footercontent = "Welcome :)"
+  hideFooter = false
+  hideCredits = false
+  hideCopyright = false
+  since = 2021
 
-## Main Menu
+  enableTwemoji = true
+
+  colorScheme = "auto"
+  hidecolorschemetoggle = false
+
+  customCSS = ["css/custom.css"]
+  customSCSS = ["scss/custom.scss"]
+  customJS = ["js/custom.js"]
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fa fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/exvertus/"
+[[params.social]]
+  name = "LinkedIn"
+  icon = "fa fa-linkedin"
+  weight = 4
+  url = "https://www.linkedin.com/in/thomas-flanigan/"
+
+# Menu links
 [[menu.main]]
-  name = "blog"
-  weight = 100
-  identifier = "blog"
-  url = "/blog/"
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
 [[menu.main]]
-  name = "projects"
-  identifier = "projects"
-  weight = 200
-  url = "/projects/"
-[[menu.main]]
-  name = "resume"
-  identifier = "resume"
-  weight = 300
-  url = "/resume/"
+  name = "About"
+  weight = 2
+  url = "about/"
+[[languages.en.menu.main]]
+name = "Projects"
+weight = 3
+url = "projects/"
+[[languages.en.menu.main]]
+name = "Contact me"
+weight = 5
+url = "contact/"
