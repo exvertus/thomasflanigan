@@ -20,6 +20,7 @@ spec:
     spec:
       containers:
       - name: nginx
+#       Meant to be run with envsubst
         image: $TOMS_SITE_IMG
         imagePullPolicy: Always
         ports:
