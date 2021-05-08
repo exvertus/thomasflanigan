@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 date: 2021-05-07T18:33:12-04:00
-draft: true
+draft: false
 aliases: ["about-me", "about-tom"]
 ---
 
