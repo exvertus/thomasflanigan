@@ -39,3 +39,30 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: thomasflanigan
+#    networking.gke.io/managed-certificates: site-cert
+  name: site-ingress
+  namespace: thomasflanigan
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: site-svc
+              servicePort: 8080
+            path: /*
+#---
+#apiVersion: networking.gke.io/v1beta1
+#kind: ManagedCertificate
+#metadata:
+#  name: site-cert
+#  namespace: thomasflanigan
+#spec:
+#  domains:
+#    - thomasflanigan.com
