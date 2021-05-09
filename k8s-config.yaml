@@ -46,7 +46,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/ingress.global-static-ip-name: thomasflanigan
-#    networking.gke.io/managed-certificates: site-cert
+    networking.gke.io/managed-certificates: site-cert
   name: site-ingress
   namespace: thomasflanigan
 spec:
@@ -57,12 +57,12 @@ spec:
               serviceName: site-svc
               servicePort: 8080
             path: /*
-#---
-#apiVersion: networking.gke.io/v1beta1
-#kind: ManagedCertificate
-#metadata:
-#  name: site-cert
-#  namespace: thomasflanigan
-#spec:
-#  domains:
-#    - thomasflanigan.com
+---
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: site-cert
+  namespace: thomasflanigan
+spec:
+  domains:
+    - thomasflanigan.com
