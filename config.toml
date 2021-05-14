@@ -18,7 +18,7 @@ keywords = "blog,developer,personal,resume"
 info = "Developer and Dev Ops Specialist"
 avatarurl = "img/profile.png"
 
-footercontent = "Welcome :)"
+#footercontent = "Welcome :)"
 hideFooter = false
 hideCredits = false
 hideCopyright = false
