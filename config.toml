@@ -18,7 +18,7 @@ keywords = "blog,developer,personal,resume"
 info = "Developer and Dev Ops Specialist"
 avatarurl = "img/profile.png"
 
-footercontent = "Welcome :)"
+#footercontent = "Welcome :)"
 hideFooter = false
 hideCredits = false
 hideCopyright = false
@@ -60,8 +60,24 @@ url = "https://github.com/exvertus/"
 [[params.social]]
 name = "LinkedIn"
 icon = "fa fa-linkedin"
-weight = 4
+weight = 2
 url = "https://www.linkedin.com/in/thomas-flanigan/"
+[[params.social]]
+name = "InstagramDrawing"
+icon = "fa fa-instagram"
+weight = 3
+url = "https://www.instagram.com/tomisdrawingagain/"
+[[params.social]]
+name = "Bandcamp"
+icon = "fa fa-bandcamp"
+weight = 4
+url = "https://materialsoul.bandcamp.com/"
+[[params.social]]
+name = "InstagramMusic"
+icon = "fa fa-instagram"
+weight = 5
+url = "https://www.instagram.com/material_soul/"
+
 
 [languages.en]
 languageName = ":uk:"
@@ -71,17 +87,13 @@ name = "About"
 weight = 1
 url = "about/"
 
-[[languages.en.menu.main]]
-name = "Blog"
-weight = 2
-url = "posts/"
+#[[languages.en.menu.main]]
+#name = "Blog"
+#weight = 2
+#url = "posts/"
 
 [[languages.en.menu.main]]
 name = "Projects"
 weight = 3
 url = "projects/"
 
-[[languages.en.menu.main]]
-name = "Contact me"
-weight = 5
-url = "contact/"
