@@ -60,8 +60,24 @@ url = "https://github.com/exvertus/"
 [[params.social]]
 name = "LinkedIn"
 icon = "fa fa-linkedin"
-weight = 4
+weight = 2
 url = "https://www.linkedin.com/in/thomas-flanigan/"
+[[params.social]]
+name = "InstagramDrawing"
+icon = "fa fa-instagram"
+weight = 3
+url = "https://www.instagram.com/tomisdrawingagain/"
+[[params.social]]
+name = "Bandcamp"
+icon = "fa fa-bandcamp"
+weight = 4
+url = "https://materialsoul.bandcamp.com/"
+[[params.social]]
+name = "InstagramMusic"
+icon = "fa fa-instagram"
+weight = 5
+url = "https://www.instagram.com/material_soul/"
+
 
 [languages.en]
 languageName = ":uk:"
