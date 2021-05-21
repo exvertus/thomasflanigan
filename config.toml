@@ -4,12 +4,10 @@ theme = "hugo-coder"
 languageCode = "en"
 defaultContentLanguage = "en"
 paginate = 20
-pygmentsStyle = "bw"
-pygmentsCodeFences = true
-pygmentsCodeFencesGuessSyntax = true
-enableEmoji = true
-
-
+pygmentsStyle = "monokai"
+#pygmentsCodeFences = true
+#pygmentsCodeFencesGuessSyntax = true
+#enableEmoji = true
 
 [params]
 author = "Tom Flanigan"
@@ -72,11 +70,6 @@ name = "Bandcamp"
 icon = "fa fa-bandcamp"
 weight = 4
 url = "https://materialsoul.bandcamp.com/"
-[[params.social]]
-name = "InstagramMusic"
-icon = "fa fa-instagram"
-weight = 5
-url = "https://www.instagram.com/material_soul/"
 
 
 [languages.en]
@@ -87,13 +80,12 @@ name = "About"
 weight = 1
 url = "about/"
 
-#[[languages.en.menu.main]]
-#name = "Blog"
-#weight = 2
-#url = "posts/"
+[[languages.en.menu.main]]
+name = "Blog"
+weight = 2
+url = "posts/"
 
 [[languages.en.menu.main]]
 name = "Projects"
 weight = 3
 url = "projects/"
-
