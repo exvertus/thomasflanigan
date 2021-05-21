@@ -11,7 +11,7 @@ externalLink = ""
 series = ["site-automation"]
 +++
 
-I am enjoying using more cloud tools these days and have had an itch to start a blog about it.
+I have been using more cloud tools these days and had an itch to start a blog about it.
 I have a dev ops background without much front-end web experience, 
 so I was happy to find out about tools like [Jekyll](https://jekyllrb.com/) and [Hugo](https://gohugo.io/); a good topic for my first post.
 
@@ -20,11 +20,11 @@ so I was happy to find out about tools like [Jekyll](https://jekyllrb.com/) and 
 Jekyll and Hugo are both site generators. 
 Hugo struck me as a better fit due to its speed when compared with Jekyll. 
 With the ```hugo serve``` command, I can update files and see the html rendered on a live local server.
-It is a nice feature for maintaining a tight feedback loop and staying in a flow state.
+It is a nice feature for maintaining a tight feedback loop for staying in a flow state.
 
 ##### Create a Hugo Project
 
-First you'll need to [install hugo](https://gohugo.io/getting-started/installing/) and create a repository. 
+First I'll need to [install hugo](https://gohugo.io/getting-started/installing/) and create a repository. 
 I've named mine hugo-demo.
 Note since I have already created the repository on github, I'll need to use ```--force``` when creating the site.
 
@@ -180,9 +180,8 @@ You can see a full list of parameters in the [theme's stackbit.yaml](https://git
 
 ##### Adding Content
 
-So far I have more of a page than a site though. 
-I'll need to add content so the 'About' and 'Blog' menu links will go somewhere.
-Adding an about.md file to the root of the content folder will cause hugo to serve a /about/index.html page:
+My site will need more than a single page, so I'll need to add content so the 'About' and 'Blog' menu links don't 404.
+Adding an about.md file to the root of the content folder will cause hugo to serve an /about/index.html page:
 
 {{< highlight bash >}}
 tom@ubuntu:~/git/hugo-demo$ hugo new about.md
@@ -233,13 +232,13 @@ class Something(object):
 
 {{< /highlight >}}
 
-Going to localhost:1313/about/ brings me directly to the about page, but going to /posts/ takes me to a list page showing each file in the content/posts folder:
+Navigating to localhost:1313/about/ brings me directly to the about page, but going to /posts/ takes me to a list page showing each file in the content/posts folder:
 
 ![About](/img/posts/building-with-hugo/about.png)
 
 ![Posts](/img/posts/building-with-hugo/blog-list-page.png)
 
-Taking a look at the look at my blog post, I'm not really happy with how the code snippet coloring against the white background:
+Taking a look at the look at my blog post, I'm not really happy with how the code snippet coloring looks against the white background:
 
 ![BwPost](/img/posts/building-with-hugo/first-post-bw.png)
 
@@ -263,7 +262,7 @@ First I'll set each content file's front matter so that they are no longer draft
 draft: false
 {{< /highlight >}}
 
-Then I can run the hugo command from the root of the project to generate the content.
+Then I can run the ```hugo``` command from the root of the project to generate the content.
 Hugo will drop the output into a folder named 'public' by default.
 
 {{< highlight bash >}}
@@ -296,5 +295,7 @@ public
 resources
 {{< /highlight >}}
 
+##### Conclusion
+
 That's it! Note I've used a demo repository for the purposes of this post.
-If you'd like to see the live code for this site (including the code for [the page you're reading now]), you can view my [github project](https://github.com/exvertus/thomasflanigan).
+If you'd like to see the live code for this site (including the code for [the page you're reading now](https://raw.githubusercontent.com/exvertus/thomasflanigan/main/content/posts/building-with-hugo.md)), you can view my [github project](https://github.com/exvertus/thomasflanigan).
