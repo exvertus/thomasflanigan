@@ -11,4 +11,5 @@ See more about my professional experience on my [resume](/resume).
 
 I am also a classical pianist that has played guitar and bass in bands as well.
 Currently I'm producing an [electronic soundtrack](https://materialsoul.bandcamp.com/album/roze-blud-original-soundtrack-prerelease) for the upcoming game [Roze Blud](https://rozeblud.com/).
+
 I also enjoy art, having taken up ink-drawing recently. You can follow me on [my instagram](https://www.instagram.com/tomisdrawingagain/).
