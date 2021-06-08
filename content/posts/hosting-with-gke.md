@@ -32,10 +32,54 @@ What if a container goes down?
 How do you recognize that and recover? 
 If you are running your app across multiple containers, how do you balance traffic between them?
 
-There are many ways to solve these problems, but organizations having extensive experience with these types of problems settle on certain approaches being better than others.
+There are many ways to solve these, but organizations having extensive experience with these types of problems settle on certain approaches being better than others.
 In one particular case, Google came up with a packaged set of tools written in GoLang based on their own needs. 
 They open-sourced the project and provided it as a free-to-use tool that can integrates with cloud APIs.
 
 They named that tool Kubernetes.
 
 ##### Building an Image
+
+First I'll need an image to run, so I'll build it from my Dockerfile and push it up to [Google Container Registry](https://cloud.google.com/container-registry).
+My Dockerfile is about as simple as it gets:
+
+{{< highlight docker >}}
+FROM nginx
+EXPOSE 80
+COPY public /usr/share/nginx/html
+{{< /highlight >}}
+
+My base image is nginx, a lightweight webserver.
+The Dockerfile exposes the standard http port and copies the contents of my public folder to a folder that nginx will look to for serving static content.
+In my last post the public was created when I ran ```hugo``` to generate the html and other files needed for seeing my content outside of Hugo's built-in local server.
+
+Now I'll build the image.
+
+{{< highlight bash >}}
+tom@ubuntu::~/git/thomasflanigan$ docker build -t $TOMS_SITE_IMG .
+Sending build context to Docker daemon  7.965MB
+Step 1/3 : FROM nginx
+latest: Pulling from library/nginx
+69692152171a: Pull complete
+30afc0b18f67: Pull complete
+596b1d696923: Pull complete
+febe5bd23e98: Pull complete
+8283eee92e2f: Pull complete
+351ad75a6cfa: Pull complete
+Digest: sha256:6d75c99af15565a301e48297fa2d121e15d80ad526f8369c526324f0f7ccb750
+Status: Downloaded newer image for nginx:latest
+---> d1a364dc548d
+Step 2/3 : EXPOSE 80
+---> Running in 9da7a9dd02cc
+Removing intermediate container 9da7a9dd02cc
+---> 62f1ae442966
+Step 3/3 : COPY public /usr/share/nginx/html
+---> e1670ad1b9a4
+Successfully built e1670ad1b9a4
+Successfully tagged gcr.io/[GCP_PROJECT_ID]/thomasflanigan:latest
+{{< /highlight >}}
+
+I've set an environment variable TOMS_SITE_IMG in the format gcr.io/[GCP_PROJECT_ID]/[IMAGE_NAME]:[IMAGE_TAG].
+Before pushing it out to the registry, I'll run the container locally to make sure it is working as expected.
+
+
