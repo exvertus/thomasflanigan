@@ -81,6 +81,102 @@ Successfully tagged gcr.io/[GCP_PROJECT_ID]/thomasflanigan:latest
 
 I've set an environment variable TOMS_SITE_IMG in the format gcr.io/[GCP_PROJECT_ID]/[IMAGE_NAME]:[IMAGE_TAG].
 Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_SITE_IMG``` and navigate to http://localhost:8080 to see that site is hosted in the container correctly.
-I can see how this is working by running in interactive mode in the container.
+This might look like a bit of magic.
+By poking around interactively within the container, I can get a better picture of how this uses the default nginx configuration coming from my image's base layer.
 
+{{< highlight bash >}}
+tom@ubuntu:~/git/thomasflanigan$ docker run -it $TOMS_SITE_IMG /bin/bash
+root@6113c3fcd402:/# cat /etc/nginx/nginx.conf
+
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+
+events {
+worker_connections  1024;
+}
+
+
+http {
+include       /etc/nginx/mime.types;
+default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+{{</ highlight >}}
+
+```/etc/nginx/nginx.conf``` is where nginx looks for its configuration. 
+I could copy my own version of this file into the image and overwrite this one if I needed something more custom.
+At the bottom of the configuration I can see that everything with a .conf in the /etc/nginx/conf.d/ directory will be included in the configuration.
+Still from in the container:
+
+{{< highlight bash >}}
+root@6113c3fcd402:/# ls /etc/nginx/conf.d/
+default.conf
+root@6113c3fcd402:/# cat /etc/nginx/conf.d/default.conf
+server {
+listen       80;
+server_name  localhost;
+
+    #charset koi8-r;
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+{{</ highlight >}}
+
+From the location section within the server directive we can see that nginx is using ```/usr/share/nginx/html``` to look for content. 
+Nginx will serve any index.html files for paths under that location, the same one my Dockerfile copies my content to.
+So the "magic" is really just relying on the default nginx configuration coming from the base image.
 
