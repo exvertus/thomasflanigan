@@ -80,6 +80,7 @@ Successfully tagged gcr.io/[GCP_PROJECT_ID]/thomasflanigan:latest
 {{< /highlight >}}
 
 I've set an environment variable TOMS_SITE_IMG in the format gcr.io/[GCP_PROJECT_ID]/[IMAGE_NAME]:[IMAGE_TAG].
-Before pushing it out to the registry, I'll run the container locally to make sure it is working as expected.
+Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_SITE_IMG``` and navigate to http://localhost:8080 to see that site is hosted in the container correctly.
+I can see how this is working by running in interactive mode in the container.
 
 
