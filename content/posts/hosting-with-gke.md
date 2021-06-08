@@ -56,7 +56,7 @@ In my last post the public was created when I ran ```hugo``` to generate the htm
 Now I'll build the image.
 
 {{< highlight bash >}}
-tom@ubuntu::~/git/thomasflanigan$ docker build -t $TOMS_SITE_IMG .
+tom@ubuntu:~/git/thomasflanigan$ docker build -t $TOMS_SITE_IMG .
 Sending build context to Docker daemon  7.965MB
 Step 1/3 : FROM nginx
 latest: Pulling from library/nginx
@@ -180,3 +180,20 @@ From the location section within the server directive we can see that nginx is u
 Nginx will serve any index.html files for paths under that location, the same one my Dockerfile copies my content to.
 So the "magic" is really just relying on the default nginx configuration coming from the base image.
 
+Finally, I'll push the image up to the registry.
+
+{{< highlight bash >}}
+tom@ubuntu:~/git/thomasflanigan$ docker push $TOMS_SITE_IMG
+Using default tag: latest
+The push refers to repository [gcr.io/GCP_PROJECT_ID/thomasflanigan:latest]
+35e0dc2a6cbb: Pushed
+075508cf8f04: Layer already exists
+5c865c78bc96: Layer already exists
+134e19b2fac5: Layer already exists
+83634f76e732: Layer already exists
+766fe2c3fc08: Layer already exists
+02c055ef67f5: Layer already exists
+latest: digest: sha256:2a22fffa87737085ec8b9a1f13fff11f9b78d5d7a3d9e53d973d2199eae0dbdc size: 1781
+{{</ highlight >}}
+
+##### Kubernetes Controllers
