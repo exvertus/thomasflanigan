@@ -12,7 +12,7 @@ series = ["site-automation"]
 +++
 
 In my [last post](/posts/building-with-hugo/), I explained how I am building this site with [Hugo](https://gohugo.io/), but stopped short of explaining how I am hosting it.
-In this post, I'll take you through a bit of how Kubernetes works and explain how I'm using it to host the site you're looking at.
+In this post, I'll take you through a bit of how Kubernetes works and explain how I'm using it to host this.
 
 ##### What is Kubernetes?
 
@@ -24,7 +24,7 @@ In the beginning, web apps were run on physical servers.
 When an organization approached their server capacity, they were forced to buy more.
 This created obvious planning and resource-utilization headaches, the most ironic being servers unable to handle a sudden influx in traffic due to a web app going viral.
 Broadly the industry would settle on a more sharing-economy approach to computing power, democratizing access to scalable resources with pay-as-you-go pricing.
-For SaaS, container technology, combined with the ability to automatically create additional VMs via a cloud provider, meant the tools are now there for even small organizations to automate this problem away.
+For SaaS, container technology, combined with the ability to automatically create additional VMs via a cloud provider, meant the tools are available for even small organizations to automate this problem away.
 
 And scalability is just one of many concerns that running a web app raises.
 
@@ -51,7 +51,7 @@ COPY public /usr/share/nginx/html
 
 My base image is nginx, a lightweight webserver.
 The Dockerfile exposes the standard http port and copies the contents of my public folder to a folder that nginx will look to for serving static content.
-In my last post the public was created when I ran ```hugo``` to generate the html and other files needed for seeing my content outside of Hugo's built-in local server.
+In my last post the public folder was created when I ran ```hugo``` to generate the html and other files needed for seeing my content outside of Hugo's built-in local server.
 
 Now I'll build the image.
 
@@ -81,6 +81,7 @@ Successfully tagged gcr.io/[GCP_PROJECT_ID]/thomasflanigan:latest
 
 I've set an environment variable TOMS_SITE_IMG in the format gcr.io/[GCP_PROJECT_ID]/[IMAGE_NAME]:[IMAGE_TAG].
 Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_SITE_IMG``` and navigate to http://localhost:8080 to see that site is hosted in the container correctly.
+
 This might look like a bit of magic.
 By poking around interactively within the container, I can get a better picture of how this uses the default nginx configuration coming from my image's base layer.
 
@@ -121,10 +122,10 @@ default_type  application/octet-stream;
 }
 {{</ highlight >}}
 
-```/etc/nginx/nginx.conf``` is where nginx looks for its configuration. 
+The ```/etc/nginx/nginx.conf``` file is where nginx looks for its configuration. 
 I could copy my own version of this file into the image and overwrite this one if I needed something more custom.
 At the bottom of the configuration I can see that everything with a .conf in the /etc/nginx/conf.d/ directory will be included in the configuration.
-Still from in the container:
+While still in the container:
 
 {{< highlight bash >}}
 root@6113c3fcd402:/# ls /etc/nginx/conf.d/
@@ -176,8 +177,9 @@ server_name  localhost;
 }
 {{</ highlight >}}
 
-From the location section within the server directive we can see that nginx is using ```/usr/share/nginx/html``` to look for content. 
-Nginx will serve any index.html files for paths under that location, the same one my Dockerfile copies my content to.
+From the server directive we can see the port 80 I exposed.
+From the location section within that we can see that nginx is using ```/usr/share/nginx/html``` to look for content. 
+Nginx will serve any index.html files for paths under that location, the same one the Dockerfile copies my content to.
 So the "magic" is really just relying on the default nginx configuration coming from the base image.
 
 Finally, I'll push the image up to the registry.
@@ -198,13 +200,13 @@ latest: digest: sha256:2a22fffa87737085ec8b9a1f13fff11f9b78d5d7a3d9e53d973d2199e
 
 ##### Kubernetes Controllers
 
-To get my image running in Kubernetes, I will define a number of Kubernetes objects using a yaml file.
+To get my image running in Kubernetes, I'll define a number of Kubernetes objects using a yaml file.
 A single instance of Kubernetes is called a cluster, and each is designed to work declaratively.
 This means I can describe my desired state, and Kubernetes will use controllers corresponding to each object I define until the observed cluster state matches the desired one.
 
 In contrast, setting up a web app the traditional way involved a set of instructions run imperatively; analogous to giving someone directions from point A to B.
-Today with online map services, instead of directions, we could specify the end destination B only, and not have to worry about point A at all.
-Kubernetes let's me do the same thing by running my site's image and configuring the infrastructure for it.
+Today with an online map service, instead of directions, we could specify the end destination B only, and let the service worry about the rest, not having to worry about point A at all.
+Kubernetes lets me do the same thing when running my site's image and defining the infrastructure for it.
 
 ###### Namespace
 
@@ -221,7 +223,7 @@ metadata:
 
 ###### Deployment
 
-Next I'll need to run a containers running my nginx image. 
+Next I'll need to run a container for my nginx image. 
 I can use a Deployment to do so.
 
 {{< highlight yaml >}}
@@ -294,10 +296,10 @@ I'll make sure the Pod and Service started okay, and then use ```kubectl port-fo
 {{< highlight bash >}}
 tom@cloudshell:~/git/thomasflanigan $ kubectl get pods -n thomasflanigan
 NAME                    READY   STATUS    RESTARTS   AGE
-site-594ccf99c8-wwn28   1/1     Running   0          11d
+site-594ccf99c8-wwn28   1/1     Running   0          12m
 tom@cloudshell:~/git/thomasflanigan $ kubectl get svc -n thomasflanigan
 NAME       TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
-site-svc   NodePort   10.60.14.87   <none>        8080:31208/TCP   31d
+site-svc   NodePort   10.60.14.87   <none>        8080:31208/TCP   12m
 tom@cloudshell:~/git/thomasflanigan $ kubectl port-forward service/site-svc -n thomasflanigan 8080:8080 >> /dev/null
 {{</ highlight >}}
 
@@ -310,6 +312,84 @@ It works!
 
 ![Site Preview](/img/posts/hosting-with-gke/site-preview.png)
 
-#Ingress
+###### Ingress
 
+With things working inside the cluster, the final step is to expose it to the web more permanently.
+I have reserved a [static external IP](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#reserve_new_static) named 'thomasflanigan' in my GCP project to reach the outside web.
+I can use an Ingress to connect the static IP to my Service.
 
+{{< highlight yaml >}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: thomasflanigan
+    networking.gke.io/managed-certificates: site-cert
+  name: site-ingress
+  namespace: thomasflanigan
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            pathType: Prefix
+            backend:
+              service:
+                name: site-svc
+                port:
+                  number: 8080
+{{</ highlight >}}
+
+Under ```spec.rules.http[0].paths```, I can list one or more paths.
+Here I am saying everything going to my static IP from the root path down will be sent to my site-svc.
+
+I am also turning off http access to run my site under https only.
+I get the SSL termination from referencing a managed certificate.
+
+###### Managed Certificate
+
+If you take a look back at the above yaml code, you may notice it has been necessary to specify an apiVersion.
+Up until this point, I have been using yaml that defines resources built-in to Kubernetes.
+Kubernetes also allows for custom resources powered by custom controllers.
+Notice the apiVersion below specifies GKE, since I am defining a custom resource tied to a [Google-managed SSL certificate](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs).
+This piece will obviously differ for each cloud provider.
+
+{{< highlight yaml >}}
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: site-cert
+  namespace: thomasflanigan
+spec:
+  domains:
+    - thomasflanigan.com
+{{</ highlight >}}
+
+In order for the cert to work, I'll need to point my thomasflanigan.com domain to the static IP address I created.
+Using a managed cert is convenient, since I don't ever have to worry about renewing the certificate manually (managed certs auto-renew).
+I will need to wait a few minutes for the certificate to provision, so I'll apply it now.
+
+{{< highlight bash >}}
+tom@cloudshell:~/git/thomasflanigan $ cat k8s-config.yaml | envsubst | kubectl apply -f -
+namespace/thomasflanigan unchanged
+deployment.apps/site unchanged
+service/site-svc unchanged
+ingress.networking.k8s.io/site-ingress configured
+managedcertificate.networking.gke.io/site-cert configured
+{{</ highlight >}}
+
+After some time, I can check on the cert and see it provisioned, and my site will be available.
+
+{{< highlight bash >}}
+tom@cloudshell:~/git/thomasflanigan $ kubectl get managedcertificate site-cert -n thomasflanigan -o jsonpath='{.status.certificateStatus}'
+Active
+{{</ highlight >}}
+
+##### Conclusion
+
+I have really only scratched the surface with Kubernetes here. 
+There is a lot more I could do to improve the backend, but this will suffice for a static site for now.
+In fact, Kubernetes is so powerful that using it for only a static site is complete overkill, but I plan to add to this cluster over time.
+
+To see the complete yaml configuration, take a look at it [on my github](https://github.com/exvertus/thomasflanigan/blob/main/k8s-config.yaml).
