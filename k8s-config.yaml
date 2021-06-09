@@ -53,10 +53,13 @@ spec:
   rules:
     - http:
         paths:
-          - backend:
-              serviceName: site-svc
-              servicePort: 8080
-            path: /*
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: site-svc
+                port:
+                  number: 8080
 ---
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
