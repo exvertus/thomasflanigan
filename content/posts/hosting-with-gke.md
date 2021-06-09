@@ -197,3 +197,119 @@ latest: digest: sha256:2a22fffa87737085ec8b9a1f13fff11f9b78d5d7a3d9e53d973d2199e
 {{</ highlight >}}
 
 ##### Kubernetes Controllers
+
+To get my image running in Kubernetes, I will define a number of Kubernetes objects using a yaml file.
+A single instance of Kubernetes is called a cluster, and each is designed to work declaratively.
+This means I can describe my desired state, and Kubernetes will use controllers corresponding to each object I define until the observed cluster state matches the desired one.
+
+In contrast, setting up a web app the traditional way involved a set of instructions run imperatively; analogous to giving someone directions from point A to B.
+Today with online map services, instead of directions, we could specify the end destination B only, and not have to worry about point A at all.
+Kubernetes let's me do the same thing by running my site's image and configuring the infrastructure for it.
+
+###### Namespace
+
+First I'll start by defining a namespace.
+Namespaces are a good way to keep things isolated in the cluster.
+If I left this out, Kubernetes would place all my resources in the default namespace, so I'll explicitly create one specifically for my site.
+
+{{< highlight yaml >}}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: thomasflanigan
+{{</ highlight >}}
+
+###### Deployment
+
+Next I'll need to run a containers running my nginx image. 
+I can use a Deployment to do so.
+
+{{< highlight yaml >}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site
+  namespace: thomasflanigan
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: site
+  template:
+    metadata:
+      labels:
+        app: site
+    spec:
+      containers:
+      - name: nginx
+#       Meant to be run with envsubst
+        image: $TOMS_SITE_IMG
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+{{</ highlight >}}
+
+A Deployment is a wrapper for running Kubernetes Pods, which in turn can run one or more containers.
+With ```replicas: 1``` and the ```containers:``` list, I am telling my cluster I want a single container of my site exposed on port 80.
+I also specify a selector so that I can target this container with a Service resource.
+
+###### Service
+
+A Service adds an abstraction layer for managing access to Kubernetes Pods. 
+Here I define a NodePort type Service, with a selector that will match any Pods with an ```app: site``` matchLabel.
+In my case this is a single Pod with my one container in it.
+
+{{< highlight yaml >}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: site-svc
+  namespace: thomasflanigan
+spec:
+  selector:
+    app: site
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+{{</ highlight >}}
+
+###### Testing it out so far
+
+So far I have just been talking about yaml files, but I haven't told a cluster to make it so yet.
+For that I'll need to hop onto my cloud shell environment where I have already created a [GKE](https://cloud.google.com/kubernetes-engine) instance.
+Here I'll use the ```kubectl apply``` command to have my cluster start running the Service.
+In order to swap in my environment variable for my site image, I'll [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html) and pipe the result to the kubectl command.
+
+{{< highlight bash >}}
+tom@cloudshell:~/git/thomasflanigan $ cat k8s-config.yaml | envsubst | kubectl apply -f -
+namespace/thomasflanigan configured
+deployment.apps/site configured
+service/site-svc configured
+{{</ highlight >}}
+
+I'll make sure the Pod and Service started okay, and then use ```kubectl port-forward``` to preview the site.
+
+{{< highlight bash >}}
+tom@cloudshell:~/git/thomasflanigan $ kubectl get pods -n thomasflanigan
+NAME                    READY   STATUS    RESTARTS   AGE
+site-594ccf99c8-wwn28   1/1     Running   0          11d
+tom@cloudshell:~/git/thomasflanigan $ kubectl get svc -n thomasflanigan
+NAME       TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+site-svc   NodePort   10.60.14.87   <none>        8080:31208/TCP   31d
+tom@cloudshell:~/git/thomasflanigan $ kubectl port-forward service/site-svc -n thomasflanigan 8080:8080 >> /dev/null
+{{</ highlight >}}
+
+With the Service port forwarded, I can use the web preview feature in [Google Cloud Shell](https://cloud.google.com/shell) to preview the site.
+
+![Web Preview](/img/posts/hosting-with-gke/web-preview.png)
+
+This will launch the site at a temporary url.
+It works!
+
+![Site Preview](/img/posts/hosting-with-gke/site-preview.png)
+
+#Ingress
+
+
