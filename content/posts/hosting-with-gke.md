@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2021-05-28T20:28:58-04:00
 title = "How I Host this Site"
 description = "Hosting static content with Google Kubernetes Engine"
@@ -11,12 +11,12 @@ externalLink = ""
 series = ["site-automation"]
 +++
 
-In my [last post](/posts/building-with-hugo/), I explained how I am building this site with [Hugo](https://gohugo.io/), but stopped short of explaining how I am hosting it.
-In this post, I'll take you through a bit of how Kubernetes works and explain how I'm using it to host this.
+In my [last post](/posts/building-with-hugo/), I explained how I am building this site with [Hugo](https://gohugo.io/), but stopped short on how I host it.
+In this post, I'll take you through a bit of how Kubernetes works and explain how I'm using it.
 
-##### What is Kubernetes?
+##### Kubernetes Background
 
-[Kubernetes](https://kubernetes.io/) is an orchestration system for automating a range of container-oriented tasks; think things like deployment, scaling, and self-healing.
+[Kubernetes](https://kubernetes.io/) is an orchestration system for running containers and automating a range of container-oriented tasks; think things like deployment, scaling, and self-healing.
 While Kubernetes is well-suited for a variety of applications, its traditional application is running [twelve-factor](https://12factor.net/) web apps.
 There is a lot to Kubernetes, and an exhaustive tour is beyond the scope of this post, but I'll try to provide a brief background and explain each piece as I go.
 
@@ -34,13 +34,13 @@ If you are running your app across multiple containers, how do you balance traff
 
 There are many ways to solve these, but organizations having extensive experience with these types of problems settle on certain approaches being better than others.
 In one particular case, Google came up with a packaged set of tools written in GoLang based on their own needs. 
-They open-sourced the project and provided it as a free-to-use tool that can integrates with cloud APIs.
+They open-sourced the project and provided it as a free-to-use tool that integrates with cloud APIs.
 
 They named that tool Kubernetes.
 
 ##### Building an Image
 
-First I'll need an image to run, so I'll build it from my Dockerfile and push it up to [Google Container Registry](https://cloud.google.com/container-registry).
+In order to host my site, first I'll need an image to run, so I'll build it from my Dockerfile and push it up to [Google Container Registry](https://cloud.google.com/container-registry).
 My Dockerfile is about as simple as it gets:
 
 {{< highlight docker >}}
@@ -80,10 +80,10 @@ Successfully tagged gcr.io/[GCP_PROJECT_ID]/thomasflanigan:latest
 {{< /highlight >}}
 
 I've set an environment variable TOMS_SITE_IMG in the format gcr.io/[GCP_PROJECT_ID]/[IMAGE_NAME]:[IMAGE_TAG].
-Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_SITE_IMG``` and navigate to http://localhost:8080 to see that site is hosted in the container correctly.
+Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_SITE_IMG``` and navigate to http://localhost:8080 to see that site is being hosted in the container correctly.
 
 This might look like a bit of magic.
-By poking around interactively within the container, I can get a better picture of how this uses the default nginx configuration coming from my image's base layer.
+By poking around interactively within the container, a better picture emerges of how this uses the default nginx configuration coming from my image's base layer.
 
 {{< highlight bash >}}
 tom@ubuntu:~/git/thomasflanigan$ docker run -it $TOMS_SITE_IMG /bin/bash
@@ -177,10 +177,10 @@ server_name  localhost;
 }
 {{</ highlight >}}
 
-From the server directive we can see the port 80 I exposed.
+From the server directive we can see the same port 80 that was exposed in the Dockerfile.
 From the location section within that we can see that nginx is using ```/usr/share/nginx/html``` to look for content. 
 Nginx will serve any index.html files for paths under that location, the same one the Dockerfile copies my content to.
-So the "magic" is really just relying on the default nginx configuration coming from the base image.
+So the "magic" is really just relying on the default nginx configuration coming from the base image and copying the site's content into the default folder.
 
 Finally, I'll push the image up to the registry.
 
@@ -201,12 +201,12 @@ latest: digest: sha256:2a22fffa87737085ec8b9a1f13fff11f9b78d5d7a3d9e53d973d2199e
 ##### Kubernetes Controllers
 
 To get my image running in Kubernetes, I'll define a number of Kubernetes objects using a yaml file.
-A single instance of Kubernetes is called a cluster, and each is designed to work declaratively.
-This means I can describe my desired state, and Kubernetes will use controllers corresponding to each object I define until the observed cluster state matches the desired one.
+A single instance of Kubernetes is called a cluster and configuration can be defined declaratively.
+This means I can describe my desired state via versioned files, and Kubernetes will use controllers corresponding to each object I define until the observed cluster state matches the one I defined.
 
 In contrast, setting up a web app the traditional way involved a set of instructions run imperatively; analogous to giving someone directions from point A to B.
 Today with an online map service, instead of directions, we could specify the end destination B only, and let the service worry about the rest, not having to worry about point A at all.
-Kubernetes lets me do the same thing when running my site's image and defining the infrastructure for it.
+Kubernetes lets you take a similar approach, in my case, for running my site's image and defining the infrastructure for it.
 
 ###### Namespace
 
@@ -257,9 +257,9 @@ I also specify a selector so that I can target this container with a Service res
 
 ###### Service
 
-A Service adds an abstraction layer for managing access to Kubernetes Pods. 
+Services allow you to manage connectivity to Kubernetes Pods. 
 Here I define a NodePort type Service, with a selector that will match any Pods with an ```app: site``` matchLabel.
-In my case this is a single Pod with my one container in it.
+In my case, this is a single Pod with my one container in it.
 
 {{< highlight yaml >}}
 apiVersion: v1
@@ -279,10 +279,10 @@ spec:
 
 ###### Testing it out so far
 
-So far I have just been talking about yaml files, but I haven't told a cluster to make it so yet.
-For that I'll need to hop onto my cloud shell environment where I have already created a [GKE](https://cloud.google.com/kubernetes-engine) instance.
+So far I have just been talking about yaml files, but I haven't told the cluster to make it so yet.
+I'll need to hop onto my cloud shell environment where I have already created a [GKE](https://cloud.google.com/kubernetes-engine) instance.
 Here I'll use the ```kubectl apply``` command to have my cluster start running the Service.
-In order to swap in my environment variable for my site image, I'll [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html) and pipe the result to the kubectl command.
+In order to swap in my environment variable for my site image, I'll use [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html) and pipe the result to the kubectl command.
 
 {{< highlight bash >}}
 tom@cloudshell:~/git/thomasflanigan $ cat k8s-config.yaml | envsubst | kubectl apply -f -
@@ -352,8 +352,8 @@ I get the SSL termination from referencing a managed certificate.
 If you take a look back at the above yaml code, you may notice it has been necessary to specify an apiVersion.
 Up until this point, I have been using yaml that defines resources built-in to Kubernetes.
 Kubernetes also allows for custom resources powered by custom controllers.
-Notice the apiVersion below specifies GKE, since I am defining a custom resource tied to a [Google-managed SSL certificate](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs).
-This piece will obviously differ for each cloud provider.
+Notice the apiVersion below specifies GKE, a Google-specific cloud service, since I am defining a custom resource tied to a [Google-managed SSL certificate](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs).
+Resources like this will differ for each cloud provider.
 
 {{< highlight yaml >}}
 apiVersion: networking.gke.io/v1beta1
@@ -390,6 +390,6 @@ Active
 
 I have really only scratched the surface with Kubernetes here. 
 There is a lot more I could do to improve the backend, but this will suffice for a static site for now.
-In fact, Kubernetes is so powerful that using it for only a static site is complete overkill, but I plan to add to this cluster over time.
+In fact, Kubernetes is so powerful that using it for only a static site is [complete overkill](https://twitter.com/dexhorthy/status/856639005462417409?lang=en), but I plan to add to this cluster over time.
 
 To see the complete yaml configuration, take a look at it [on my github](https://github.com/exvertus/thomasflanigan/blob/main/k8s-config.yaml).
