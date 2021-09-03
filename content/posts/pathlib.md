@@ -64,7 +64,8 @@ This can be an elegant way to do some filepath manipulation in the opposite file
 ##### Console comparisons with os
 
 One pet-peeve of mine, especially when revisiting Python after some time away, is that os.path are functions for passing in strings. 
-Sometimes it is easy to forget that as my little slip-up below demonstrates.
+Sometimes it is easy to forget that as my little whoops below demonstrates. 
+The OOP consistency from pathlib avoids this.
 
 {{< div/row >}}
   {{< div/column >}}
@@ -90,6 +91,18 @@ Sometimes it is easy to forget that as my little slip-up below demonstrates.
   {{</ div/column >}}
 {{</ div/row >}}
 
+Another constant source of whoops for me is the inconsistent interface.
+Directories have to do with paths so listing them must be in os.path right?
 
 
-
+{{< div/row >}}
+  {{< div/column >}}
+    {{< highlight python >}}
+    
+    {{</ highlight >}}{{</ div/column >}}
+  {{< div/column >}}
+    {{< highlight python >}}
+    
+    {{</ highlight >}}
+  {{</ div/column >}}
+{{</ div/row >}}
