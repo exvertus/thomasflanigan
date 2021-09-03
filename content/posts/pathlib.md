@@ -17,7 +17,7 @@ If you have some experience using Python, you probably already know it has some 
 Provided you don't build paths like this:
 
 {{< highlight python >}}
-path = basepath + '/dont' + '/do' + '/this'
+path = basepath + '/never' + '/do' + '/this'
 {{</ highlight >}}
 
 The tradition answer to this is to use libraries like [os](https://docs.python.org/3/library/os.html) and [os.path](https://docs.python.org/3/library/os.path.html):
@@ -63,23 +63,33 @@ This can be an elegant way to do some filepath manipulation in the opposite file
 
 ##### Console comparisons with os
 
-One pet-peeve of mine, especially when revisiting Python after some time away, is that os.path are functions for passing in strings.
+One pet-peeve of mine, especially when revisiting Python after some time away, is that os.path are functions for passing in strings. 
+Sometimes it is easy to forget that as my little slip-up below demonstrates.
 
 {{< div/row >}}
-{{< div/column >}}something{{</ div/column >}}
-{{< div/column >}}something else{{</ div/column >}}
+  {{< div/column >}}
+    {{< highlight python >}}
+    >>> import os
+    >>> path = os.getcwd()
+    >>> os_path.exists()
+    Traceback (most recent call last):
+    File "<pyshell#11>", line 1, 
+    in <module> os_path.exists()
+    AttributeError: 'str' object 
+    has no attribute 'exists'
+    >>> os.path.exists(os_path)
+    True
+    {{</ highlight >}}{{</ div/column >}}
+  {{< div/column >}}
+    {{< highlight python >}}
+    >>> from pathlib import Path
+    >>> pathlib_path = Path.cwd()
+    >>> pathlib_path.exists()
+    True
+    {{</ highlight >}}
+  {{</ div/column >}}
 {{</ div/row >}}
 
-{{< highlight python >}}
->>> import os
->>> os_path = os.getcwd()
->>> os.path.exists(os_path)
-True
->>> pathlib_path.exists()
-True
->>> os_path.exists()
-Traceback (most recent call last):
-File "<pyshell#11>", line 1, in <module>
-os_path.exists()
-AttributeError: 'str' object has no attribute 'exists'
-{{</ highlight >}}
+
+
+
