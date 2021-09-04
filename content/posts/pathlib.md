@@ -194,6 +194,6 @@ Thanks to [PEP 519](https://www.python.org/dev/peps/pep-0519/), pathlib paths re
 True
 {{</ highlight >}}
 
-So while using classes instead string comes with a bit more resource overhead, the reduction in errors and readability you get from pathlib is usually well worth it.
+So while using classes instead strings comes with a bit more resource overhead, the reduction in errors and readability you get from pathlib is usually well worth it.
 I would love to see more code use pathlib, so if you aren't already using it, I hope this post has swayed you.
 
