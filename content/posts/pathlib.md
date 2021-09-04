@@ -11,9 +11,9 @@ externalLink = ""
 series = ["python"]
 +++
 
-#### Python has standard classes to interact with filepaths. Are you using them yet?
+#### Python3 has a standard library with classes for filepaths. Are you using it yet?
 
-If you have some experience using Python, you probably already know it has some good tools for ironing out the differences between Windows and Unix paths, provided you don't build paths like this:
+If you have some experience using Python, you probably already know it has some good tools for ironing out differences between Windows and Unix paths, provided you don't build paths like this:
 
 {{< highlight python >}}
 path = basepath + '/never' + '/do' + '/this'
@@ -62,15 +62,15 @@ This can be an elegant way to do some filepath manipulation in the opposite plat
 
 ##### Console comparisons with os
 
-One pet-peeve of mine, especially when revisiting Python after some time away, is that os.path are functions for passing in strings. 
-Sometimes it is easy to forget that as my little whoops below demonstrates. 
+One pet-peeve of mine, especially when revisiting Python after some time away, is that os.path contains functions instead of methods. 
+It is easy to forget that as my little whoops below demonstrates. 
 The OOP consistency from pathlib avoids this.
 
 {{< div/row >}}
 {{< div/column >}}
 {{< highlight python >}}
 >>> import os
->>> path = os.getcwd()
+>>> os_path = os.getcwd()
 >>> os_path.exists()
 Traceback (most recent call last):
 File "<pyshell#11>", line 1, 
@@ -150,7 +150,7 @@ path = basepath + '/never' + '/do' + '/this'
 
 It is easy to understand the temptation, which brings me to my conclusion:
 Pathlib enables me to think about paths the way I already do, *without* the hurdles of a dispersed interface.
-Below I've simplified a scenario I've encountered working on a CI project, again comparing os with the refactored version for pathlib.
+Below I've simplified a scenario I've encountered working on a CI project, again comparing os with the same logic refactored for pathlib.
 
 {{< highlight python >}}
 import os
@@ -174,11 +174,13 @@ build_log = (workspace/'build'/'info'/'build_log.txt').read_text()
 
 With os, I'm almost forced to over-name things to keep the verbosity down, hence the 'info_folder' variable.
 There really isn't a need for such a variable when using pathlib.
+I can use forward slashes on either platform and pathlib will manage the differences behind the scenes.
+This matches Java/Groovy behavior I've used in [Jenkins Pipeline](https://www.jenkins.io/doc/book/pipeline/) before too, so switching languages feels smoother.
 I can get back to how I actually think about the path and see the portion I care about, under one library of consistently named methods.
 Which of the above would you rather read?
 
 If that isn't enough to convince you to change your code to pathlib, there is also the flexibility of partially swapping out pathlib without having to adjust for each new pathlib method.
-Thanks to [PEP 519](https://www.python.org/dev/peps/pep-0519/), pathlib paths resolve to strings and can be used as arguments to built-in functions as if they were returned from os functions.
+Thanks to [PEP 519](https://www.python.org/dev/peps/pep-0519/) and the [PathLike](https://docs.python.org/3/library/os.html#os.PathLike) base class, pathlib paths resolve to strings and can be used as arguments to built-in functions as if they were the path strings from os functions.
 
 {{< highlight python >}}
 >>> with open(os.path.join(os.path.expanduser('~Tom'), 'test.txt')) as f:
