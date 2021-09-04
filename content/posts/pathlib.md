@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2021-09-01T23:53:53-04:00
 title = "The Advantages of Pathlib"
 description = "Using Python's Pathlib library"
