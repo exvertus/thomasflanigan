@@ -173,7 +173,7 @@ xml_results = (workspace/'build'/'info'/'results.xml').read_text()
 build_log = (workspace/'build'/'info'/'build_log.txt').read_text()
 {{</ highlight >}}
 
-With ```os```, I'm almost forced to over-name things to keep the verbosity down, hence the 'info_folder' variable.
+With ```os```, I'm almost forced to over-name things to keep the verbosity down, hence the ```info_folder``` variable.
 There really isn't a need for such a variable when using ```pathlib```.
 I can use forward slashes on either platform and ```pathlib``` will manage the differences behind the scenes.
 This matches Java/Groovy behavior I've used in [Jenkins Pipeline](https://www.jenkins.io/doc/book/pipeline/) before too, so switching languages feels smoother.
@@ -197,6 +197,6 @@ Thanks to [PEP 519](https://www.python.org/dev/peps/pep-0519/) and the [PathLike
 True
 {{</ highlight >}}
 
-So while using classes instead strings comes with a bit more resource overhead, the reduction in errors and readability you get from ```pathlib``` is usually well worth it.
+So while using classes instead of strings comes with a bit more resource overhead, the reduction in errors and readability you get from ```pathlib``` is usually well worth it.
 I would love to see more code use ```pathlib```, so if you aren't already using it, I hope this post has swayed you.
 
