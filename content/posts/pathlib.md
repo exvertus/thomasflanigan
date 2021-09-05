@@ -27,12 +27,13 @@ path = join(basepath, 'a', 'better', 'path')
 {{</ highlight >}}
 
 But in terms of ease of use, these libraries are starting to show their age.
+
 Python3 includes [pathlib](https://docs.python.org/3/library/pathlib.html), a more convenient class-based library for interacting with paths.
 
 ##### Pathlib Classes
 
-By importing ```pathlib``` and using a Path class, we'll get a *concrete* class based on the underlying filesystem.
-In my case, I'm using Windows. Testing in a Python console will return a WindowsPath.
+By importing ```pathlib``` and using a ```Path``` class, we'll get a *concrete* class based on the underlying filesystem.
+In my case, I'm using Windows. Testing in a Python console will return a ```WindowsPath```.
 
 {{< highlight python >}}
 >>> from pathlib import Path
