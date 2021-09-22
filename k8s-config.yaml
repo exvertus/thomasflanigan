@@ -44,9 +44,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.global-static-ip-name: thomasflanigan
     networking.gke.io/managed-certificates: site-cert
+    networking.gke.io/v1beta1.FrontendConfig: site-fe
   name: site-ingress
   namespace: thomasflanigan
 spec:
@@ -69,3 +70,12 @@ metadata:
 spec:
   domains:
     - thomasflanigan.com
+---
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: site-fe
+  namespace: thomasflanigan
+spec:
+  redirectToHttps:
+    enabled: true
