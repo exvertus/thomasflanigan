@@ -75,7 +75,7 @@ apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
 metadata:
   name: site-fe
-  namespace: services
+  namespace: thomasflanigan
 spec:
   redirectToHttps:
     enabled: true
