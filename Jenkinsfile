@@ -8,22 +8,20 @@ pipeline {
     stages {
         stage('Hugo build') {
             steps {
-                sh "ls -a"
-                sh "ls -a ./themes"
-                sh "ls -a ./themes/hugo-coder"
                 sh "hugo"
             }
         }
-//         stage('Push image') {
-// //             when {
-// //                 branch 'main'
-// //             }
-//             steps {
-//                 container('kaniko') {
-//                    sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/thomasflanigan:latest"
-//                 }
+        stage('Push image') {
+//             when {
+//                 branch 'main'
 //             }
-//         }
+            steps {
+                container('kaniko') {
+//                    sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/thomasflanigan:latest"
+                   sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/test-thomasflanigan:latest"
+                }
+            }
+        }
 //         stage('Deploy image') {
 // //             when {
 // //                 branch 'main'
