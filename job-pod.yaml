@@ -1,9 +1,12 @@
 apiVersion: v1
 kind: Pod
 spec:
+  serviceAccountName: gke-kubectl-sa
   containers:
-    - name: shell
-      image: ubuntu
+    - name: hugo
+      image: klakegg/hugo:latest
+      imagePullPolicy: IfNotPresent
+      tty: true
       command:
         - sleep
       args:
@@ -14,6 +17,24 @@ spec:
       env:
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /gcp-sa/gcp-sa.json
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      imagePullPolicy: IfNotPresent
+      command:
+        - /busybox/cat
+      tty: true
+      volumeMounts:
+        - name: gcp-sa
+          mountPath: /gcp-sa
+      env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /gcp-sa/gcp-sa.json
+    - name: kubectl
+      image: gcr.io/cloud-builders/kubectl
+      imagePullPolicy: IfNotPresent
+      command:
+      - cat
+      tty: true
   volumes:
     - name: gcp-sa
       secret:
