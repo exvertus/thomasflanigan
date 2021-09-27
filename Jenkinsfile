@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Main') {
             steps {
-                echo "Testing 123"
+                sh "ls -a /gcp-sa"
             }
         }
     }
