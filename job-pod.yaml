@@ -11,10 +11,10 @@ spec:
       volumeMounts:
         - name: gcp-sa
           mountPath: /gcp-sa
-        env:
-          - name: GOOGLE_APPLICATION_CREDENTIALS
-            value: /gcp-sa/gcp-sa.json
-        volumes:
-          - name: gcp-sa
-            secret:
-              secretName: gke-gcp-sa
+      env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /gcp-sa/gcp-sa.json
+  volumes:
+    - name: gcp-sa
+      secret:
+        secretName: gke-gcp-sa

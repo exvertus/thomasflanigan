@@ -9,6 +9,7 @@ pipeline {
         stage('Main') {
             steps {
                 sh "ls -a /gcp-sa"
+                sh "echo \$GOOGLE_APPLICATION_CREDENTIALS"
             }
         }
     }
