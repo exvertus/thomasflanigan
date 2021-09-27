@@ -2,14 +2,30 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'job-pod.yaml'
-            defaultContainer 'shell'
+            defaultContainer 'hugo'
         }
     }
     stages {
-        stage('Main') {
+        stage('Hugo build') {
             steps {
-                sh "ls -a /gcp-sa"
-                sh "echo \$GOOGLE_APPLICATION_CREDENTIALS"
+                sh "hugo"
+            }
+        }
+        stage('Push image') {
+            when {
+                branch 'main'
+            }
+            steps {
+                container('kaniko') {
+                   sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/thomasflanigan:latest"
+                }
+            }
+        }
+        stage('Deploy image') {
+            steps {
+                container('kubectl') {
+                    sh "kubectl delete pod -l=app=site -n thomasflanigan"
+                }
             }
         }
     }
