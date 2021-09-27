@@ -9,6 +9,8 @@ pipeline {
         stage('Hugo build') {
             steps {
                 sh "ls -a"
+                sh "ls -a ./themes"
+                sh "ls -a ./themes/hugo-coder"
                 sh "hugo"
             }
         }
