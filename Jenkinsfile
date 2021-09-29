@@ -22,9 +22,9 @@ pipeline {
             }
         }
         stage('Deploy image') {
-//             when {
-//                 branch 'main'
-//             }
+            when {
+                branch 'main'
+            }
             steps {
                 container('kubectl') {
                     sh "kubectl delete pod -l=app=site -n thomasflanigan"
