@@ -33,7 +33,7 @@ The first is speed.
 A slow test is one that is rarely run, and in many cases would not have much value for local development, or even continuous integration branch builds.
 Having a suite of tests that can provide near-instant feedback is important for maintaining good developer flow.
 
-I other reason is isolation.
+Another reason is isolation.
 
 Incorporating more than the code under test in my unit tests means I can't be sure my code vs something else broke when tests fail.
 
