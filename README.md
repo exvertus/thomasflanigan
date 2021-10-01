@@ -13,4 +13,3 @@ Infrastructure and content for my personal site [thomasflanigan.com](https://tho
   * Test service with ```kubectl port-forward service/site-svc -n thomasflanigan 8080:8080 >> /dev/null```
 
 
-test
