@@ -12,4 +12,4 @@ Infrastructure and content for my personal site [thomasflanigan.com](https://tho
   * Deploy with ```cat k8s-config.yaml | envsubst | kubectl apply -f -```
   * Test service with ```kubectl port-forward service/site-svc -n thomasflanigan 8080:8080 >> /dev/null```
 
-tes
+te
