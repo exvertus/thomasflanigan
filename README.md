@@ -11,3 +11,4 @@ Infrastructure and content for my personal site [thomasflanigan.com](https://tho
 * Hosted on [GKE](https://cloud.google.com/kubernetes-engine)
   * Deploy with ```cat k8s-config.yaml | envsubst | kubectl apply -f -```
   * Test service with ```kubectl port-forward service/site-svc -n thomasflanigan 8080:8080 >> /dev/null```
+test
