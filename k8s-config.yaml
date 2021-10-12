@@ -84,17 +84,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: site-test
+  name: test-site
   namespace: services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tlf-test
+      app: test-site
   template:
     metadata:
       labels:
-        app: site
+        app: test-site
     spec:
       containers:
         - name: nginx
@@ -110,7 +110,7 @@ metadata:
   namespace: services
 spec:
   selector:
-    app: site
+    app: test-site
   type: NodePort
   ports:
     - protocol: TCP
