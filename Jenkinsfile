@@ -24,7 +24,7 @@ pipeline {
                 stage('Push image-test') {
                     steps {
                         container('kaniko') {
-                           sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/tlf-test:latest"
+                           sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/tlf-test:latest --destination gcr.io/tom-personal-287221/tlf-test:${env.BUILD_TAG}"
                         }
                     }
                 }
