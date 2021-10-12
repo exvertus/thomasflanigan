@@ -15,7 +15,7 @@ pipeline {
                     params.PREVIEW_DRAFTS == true
                 }
             }
-            steps {
+            stages {
                 stage('Hugo build drafts') {
                     steps {
                         sh "hugo -D"
@@ -41,7 +41,7 @@ pipeline {
             when {
                 branch 'main'
             }
-            steps {
+            stages {
                 stage('Hugo build') {
                     steps {
                         sh "hugo --cleanDestinationDir"
