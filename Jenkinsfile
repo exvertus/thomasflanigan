@@ -31,7 +31,7 @@ pipeline {
                 stage('Deploy image-test') {
                     steps {
                         container('kubectl') {
-                            sh "kubectl delete pod -l=app=tlf-test -n services"
+                            sh "kubectl delete pod -l=app=test-site -n services"
                         }
                     }
                 }
