@@ -79,3 +79,40 @@ metadata:
 spec:
   redirectToHttps:
     enabled: true
+---
+# Test site --------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site-test
+  namespace: services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tlf-test
+  template:
+    metadata:
+      labels:
+        app: site
+    spec:
+      containers:
+        - name: nginx
+          image: gcr.io/tom-personal-287221/tlf-test:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: site-svc-test
+  namespace: services
+spec:
+  selector:
+    app: site
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 60001
+      targetPort: 80
