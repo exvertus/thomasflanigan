@@ -18,7 +18,7 @@ pipeline {
             stages {
                 stage('Hugo build drafts') {
                     steps {
-                        sh "hugo -D"
+                        sh "hugo -D --destination ${env.WORKSPACE}/public/tlf-test-site"
                     }
                 }
                 stage('Push image-test') {
