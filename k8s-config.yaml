@@ -106,7 +106,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: site-svc-test
+  name: tlf-test-site
   namespace: services
 spec:
   selector:
