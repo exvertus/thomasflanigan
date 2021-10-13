@@ -23,7 +23,7 @@ pipeline {
                     steps {
                         sh "hugo -D"
                         sh "mkdir conf-staging"
-                        sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE} conf-staging"
+                        sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE}/default.conf conf-staging"
                     }
                 }
                 stage('Push image-test') {
@@ -54,7 +54,7 @@ pipeline {
                     steps {
                         sh "hugo --cleanDestinationDir"
                         sh "mkdir conf-staging"
-                        sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE} conf-staging"
+                        sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE}/default.conf conf-staging"
                     }
                 }
                 stage('Push image') {
