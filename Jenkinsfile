@@ -21,7 +21,7 @@ pipeline {
             stages {
                 stage('Hugo build drafts') {
                     steps {
-                        sh "hugo -D --destination ${env.WORKSPACE}/public/tlf-test-stage"
+                        sh "hugo -D --destination ${env.WORKSPACE}/public/tlf-test-site"
                         sh "mkdir conf-staging"
                         sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE}/default.conf conf-staging"
                     }
