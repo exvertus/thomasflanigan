@@ -15,10 +15,15 @@ pipeline {
                     params.PREVIEW_DRAFTS == true
                 }
             }
+            environment {
+                ENV_STAGE = 'test'
+            }
             stages {
                 stage('Hugo build drafts') {
                     steps {
-                        sh "hugo -D --destination ${env.WORKSPACE}/public/tlf-test-site"
+                        sh "hugo -D"
+                        sh "mkdir conf-staging"
+                        sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE} conf-staging"
                     }
                 }
                 stage('Push image-test') {
@@ -41,10 +46,15 @@ pipeline {
             when {
                 branch 'main'
             }
+            environment {
+                ENV_STAGE = 'prod'
+            }
             stages {
                 stage('Hugo build') {
                     steps {
                         sh "hugo --cleanDestinationDir"
+                        sh "mkdir conf-staging"
+                        sh "cp -r ${env.WORKSPACE}/nginx-configs/${env.ENV_STAGE} conf-staging"
                     }
                 }
                 stage('Push image') {
