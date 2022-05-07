@@ -5,6 +5,13 @@ draft: false
 aliases: ["about-me", "about-tom"]
 ---
 
+
+
+
+
+
+
+
 With a degree in music, I began my tech career as a development programmer after teaching myself Python through [MIT's Open Courseware](https://ocw.mit.edu/index.htm).
 I later became interested in tools like Jenkins and took on a more devops-focused role and am currently architecting and supporting a continuous integration system running on Kubernetes.
 See more about my professional experience on my [resume](/resume/).

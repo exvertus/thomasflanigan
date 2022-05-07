@@ -10,10 +10,10 @@ pygmentsStyle = "monokai"
 #enableEmoji = true
 
 [params]
-author = "Tom Flanigan"
+author = "Tom Flanigan | Material Soul"
 description = "Tom Flanigan's personal website"
-keywords = "blog,developer,personal,resume"
-info = "Developer and Dev Ops Specialist"
+keywords = "art,music,tech,blog,developer,personal"
+info = "ART | MUSIC | TECH"
 avatarurl = "img/profile.png"
 
 #footercontent = "Welcome :)"
@@ -30,9 +30,9 @@ rtl = false
 # "auto" (use preference set by browser)
 # "dark" (dark background, light foreground)
 # "light" (light background, dark foreground) (default)
-colorScheme = "auto"
+colorScheme = "dark"
 # Hide the toggle button, along with the associated vertical divider
-hideColorSchemeToggle = false
+hideColorSchemeToggle = true
 # Series see also post count
 maxSeeAlsoItems = 5
 # Enable Twemoji
@@ -51,26 +51,30 @@ tag = "tags"
 author = "authors"
 
 [[params.social]]
+name = "InstagramDrawing"
+icon = "fa fa-instagram"
+weight = 1
+url = "https://www.instagram.com/tomisdrawingagain/"
+[[params.social]]
+name = "InstagramMaterialSoul"
+icon = "fa fa-instagram"
+weight = 2
+url = "https://www.instagram.com/material_soul/"
+[[params.social]]
+name = "Bandcamp"
+icon = "fa fa-bandcamp"
+weight = 3
+url = "https://materialsoul.bandcamp.com/"
+[[params.social]]
 name = "Github"
 icon = "fa fa-github"
-weight = 1
+weight = 4
 url = "https://github.com/exvertus/"
 [[params.social]]
 name = "LinkedIn"
 icon = "fa fa-linkedin"
-weight = 2
+weight = 5
 url = "https://www.linkedin.com/in/thomas-flanigan/"
-[[params.social]]
-name = "InstagramDrawing"
-icon = "fa fa-instagram"
-weight = 3
-url = "https://www.instagram.com/tomisdrawingagain/"
-[[params.social]]
-name = "Bandcamp"
-icon = "fa fa-bandcamp"
-weight = 4
-url = "https://materialsoul.bandcamp.com/"
-
 
 [languages.en]
 languageName = ":uk:"
@@ -85,9 +89,9 @@ name = "Blog"
 weight = 1
 url = "posts/"
 
-[[languages.en.menu.main]]
-name = "Resume"
-weight = 3
-url = "resume/"
+#[[languages.en.menu.main]]
+#name = "Resume"
+#weight = 3
+#url = "resume/"
 
-custom_css = ["styling/custom.css"]
+#custom_css = ["styling/custom.css"]
