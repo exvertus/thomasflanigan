@@ -1,8 +1,8 @@
 +++ 
 draft = false
 date = 2021-07-31T11:52:13-04:00
-title = "Poem: Scars Ripple"
-description = "Poem: Scars Ripple"
+title = "Scars Ripple"
+description = "Scars Ripple"
 slug = ""
 authors = ["Tom"]
 tags = ["poetry","inner-thoughts"]

@@ -1,8 +1,8 @@
 +++ 
 draft = false
 date = 2021-09-04T21:26:43-04:00
-title = "Poem: Sand Castle"
-description = "Poem: Sand Castle"
+title = "Sand Castle"
+description = "Sand Castle"
 slug = ""
 authors = ["Tom"]
 tags = ["poetry","inner-thoughts"]
