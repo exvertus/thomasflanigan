@@ -3,8 +3,6 @@ title: "Fucked Up"
 date: 2022-05-08T18:32:45-05:00
 ---
 
-##### Fucked Up
-
 Starve the beast
 Keep him on his leash
 Satiate from time to time

@@ -3,8 +3,6 @@ title: "Old Van"
 date: 2022-05-08T18:45:24-05:00
 ---
 
-##### Old Van
-
 Met a huge family with a huge van
 it was a long time ago
 can only recall it like a dream now

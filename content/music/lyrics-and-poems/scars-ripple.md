@@ -1,17 +1,7 @@
-+++ 
-draft = false
-date = 2021-07-31T11:52:13-04:00
-title = "Scars Ripple"
-description = "Scars Ripple"
-slug = ""
-authors = ["Tom"]
-tags = ["poetry","inner-thoughts"]
-categories = []
-externalLink = ""
-series = ["poems"]
-+++
-
-##### Scars Ripple
+---
+title: "Scars Ripple"
+date: 2022-05-08T19:27:35-05:00
+---
 
 A wretched fear defeated,  
 a monster laid to rest.  

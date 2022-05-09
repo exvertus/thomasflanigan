@@ -3,8 +3,6 @@ title: "Missing a Piece"
 date: 2022-05-08T18:32:31-05:00
 ---
 
-##### Missing a Piece
-
 They tick-tock a different way
 I thought I was unique
 But just a simple freak
