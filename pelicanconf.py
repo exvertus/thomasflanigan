@@ -3,7 +3,7 @@ SITENAME = 'Tom Flanigan'
 SITEURL = ''
 
 PATH = 'content'
-# THEME = './themes/tom'
+THEME = './themes/tom'
 
 TIMEZONE = 'America/Chicago'
 
