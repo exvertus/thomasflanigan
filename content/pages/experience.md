@@ -1,18 +1,17 @@
-+++ 
-draft = true
-date = 2021-05-27T20:14:29-04:00
-title = "Resume"
-slug = ""
-+++
+Title: Experience
+Date: 2022-05-10
+Modified: 2022-05-10
+Category: Tech
+Tags: tech, resume
+Slug: experience
+Summary: Tom Flanigan Experience
 
-## Thomas Flanigan
-##### [tom@thomasflanigan.com](mailto:tom@thomasflanigan.com)
-##### [github.com/exvertus/](https://github.com/exvertus/)
+## Tom Flanigan
 
-### Experience
+### Tech Experience
 ##### Software Developer, MEDITECH July 2012-present
 
-* **Systems Development Group, Jan 2020-present**
+* **Systems Development Group, Jan 2020-Jan 2021**
   
   _Google Cloud Platform, Kubernetes, Helm, Kustomize_
   * Architecting fully-declarative off-the-shelf Jenkins solution running on GKE with Helm and Kustomize
@@ -41,10 +40,9 @@ slug = ""
   * Developed a GUI-based search feature for Core Cases (an internally developed ticketing system)
   * Created a code library to prevent team from repeating itself with “webComponent” code
 
+### Non-tech Experience
 ##### Sales Associate, Hess Corporation Aug 2008-Sep 2011
-* Tank management, register, processed payroll, ordering, daily inventory
 ##### Office Clerk and Order Writer for Standard Products, Litecontrol Jan 2007-Sep 2007
-* Troubleshot order-entry software, served as company liaison to Syspro technical support staff, processed orders and managed order records
 ### Education
 ##### Ithaca College, Bachelor of Music 2007
 * 3.7 Cumulative GPA, Magna cum Laude

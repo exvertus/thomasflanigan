@@ -1,15 +1,9 @@
-+++ 
-draft = false
-date = 2021-09-01T23:53:53-04:00
-title = "The Advantages of Pathlib"
-description = "Using Python's Pathlib library"
-slug = ""
-authors = ["Tom"]
-tags = ["Python","Pathlib","os.path"]
-categories = []
-externalLink = ""
-series = ["python"]
-+++
+Title: "The Advantages of Pathlib"
+Summary: "Using Python's Pathlib library"
+Date: 2021-09-01
+Category: Tech
+Tags: tech, how-to, python
+Slug = pathlib
 
 #### Python3 has a standard library with classes for filepaths. Are you using it yet?
 

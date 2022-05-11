@@ -1,6 +1,6 @@
 ---
 title: "Scars Ripple"
-date: 2022-05-08T19:27:35-05:00
+date: 2022-01-05
 ---
 
 A wretched fear defeated,  

@@ -1,15 +1,9 @@
-+++ 
-draft = false
-date = 2021-05-28T20:28:58-04:00
-title = "How I Host this Site"
-description = "Hosting static content with Google Kubernetes Engine"
-slug = ""
-authors = ["Tom"]
-tags = ["GKE","Kubernetes","static-site"]
-categories = []
-externalLink = ""
-series = ["site-automation"]
-+++
+Title: "How I Host this Site"
+Summary: "Hosting static content with Google Kubernetes Engine"
+Date: 2021-05-28
+Category: Tech
+Tags: tech, how-to, kubernetes, nginx, automation
+Slug = hosting-kubernetes
 
 In my [last post](/posts/building-with-hugo/), I explained how I am building this site with [Hugo](https://gohugo.io/), but stopped short on how I host it.
 In this post, I'll take you through a bit of how Kubernetes works and explain how I'm using it.

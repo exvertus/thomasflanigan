@@ -1,15 +1,9 @@
-+++ 
-draft = false
-date = 2021-05-17T17:10:38-05:00
-title = "How I Built this Site"
-description = "Building static content with hugo"
-slug = ""
-authors = ["Tom"]
-tags = ["hugo","static-site"]
-categories = []
-externalLink = ""
-series = ["site-automation"]
-+++
+Title: "How I Built this Site"
+Summary: "Building static content with hugo"
+Date: 2021-05-17
+Category: Tech
+Tags: tech, how-to, static-site-builds
+Slug = "building-with-hugo"
 
 I have been using more cloud tools these days and had an itch to start a blog about it.
 I have a dev ops background without much front-end web experience, 
