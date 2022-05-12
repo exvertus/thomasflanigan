@@ -1,9 +1,15 @@
 AUTHOR = 'Tom Flanigan'
-SITENAME = 'Tom Flanigan'
-SITEURL = ''
+SITENAME = 'Tom Flanigan | Material Soul'
+SITEURL = 'https://thomasflanigan.com'
 
 PATH = 'content'
+PAGE_PATHS = ['.']
+ARTICLE_PATHS = ['tech/blog', 'music/poems-lyrics']
+OUTPUT_PATH = 'output/'
 THEME = './themes/tom'
+PLUGINS = None
+PLUGIN_PATHS = []
+STATIC_PATHS = ['images']
 
 TIMEZONE = 'America/Chicago'
 DEFAULT_LANG = 'English'
@@ -33,8 +39,9 @@ DEFAULT_PAGINATION = False
 
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
-DISPLAY_ARTICLES_ON_INDEX = False
 
 # YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 LOAD_CONTENT_CACHE = False
+DELETE_OUTPUT_DIRECTORY = True
+
 USE_FOLDER_AS_CATEGORY = True
