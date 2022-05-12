@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <section id="content">
-{% if DISPLAY_PAGES_ON_MENU %}
 {% block content_title %}
 <h2>All articles</h2>
 {% endblock %}
@@ -24,7 +23,6 @@
 </ol><!-- /#posts-list -->
 {% if articles_page.has_other_pages() %}
     {% include 'pagination.html' %}
-{% endif %}
 {% endif %}
 </section><!-- /#content -->
 {% endblock content %}
