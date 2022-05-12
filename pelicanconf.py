@@ -6,7 +6,6 @@ PATH = 'content'
 THEME = './themes/tom'
 
 TIMEZONE = 'America/Chicago'
-
 DEFAULT_LANG = 'English'
 
 # Feed generation is usually not desired when developing
@@ -37,3 +36,5 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_ARTICLES_ON_INDEX = False
 
 # YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
+LOAD_CONTENT_CACHE = False
+USE_FOLDER_AS_CATEGORY = True

@@ -1,7 +1,5 @@
----
-title: "Sand Castle"
-date: 2019-01-20
----
+Title: "Sand Castle"
+Date: 2019-01-20
 
 How was it that I entered here?  
 The first few rooms I don’t recall,  

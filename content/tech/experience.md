@@ -1,7 +1,6 @@
 Title: Experience
 Date: 2022-05-10
 Modified: 2022-05-10
-Category: Tech
 Tags: tech, resume
 Slug: experience
 Summary: Tom Flanigan Experience

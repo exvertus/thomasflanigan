@@ -1,7 +1,5 @@
----
-title: "Travel Montage"
-date: 2022-05-08T18:31:25-05:00
----
+Title: "Travel Montage"
+Date: 2022-05-08T18:31:25-05:00
 
 ##### Travel Montage
 

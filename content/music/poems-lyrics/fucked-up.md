@@ -1,6 +1,5 @@
 Title: "Fucked Up"
 Date: 2020-03-19
-Category: Poems
 Tags: poem
 Slug: fucked-up
 

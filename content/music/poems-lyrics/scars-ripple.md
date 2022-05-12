@@ -1,7 +1,5 @@
----
-title: "Scars Ripple"
-date: 2022-01-05
----
+Title: "Scars Ripple"
+Date: 2022-01-05
 
 A wretched fear defeated,  
 a monster laid to rest.  

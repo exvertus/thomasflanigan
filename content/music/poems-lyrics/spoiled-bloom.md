@@ -1,7 +1,5 @@
----
-title: "The Spoiled Bloom"
-date: 2022-01-06
----
+Title: "The Spoiled Bloom"
+Date: 2022-01-06
 
 ##### The Spoiled Bloom
 
