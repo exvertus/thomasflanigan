@@ -1,3 +1,4 @@
+# Common settings ---
 AUTHOR = 'Tom Flanigan'
 SITENAME = 'Tom Flanigan | Material Soul'
 SITEURL = 'https://thomasflanigan.com'
@@ -33,15 +34,22 @@ SOCIAL = (('Instagram', 'https://www.instagram.com/tomisdrawingagain/'),
           ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'))
 
 DEFAULT_PAGINATION = False
+DEFAULT_DATE_FORMAT = '%d %b %Y'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
+DIRECT_TEMPLATES = ['index', 'categories', 'tags', 'archives']
 
 # YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
 LOAD_CONTENT_CACHE = False
 DELETE_OUTPUT_DIRECTORY = True
 
 USE_FOLDER_AS_CATEGORY = True
+
+AUTHOR_SAVE_AS = 'author/{slug}.html'
+
+# Local-only settings ---
+RELATIVE_URLS = True
