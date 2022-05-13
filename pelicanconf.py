@@ -1,15 +1,14 @@
 # Common settings ---
-from copy import copy
-
-
 AUTHOR = 'Tom Flanigan'
 SITENAME = 'Tom Flanigan | Material Soul'
 SITEURL = 'https://thomasflanigan.com'
 
 PATH = 'content'
-PAGE_PATHS = ['.']
+PAGE_PATHS = ['art', 'music', 'tech']
 ARTICLE_PATHS = ['tech/blog', 'music/poems-lyrics']
 OUTPUT_PATH = 'output/'
+PATH_METADATA = '(?P<path_no_ext>.*)\..*'
+ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 THEME = './themes/tom'
 PLUGINS = None
 PLUGIN_PATHS = []
