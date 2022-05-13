@@ -1,4 +1,7 @@
 # Common settings ---
+from copy import copy
+
+
 AUTHOR = 'Tom Flanigan'
 SITENAME = 'Tom Flanigan | Material Soul'
 SITEURL = 'https://thomasflanigan.com'
