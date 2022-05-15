@@ -6,6 +6,7 @@ SITEURL = 'https://thomasflanigan.com'
 PATH = 'content'
 PAGE_PATHS = ['art', 'music', 'tech']
 ARTICLE_PATHS = ['tech/blog', 'music/poems-lyrics']
+ARTICLE_EXCLUDES = []
 OUTPUT_PATH = 'output/'
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
