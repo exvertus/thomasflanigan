@@ -4,24 +4,23 @@ from pelican import signals
 
 log = logging.getLogger(__name__)
 
-def page_generator_context_hook(page_generator, metadata):
+def page_generator_init_hook(page_generator):
     log.info('break here')
 
 def page_generator_preread_hook(page_generator):
     log.info('break here')
 
-def page_generator_init_hook(page_generator):
+def page_generator_context_hook(page_generator, metadata):
     log.info('break here')
 
 def page_generator_finalized_hook(page_generator):
     log.info('break here')
 
-def page_generator_write_page_hook(page_generator):
+def page_generator_write_page_hook(page_generator, content):
     log.info('break here')
 
-def page_writer_finalized_hook(page_generator):
+def page_writer_finalized_hook(page_generator, writer):
     log.info('break here')
-
 
 def register():
     signals.page_generator_context.connect(page_generator_context_hook)
