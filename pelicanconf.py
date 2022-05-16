@@ -12,8 +12,8 @@ OUTPUT_PATH = 'output/'
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 THEME = './themes/tom'
-PLUGINS = None
-PLUGIN_PATHS = ['plugins']
+PLUGINS = ['directory_index']
+PLUGIN_PATHS = ['plugins\directory-index\pelican\plugins\directory_index']
 STATIC_PATHS = ['images']
 
 TIMEZONE = 'America/Chicago'

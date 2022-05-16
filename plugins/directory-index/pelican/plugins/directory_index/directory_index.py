@@ -2,8 +2,10 @@ import logging
 
 from pelican import signals
 
-logger = logging.getLogger(__name__)
+log = logging.getLogger(__name__)
+
+def sanity_check(sender):
+    print('sanity check passed')
 
 def register():
-    print('sanity check - got in register code')
-    pass
+    signals.initialized.connect(sanity_check)
