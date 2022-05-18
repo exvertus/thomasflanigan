@@ -1,12 +1,18 @@
+from pathlib import Path
+
 # Common settings ---
 AUTHOR = 'Tom Flanigan'
 SITENAME = 'Tom Flanigan | Material Soul'
 SITEURL = 'https://thomasflanigan.com'
 
 PATH = 'content'
-PAGE_PATHS = ['art', 'music', 'tech']
-ARTICLE_PATHS = ['tech/blog', 'music/poems-lyrics']
-PAGE_EXCLUDES = ['art/index.*', 'music/index.*', 'tech/index.*']
+# Necessary for now because excludes settings only work on directories and not files.
+# TODO: Move this piece to plugin or submit feature to Pelican to support exc files.
+poems = tuple(Path(PATH).glob('**/music/poems-lyrics/*.md'))
+blog = tuple(Path(PATH).glob('**/tech/blog/*.md'))
+ARTICLE_PATHS = [str(p.absolute()) for p in (poems + blog)]
+PAGE_PATHS = [str(p.absolute()) for p in Path(PATH).glob('**/*[!index].md')
+              if not str(p.absolute()) in ARTICLE_PATHS]
 OUTPUT_PATH = 'output/'
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
