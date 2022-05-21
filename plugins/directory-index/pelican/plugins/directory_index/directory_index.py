@@ -15,7 +15,7 @@ class IndexPage(Content):
     mandatory_properties = tuple()
     allowed_statuses = ('published')
     default_status = 'published'
-    default_template = 'page'
+    default_template = 'index'
 
     def _expand_settings(self, key):
         klass = 'draft_page' if self.status == 'draft' else None
@@ -119,6 +119,15 @@ class IndexGenerator(generators.Generator):
         self._update_context(('indexes', ))
 
     def generate_output(self, writer):
+        for index in self.index_pages:
+            writer.write_file(
+                index.save_as, 
+                self.get_template(index.template),
+                self.context, 
+                page=index,
+                relative_urls=self.settings['RELATIVE_URLS'],
+                override_output=hasattr(index, 'override_save_as'),
+                url=index.url)
         log.info('break here')
 
 def get_generators(pelican):
