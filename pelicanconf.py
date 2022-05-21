@@ -10,10 +10,10 @@ PATH = 'content'
 # TODO: Move this piece to plugin or submit feature to Pelican to support exc files.
 poems = tuple(Path(PATH).glob('**/music/poems-lyrics/*.md'))
 blog = tuple(Path(PATH).glob('**/tech/blog/*.md'))
-ARTICLE_PATHS = [str(p.absolute()) for p in (poems + blog)]
-PAGE_PATHS = [str(p.absolute()) for p in Path(PATH).glob('**/*[!index].md')
-              if not str(p.absolute()) in ARTICLE_PATHS]
+ARTICLE_PATHS = poems + blog
 DIRECTORY_INDEX_STEM = 'index'
+PAGE_PATHS = [p for p in Path(PATH).glob('**/*.md')
+              if (p.stem != DIRECTORY_INDEX_STEM and p not in ARTICLE_PATHS)]
 OUTPUT_PATH = 'output/'
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'

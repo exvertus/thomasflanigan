@@ -23,8 +23,7 @@ class IndexPage(Content):
 
 class IndexGenerator(generators.Generator):
     # TODO: Add caching by importing CachingGenerator
-    def __init__(self, context, settings, path, theme, output_path,
-                 readers_cache_name='', **kwargs):
+    def __init__(self, context, settings, path, theme, output_path, **kwargs):
         # Do not use super init from baseclass generator unless tested... 
         # risks over-sending generator_init signals... 
         # other base methods do not send signals
@@ -33,11 +32,16 @@ class IndexGenerator(generators.Generator):
         self.path = path
         self.theme = theme
         self.output_path = output_path
+        self.file_stem = self.settings.get("DIRECTORY_INDEX_STEM", 'index')
+        self.settings['INDEXPAGE_URL'] = self.settings.get("INDEXPAGE_URL", '{path_no_ext}.html')
+        self.settings['INDEXPAGE_SAVE_AS'] = self.settings.get("INDEXPAGE_SAVE_AS", '{path_no_ext}.html')
+        self.index_pages = []
+        self.indexes = {}
 
         for arg, value in kwargs.items():
             setattr(self, arg, value)
 
-        self.readers = Readers(self.settings, readers_cache_name)
+        self.readers = Readers(self.settings)
 
         # templates cache
         self._templates = {}
@@ -81,11 +85,6 @@ class IndexGenerator(generators.Generator):
         custom_tests = self.settings['JINJA_TESTS']
         self.env.tests.update(custom_tests)
 
-        self.file_stem = self.settings.get("DIRECTORY_INDEX_STEM", 'index')
-        self.settings['INDEXPAGE_URL'] = self.settings.get("INDEXPAGE_URL", '{path_no_ext}.html')
-        self.settings['INDEXPAGE_SAVE_AS'] = self.settings.get("INDEXPAGE_SAVE_AS", '{path_no_ext}.html')
-        self.index_pages = {}
-
     def generate_context(self):
         """
         Find all index.{ext} files in content folder
@@ -101,11 +100,7 @@ class IndexGenerator(generators.Generator):
                         base_path=self.path, 
                         path=index_path, 
                         content_class=IndexPage,
-                        context=self.index_pages,
-                        preread_signal=None,
-                        preread_sender=self,
-                        context_signal=None,
-                        context_sender=self)
+                        context=self.indexes)
                 except Exception as e:
                     log.error(
                         'Could not process %s\n%s', index_path, e,
@@ -117,7 +112,11 @@ class IndexGenerator(generators.Generator):
                     self._add_failed_source_path(index_path)
                     continue
 
+                self.index_pages.append(index_page)
                 self.add_source_path(index_page)
+                self.add_static_links(index_page)
+
+        self._update_context(('indexes', ))
 
     def generate_output(self, writer):
         log.info('break here')
