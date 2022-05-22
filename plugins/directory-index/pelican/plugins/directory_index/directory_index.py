@@ -117,14 +117,18 @@ class IndexGenerator(generators.Generator):
                 self.add_static_links(index_page)
 
         self._update_context(('indexes', ))
+        log.info('break')
 
     def generate_output(self, writer):
         for index in self.index_pages:
             writer.write_file(
-                index.save_as, 
-                self.get_template(index.template),
-                self.context, 
+                name=index.save_as, 
+                template=self.get_template(index.template),
+                context=self.context,
+                template_name='index',
                 page=index,
+                # TODO: Get articles by subpath
+                articles=[],
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)
