@@ -2,6 +2,13 @@
 {% block content %}
 <section id="content">
 {% block content_title %}
+{% if local_pages is defined and local_pages %}
+<div class="topnav">
+    {% for local_page in local_pages %}
+    <a href="{{ SITEURL }}/{{ local_page.url }}">{{ local_page.title }}</a>
+    {% endfor %}
+</div>
+{% endif %}
 <h2>All articles</h2>
 {% endblock %}
 <ol id="post-list">
