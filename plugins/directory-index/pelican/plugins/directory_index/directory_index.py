@@ -10,7 +10,6 @@ from pelican.utils import DateFormatter
 from jinja2 import ChoiceLoader, Environment, FileSystemLoader, PrefixLoader
 
 log = logging.getLogger(__name__)
-from pprint import pprint
 
 class IndexPage(Content):
     mandatory_properties = tuple()
