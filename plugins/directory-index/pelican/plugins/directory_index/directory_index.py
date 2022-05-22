@@ -10,6 +10,7 @@ from pelican.utils import DateFormatter
 from jinja2 import ChoiceLoader, Environment, FileSystemLoader, PrefixLoader
 
 log = logging.getLogger(__name__)
+from pprint import pprint
 
 class IndexPage(Content):
     mandatory_properties = tuple()
@@ -121,6 +122,9 @@ class IndexGenerator(generators.Generator):
 
     def generate_output(self, writer):
         for index in self.index_pages:
+            local_articles = [article for article in 
+                              self.context.get('articles', [])
+                              if Path(article.save_as).is_relative_to(index.relative_dir)]
             writer.write_file(
                 name=index.save_as, 
                 template=self.get_template(index.template),
@@ -128,7 +132,7 @@ class IndexGenerator(generators.Generator):
                 template_name='index',
                 page=index,
                 # TODO: Get articles by subpath
-                articles=[],
+                articles=local_articles,
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)
