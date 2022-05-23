@@ -122,6 +122,10 @@ class IndexGenerator(generators.Generator):
     def generate_output(self, writer):
         for index in self.index_pages:
             index_dir = Path(index.relative_dir)
+            if not index_dir.parts:
+                articles_header = 'All'
+            else:
+                articles_header = index_dir.parts[-1].capitalize()
             relative_articles = \
                 [article for article in self.context.get('articles', [])
                  if Path(article.save_as).is_relative_to(index_dir)]
@@ -138,6 +142,7 @@ class IndexGenerator(generators.Generator):
                 template_name='index',
                 page=index,
                 articles=relative_articles,
+                articles_header=articles_header,
                 local_pages=local_pages,
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
