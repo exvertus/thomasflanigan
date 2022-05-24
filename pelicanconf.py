@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Common settings ---
 AUTHOR = 'Tom Flanigan'
-SITENAME = 'Tom Flanigan | Material Soul'
+SITENAME = 'Tom Flanigan'
 SITEURL = 'https://thomasflanigan.com'
 FIRST_YEAR = '2020'
 END_YEAR = datetime.now().year

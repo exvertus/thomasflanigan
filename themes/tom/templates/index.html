@@ -41,17 +41,16 @@
                 </div>
                 <div class="content">
                     <div class="inner">
-                        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-                        <p>Something cool will be said here I promise!</p>
+                        <h1><a href="{{ SITEURL }}/">{{ page.title }}</a></h1>
+                        {% if page.subtitle %}<h2><strong>{{ page.subtitle }}</strong></h2>{% endif %}
+                        {% if page.content %}<p>{{ page.content }}</p>{% endif %}
                     </div>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#intro">Intro</a></li>
-                        <li><a href="#work">Work</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#elements">Elements</a></li>
+                        {% for local_page in local_pages %}
+                        <li><a href="{{ SITEURL }}/{{ local_page.url }}">{{ local_page.title }}</a></li>
+                        {% endfor %}
                     </ul>
                 </nav>
             </header>

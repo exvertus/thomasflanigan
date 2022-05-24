@@ -1,10 +1,7 @@
 Title: Tom Flanigan
+Subtitle: Material Soul
 Date: 2022-05-12
 Modified: 2022-05-12
-Category: Home
-Tags: home, main, index
-Slug: index
-Summary: Material Soul
-Hide-Articles: True
 
-Test
+Hi I'm Tom and this is my website.  
+I promise I will have something cooler to say later!
