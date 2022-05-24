@@ -35,16 +35,14 @@
 
     <div id="wrapper">
 
-        <!-- Header -->
             <header id="header">
                 <div class="logo">
                     <span class="icon fa-gem"></span>
                 </div>
                 <div class="content">
                     <div class="inner">
-                        <h1>Dimension</h1>
-                        <p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
-                        for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
+                        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
+                        <p>Something cool will be said here I promise!</p>
                     </div>
                 </div>
                 <nav>
@@ -58,7 +56,6 @@
                 </nav>
             </header>
 
-        <!-- Main -->
             <div id="main">
 
                 <!-- Intro -->
@@ -136,13 +133,13 @@
                             <h4>Preformatted</h4>
                             <pre><code>i = 0;
 
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
+    while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+    }
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+    print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                         </section>
 
                         <section>
@@ -359,9 +356,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
             </div>
 
-        <!-- Footer -->
             <footer id="footer">
-                <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                <p class="copyright">&copy; {{ FIRST_YEAR }}-{{ END_YEAR }} {{ AUTHOR }}. Powered by <a href="https://getpelican.com/">Pelican</a>,</p>
+                <p class="copyright"><a href="https://www.python.org/">Python</a> and <a href="https://html5up.net/dimension">Dimension</a> from <a href="https://html5up.net">HTML5 UP</a>.</p>
             </footer>
 
     </div>

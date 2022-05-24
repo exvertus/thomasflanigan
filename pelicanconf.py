@@ -1,9 +1,12 @@
 from pathlib import Path
+from datetime import datetime
 
 # Common settings ---
 AUTHOR = 'Tom Flanigan'
 SITENAME = 'Tom Flanigan | Material Soul'
 SITEURL = 'https://thomasflanigan.com'
+FIRST_YEAR = '2020'
+END_YEAR = datetime.now().year
 
 PATH = 'content'
 # Necessary for now because excludes settings only work on directories and not files.
