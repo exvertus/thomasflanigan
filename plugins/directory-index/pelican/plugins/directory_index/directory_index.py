@@ -126,6 +126,7 @@ class IndexGenerator(Generator):
                 articles_header = 'All'
             else:
                 articles_header = index_dir.parts[-1].capitalize()
+            path_to_root = "../" * len(index_dir.parts)
             relative_articles = \
                 [article for article in self.context.get('articles', [])
                  if Path(article.save_as).is_relative_to(index_dir)]
@@ -141,6 +142,7 @@ class IndexGenerator(Generator):
                 context=self.context,
                 template_name='index',
                 page=index,
+                path_to_root=path_to_root,
                 articles=relative_articles,
                 articles_header=articles_header,
                 local_pages=local_pages,
@@ -162,7 +164,6 @@ def disable_page_writing(generators):
         if isinstance(self, PagesGenerator):
             log.debug('Skipping normal pages generation...')
 
-    log.info('break here')
     for generator in generators:
         if isinstance(generator, (ArticlesGenerator, PagesGenerator)):
             generator.generate_output = types.MethodType(generate_output_override, generator)

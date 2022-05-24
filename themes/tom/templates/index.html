@@ -28,8 +28,8 @@
     {% if TAG_FEED_RSS and tag %}
     <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
     {% endif %}
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="{{ path_to_root }}assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="{{ path_to_root }}assets/css/noscript.css" /></noscript>
 </head>
 <body id="index" class="is-preload">
 
@@ -364,10 +364,10 @@
 
     <div id="bg"></div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{ path_to_root }}assets/js/jquery.min.js"></script>
+    <script src="{{ path_to_root }}assets/js/browser.min.js"></script>
+    <script src="{{ path_to_root }}assets/js/breakpoints.min.js"></script>
+    <script src="{{ path_to_root }}assets/js/util.js"></script>
+    <script src="{{ path_to_root }}assets/js/main.js"></script>
 </body>
 </html>
