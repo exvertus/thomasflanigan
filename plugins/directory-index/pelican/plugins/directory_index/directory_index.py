@@ -1,8 +1,9 @@
 import logging
 import os
+import types
 from pathlib import Path
 
-from pelican import generators, signals
+from pelican.generators import Generator, ArticlesGenerator, PagesGenerator, signals
 from pelican.contents import Content
 from pelican.readers import Readers
 from pelican.utils import DateFormatter
@@ -21,7 +22,7 @@ class IndexPage(Content):
         klass = 'draft_page' if self.status == 'draft' else None
         return super()._expand_settings(key, klass)
 
-class IndexGenerator(generators.Generator):
+class IndexGenerator(Generator):
     # TODO: Add caching by importing CachingGenerator
     def __init__(self, context, settings, path, theme, output_path, **kwargs):
         # Do not use super init from baseclass generator unless tested... 
@@ -117,7 +118,6 @@ class IndexGenerator(generators.Generator):
                 self.add_static_links(index_page)
 
         self._update_context(('indexes', ))
-        log.info('break')
 
     def generate_output(self, writer):
         for index in self.index_pages:
@@ -147,10 +147,26 @@ class IndexGenerator(generators.Generator):
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)
-        log.info('break here')
 
 def get_generators(pelican):
     return IndexGenerator
 
+def disable_page_writing(generators):
+    """
+    Disable normal article and page generation.
+    The html5up Dimension theme fits better as index pages.
+    """
+    def generate_output_override(self, writer):
+        if isinstance(self, ArticlesGenerator):
+            log.debug('Skipping normal article generation...')
+        if isinstance(self, PagesGenerator):
+            log.debug('Skipping normal pages generation...')
+
+    log.info('break here')
+    for generator in generators:
+        if isinstance(generator, (ArticlesGenerator, PagesGenerator)):
+            generator.generate_output = types.MethodType(generate_output_override, generator)
+
 def register():
     signals.get_generators.connect(get_generators)
+    signals.all_generators_finalized.connect(disable_page_writing)
