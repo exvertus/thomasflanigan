@@ -20,6 +20,8 @@ ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 STATIC_PATHS = ['images']
 
 THEME = './themes/tom'
+THEME_STATIC_DIR = '.'
+THEME_STATIC_PATHS = ['static']
 PLUGINS = ['directory_index']
 PLUGIN_PATHS = ['plugins\directory-index\pelican\plugins\directory_index']
 
