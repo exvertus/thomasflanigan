@@ -58,7 +58,7 @@
                 </nav>
             </header>
 
-            {% if articles or local_indexes %}
+            {% if ( articles or local_indexes ) and not page.hide_articles %}
             <div id="article-menu">
                 <div class="articles-header">
                     <h2>{% if articles_header is defined %}{{ articles_header }}{% else %}All{% endif %} articles</h2>
