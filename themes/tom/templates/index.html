@@ -77,7 +77,6 @@
             <div id="main">
                 {% for article in articles %}
                 <article id="{{ article.slug }}">
-                    <h2 class="major">{{ article.title|trim('"') }}</h2>
                     {% if article.header_img %}<span class="image main"><img src="{{ article.header_img[0] }}" alt="{{ article.header_img[1] }}" /></span>{% endif %}
                     <p>{{ article.content }}</p>
                 </article>
