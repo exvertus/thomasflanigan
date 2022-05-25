@@ -122,10 +122,12 @@ class IndexGenerator(Generator):
     def generate_output(self, writer):
         for index in self.index_pages:
             index_dir = Path(index.relative_dir)
-            if not index_dir.parts:
-                articles_header = 'All'
+            if index.metadata.get("articles_header", ''):
+                articles_header = index.metadata.get("articles_header")
+            elif not index_dir.parts:
+                articles_header = 'All Articles'
             else:
-                articles_header = index_dir.parts[-1].capitalize()
+                articles_header =  f"{index_dir.parts[-1].capitalize()} Articles"
             path_to_root = "../" * len(index_dir.parts)
             relative_articles = \
                 [article for article in self.context.get('articles', [])
