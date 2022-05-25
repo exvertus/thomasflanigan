@@ -55,6 +55,7 @@
                 </nav>
             </header>
 
+            {% if articles %}
             <div id="article-menu">
                 <div class="articles-header">
                     <h2>{% if articles_header is defined %}{{ articles_header }}{% else %}All{% endif %} articles</h2>
@@ -62,22 +63,22 @@
                 <nav>
                     <ul>
                         {% for article in articles %}
-                        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+                        <li><a href="#{{ article.slug }}">{{ article.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </nav>
             </div>
 
             <div id="main">
-
-                    <article id="intro">
-                        <h2 class="major">Intro</h2>
-                        <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-                        <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-                    </article>
-
+                {% for article in articles %}
+                <article id="{{ article.slug }}">
+                    <h2 class="major">{{ article.title }}</h2>
+                    {% if article.header_img %}<span class="image main"><img src="{{ article.header_img[0] }}" alt="{{ article.header_img[1] }}" /></span>{% endif %}
+                    <p>{{ article.content }}</p>
+                </article>
+                {% endfor %}
             </div>
+            {% endif %}
 
             <footer id="footer">
                 <p class="copyright">&copy; {{ FIRST_YEAR }}-{{ END_YEAR }} {{ AUTHOR }}. Powered by <a href="https://getpelican.com/">Pelican</a>,</p>
