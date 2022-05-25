@@ -130,11 +130,12 @@ class IndexGenerator(Generator):
             relative_articles = \
                 [article for article in self.context.get('articles', [])
                  if Path(article.save_as).is_relative_to(index_dir)]
-            local_pages = \
+            local_indexes = \
                 [index_page for index_page in self.index_pages
                  if index_page.relative_dir 
-                 and Path(index_page.relative_dir).parent == index_dir] \
-              + [page for page in self.context['pages']
+                 and Path(index_page.relative_dir).parent == index_dir] 
+            local_pages = \
+                [page for page in self.context['pages']
                  if Path(page.save_as).parent == index_dir]
             writer.write_file(
                 name=index.save_as, 
@@ -146,6 +147,7 @@ class IndexGenerator(Generator):
                 articles=relative_articles,
                 articles_header=articles_header,
                 local_pages=local_pages,
+                local_indexes=local_indexes,
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)

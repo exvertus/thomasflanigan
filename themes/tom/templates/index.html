@@ -48,14 +48,17 @@
                 </div>
                 <nav>
                     <ul>
+                        {% for index_page in local_indexes %}
+                        <li><a href="{{ SITEURL }}/{{ index_page.url }}">{{ index_page.title }}</a></li>
+                        {% endfor %}
                         {% for local_page in local_pages %}
-                        <li><a href="{{ SITEURL }}/{{ local_page.url }}">{{ local_page.title }}</a></li>
+                        <li><a href="{{ SITEURL }}/{{ local_page.relative_dir }}/#{{ local_page.slug }}">{{ local_page.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </nav>
             </header>
 
-            {% if articles %}
+            {% if articles or local_indexes %}
             <div id="article-menu">
                 <div class="articles-header">
                     <h2>{% if articles_header is defined %}{{ articles_header }}{% else %}All{% endif %} articles</h2>
@@ -68,13 +71,22 @@
                     </ul>
                 </nav>
             </div>
+            {% endif %}
 
+            {% if articles or local_pages %}
             <div id="main">
                 {% for article in articles %}
                 <article id="{{ article.slug }}">
                     <h2 class="major">{{ article.title }}</h2>
                     {% if article.header_img %}<span class="image main"><img src="{{ article.header_img[0] }}" alt="{{ article.header_img[1] }}" /></span>{% endif %}
                     <p>{{ article.content }}</p>
+                </article>
+                {% endfor %}
+                {% for local_page in local_pages %}
+                <article id="{{ local_page.slug }}">
+                    <h2 class="major">{{ local_page.title }}</h2>
+                    {% if local_page.header_img %}<span class="image main"><img src="{{ local_page.header_img[0] }}" alt="{{ local_page.header_img[1] }}" /></span>{% endif %}
+                    <p>{{ local_page.content }}</p>
                 </article>
                 {% endfor %}
             </div>
