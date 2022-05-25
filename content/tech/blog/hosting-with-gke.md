@@ -2,7 +2,7 @@ Title: "How I Host this Site"
 Summary: "Hosting static content with Google Kubernetes Engine"
 Date: 2021-05-28
 Tags: tech, how-to, kubernetes, nginx, automation
-Slug = hosting-kubernetes
+Slug: hosting-kubernetes
 
 In my [last post](/posts/building-with-hugo/), I explained how I am building this site with [Hugo](https://gohugo.io/), but stopped short on how I host it.
 In this post, I'll take you through a bit of how Kubernetes works and explain how I'm using it.
@@ -36,11 +36,11 @@ They named that tool Kubernetes.
 In order to host my site, first I'll need an image to run, so I'll build it from my Dockerfile and push it up to [Google Container Registry](https://cloud.google.com/container-registry).
 My Dockerfile is about as simple as it gets:
 
-{{< highlight docker >}}
+```
 FROM nginx
 EXPOSE 80
 COPY public /usr/share/nginx/html
-{{< /highlight >}}
+```
 
 My base image is nginx, a lightweight webserver.
 The Dockerfile exposes the standard http port and copies the contents of my public folder to a folder that nginx will look to for serving static content.
@@ -48,7 +48,7 @@ In my last post the public folder was created when I ran ```hugo``` to generate 
 
 Now I'll build the image.
 
-{{< highlight bash >}}
+```
 tom@ubuntu:~/git/thomasflanigan$ docker build -t $TOMS_SITE_IMG .
 Sending build context to Docker daemon  7.965MB
 Step 1/3 : FROM nginx
@@ -70,7 +70,7 @@ Step 3/3 : COPY public /usr/share/nginx/html
 ---> e1670ad1b9a4
 Successfully built e1670ad1b9a4
 Successfully tagged gcr.io/[GCP_PROJECT_ID]/thomasflanigan:latest
-{{< /highlight >}}
+```
 
 I've set an environment variable TOMS_SITE_IMG in the format gcr.io/[GCP_PROJECT_ID]/[IMAGE_NAME]:[IMAGE_TAG].
 Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_SITE_IMG``` and navigate to http://localhost:8080 to see that site is being hosted in the container correctly.
@@ -78,7 +78,7 @@ Before pushing it out to the registry, I'll run ```docker run -p 8080:80 $TOMS_S
 This might look like a bit of magic.
 By poking around interactively within the container, a better picture emerges of how this uses the default nginx configuration coming from my image's base layer.
 
-{{< highlight bash >}}
+```
 tom@ubuntu:~/git/thomasflanigan$ docker run -it $TOMS_SITE_IMG /bin/bash
 root@6113c3fcd402:/# cat /etc/nginx/nginx.conf
 
@@ -113,14 +113,14 @@ default_type  application/octet-stream;
 
     include /etc/nginx/conf.d/*.conf;
 }
-{{</ highlight >}}
+```
 
 The ```/etc/nginx/nginx.conf``` file is where nginx looks for its configuration. 
 I could copy my own version of this file into the image and overwrite this one if I needed something more custom.
 At the bottom of the configuration I can see that everything with a .conf in the /etc/nginx/conf.d/ directory will be included in the configuration.
 While still in the container:
 
-{{< highlight bash >}}
+```
 root@6113c3fcd402:/# ls /etc/nginx/conf.d/
 default.conf
 root@6113c3fcd402:/# cat /etc/nginx/conf.d/default.conf
@@ -168,7 +168,7 @@ server_name  localhost;
     #    deny  all;
     #}
 }
-{{</ highlight >}}
+```
 
 From the server directive we can see the same port 80 that was exposed in the Dockerfile.
 From the location section within that we can see that nginx is using ```/usr/share/nginx/html``` to look for content. 
@@ -177,7 +177,7 @@ So the "magic" is really just relying on the default nginx configuration coming 
 
 Finally, I'll push the image up to the registry.
 
-{{< highlight bash >}}
+```
 tom@ubuntu:~/git/thomasflanigan$ docker push $TOMS_SITE_IMG
 Using default tag: latest
 The push refers to repository [gcr.io/GCP_PROJECT_ID/thomasflanigan:latest]
@@ -189,7 +189,7 @@ The push refers to repository [gcr.io/GCP_PROJECT_ID/thomasflanigan:latest]
 766fe2c3fc08: Layer already exists
 02c055ef67f5: Layer already exists
 latest: digest: sha256:2a22fffa87737085ec8b9a1f13fff11f9b78d5d7a3d9e53d973d2199eae0dbdc size: 1781
-{{</ highlight >}}
+```
 
 ##### Kubernetes Controllers
 
@@ -207,19 +207,19 @@ First I'll start by defining a namespace.
 Namespaces are a good way to keep things isolated in the cluster.
 If I left this out, Kubernetes would place all my resources in the default namespace, so I'll explicitly create one specifically for my site.
 
-{{< highlight yaml >}}
+```
 apiVersion: v1
 kind: Namespace
 metadata:
   name: thomasflanigan
-{{</ highlight >}}
+```
 
 ###### Deployment
 
 Next I'll need to run a container for my nginx image. 
 I can use a Deployment to do so.
 
-{{< highlight yaml >}}
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -242,7 +242,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-{{</ highlight >}}
+```
 
 A Deployment is a wrapper for running Kubernetes Pods, which in turn can run one or more containers.
 With ```replicas: 1``` and the ```containers:``` list, I am telling my cluster I want a single container of my site exposed on port 80.
@@ -254,7 +254,7 @@ Services allow you to manage connectivity to Kubernetes Pods.
 Here I define a NodePort type Service, with a selector that will match any Pods with an ```app: site``` matchLabel.
 In my case, this is a single Pod with my one container in it.
 
-{{< highlight yaml >}}
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -268,7 +268,7 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 80
-{{</ highlight >}}
+```
 
 ###### Testing it out so far
 
@@ -277,16 +277,16 @@ I'll need to hop onto my cloud shell environment where I have already created a 
 Here I'll use the ```kubectl apply``` command to have my cluster start running the Service.
 In order to swap in my environment variable for my site image, I'll use [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html) and pipe the result to the kubectl command.
 
-{{< highlight bash >}}
+```
 tom@cloudshell:~/git/thomasflanigan $ cat k8s-config.yaml | envsubst | kubectl apply -f -
 namespace/thomasflanigan configured
 deployment.apps/site configured
 service/site-svc configured
-{{</ highlight >}}
+```
 
 I'll make sure the Pod and Service started okay, and then use ```kubectl port-forward``` to preview the site.
 
-{{< highlight bash >}}
+```
 tom@cloudshell:~/git/thomasflanigan $ kubectl get pods -n thomasflanigan
 NAME                    READY   STATUS    RESTARTS   AGE
 site-594ccf99c8-wwn28   1/1     Running   0          12m
@@ -294,16 +294,16 @@ tom@cloudshell:~/git/thomasflanigan $ kubectl get svc -n thomasflanigan
 NAME       TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
 site-svc   NodePort   10.60.14.87   <none>        8080:31208/TCP   12m
 tom@cloudshell:~/git/thomasflanigan $ kubectl port-forward service/site-svc -n thomasflanigan 8080:8080 >> /dev/null
-{{</ highlight >}}
+```
 
 With the Service port forwarded, I can use the web preview feature in [Google Cloud Shell](https://cloud.google.com/shell) to preview the site.
 
-![Web Preview](/img/posts/hosting-with-gke/web-preview.png)
+![Web Preview](/images/posts/hosting-with-gke/web-preview.png)
 
 This will launch the site at a temporary url.
 It works!
 
-![Site Preview](/img/posts/hosting-with-gke/site-preview.png)
+![Site Preview](/images/posts/hosting-with-gke/site-preview.png)
 
 ###### Ingress
 
@@ -311,7 +311,7 @@ With things working inside the cluster, the final step is to expose it to the we
 I have reserved a [static external IP](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#reserve_new_static) named 'thomasflanigan' in my GCP project to reach the outside web.
 I can use an Ingress to connect the static IP to my Service.
 
-{{< highlight yaml >}}
+```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -332,7 +332,7 @@ spec:
                 name: site-svc
                 port:
                   number: 8080
-{{</ highlight >}}
+```
 
 Under ```spec.rules.http[0].paths```, I can list one or more paths.
 Here I am saying everything going to my static IP from the root path down will be sent to my site-svc.
@@ -348,7 +348,7 @@ Kubernetes also allows for custom resources powered by custom controllers.
 Notice the apiVersion below specifies GKE, a Google-specific cloud service, since I am defining a custom resource tied to a [Google-managed SSL certificate](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs).
 Resources like this will differ for each cloud provider.
 
-{{< highlight yaml >}}
+```
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
@@ -357,27 +357,27 @@ metadata:
 spec:
   domains:
     - thomasflanigan.com
-{{</ highlight >}}
+```
 
 In order for the cert to work, I'll need to point my thomasflanigan.com domain to the static IP address I created.
 Using a managed cert is convenient, since I don't ever have to worry about renewing the certificate manually (managed certs auto-renew).
 I will need to wait a few minutes for the certificate to provision, so I'll apply it now.
 
-{{< highlight bash >}}
+```
 tom@cloudshell:~/git/thomasflanigan $ cat k8s-config.yaml | envsubst | kubectl apply -f -
 namespace/thomasflanigan unchanged
 deployment.apps/site unchanged
 service/site-svc unchanged
 ingress.networking.k8s.io/site-ingress configured
 managedcertificate.networking.gke.io/site-cert configured
-{{</ highlight >}}
+```
 
 After some time, I can check on the cert and see it provisioned, and my site will be available.
 
-{{< highlight bash >}}
+```
 tom@cloudshell:~/git/thomasflanigan $ kubectl get managedcertificate site-cert -n thomasflanigan -o jsonpath='{.status.certificateStatus}'
 Active
-{{</ highlight >}}
+```
 
 ##### Conclusion
 
