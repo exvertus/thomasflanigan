@@ -56,7 +56,9 @@
             </header>
 
             <div id="article-menu">
-                <h2>{% if articles_header is defined %}{{ articles_header }}{% else %}All{% endif %} articles</h2>
+                <div class="articles-header">
+                    <h2>{% if articles_header is defined %}{{ articles_header }}{% else %}All{% endif %} articles</h2>
+                </div>
                 <nav>
                     <ul>
                         {% for article in articles %}

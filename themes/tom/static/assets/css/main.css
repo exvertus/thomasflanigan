@@ -1542,36 +1542,52 @@ input, select, textarea {
 			background: #ffffff;
 		}
 
-	#article-menu > :first-child {
+	#article-menu nav {
 		margin-top: 0;
 	}
 
-		#article-menu > :first-child:before {
-			display: none;
-		}
-
-	/* #article-menu nav ul {
-		display: -moz-flex;
+	#article-menu nav ul {
+		/* display: -moz-flex;
 		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
+		display: -ms-flex; */
+		display: inline-block;
 		margin-bottom: 0;
 		list-style: none;
 		padding-left: 0;
-		border: solid 1px #ffffff;
-		border-radius: 4px;
+		border-top: solid 1px #ffffff;
+		border-bottom: solid 1px #ffffff;
+		/* border-radius: 4px; */
 	}
+
+		#article-menu .articles-header {
+			padding-top: 1rem;
+		}
 
 		#article-menu nav ul li {
 			padding-left: 0;
-			border-left: solid 1px #ffffff;
 		}
 
-			#article-menu nav ul li:first-child {
-				border-left: 0;
+			#article-menu nav:before {
+				content: '';
+				height: 0;
+				width: 0;
+				top: 0;
+				left: 0;
 			}
 
-			#article-menu nav ul li a {
+			#article-menu nav ul:before {
+				content: '';
+				height: 0;
+				width: 0;
+				top: 0;
+				left: 0;
+			}
+
+			/* #article-menu nav ul li:first-child {
+				border-left: 0;
+			} */
+
+			/* #article-menu nav ul li a {
 				display: block;
 				min-width: 7.5rem;
 				height: 2.75rem;
@@ -1581,17 +1597,17 @@ input, select, textarea {
 				letter-spacing: 0.2rem;
 				font-size: 0.8rem;
 				border-bottom: 0;
-			}
+			} */
 
-				#article-menu nav ul li a:hover {
+				/* #article-menu nav ul li a:hover {
 					background-color: rgba(255, 255, 255, 0.075);
-				}
+				} */
 
-				#article-menu nav ul li a:active {
+				/* #article-menu nav ul li a:active {
 					background-color: rgba(255, 255, 255, 0.175);
-				}
+				} */
 
-	#article-menu nav.use-middle:after {
+	/* #article-menu nav.use-middle:after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -1600,9 +1616,9 @@ input, select, textarea {
 		width: 1px;
 		height: 100%;
 		background: #ffffff;
-	}
+	} */
 
-	#article-menu nav.use-middle ul li.is-middle {
+	/* #article-menu nav.use-middle ul li.is-middle {
 		border-left: 0;
 	} */
 
