@@ -95,6 +95,7 @@
             <footer id="footer">
                 <p class="copyright">&copy; {{ FIRST_YEAR }}-{{ END_YEAR }} {{ AUTHOR }}. Powered by <a href="https://getpelican.com/">Pelican</a>,</p>
                 <p class="copyright"><a href="https://www.python.org/">Python</a> and <a href="https://html5up.net/dimension">Dimension</a> from <a href="https://html5up.net">HTML5 UP</a>.</p>
+                {% if GITHUB_REPO_URL is defined %}<p class="copyright">The code for this website can be found on <a href="https://getpelican.com/">Github</a>.</p>{% endif %}
             </footer>
 
     </div>

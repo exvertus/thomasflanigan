@@ -46,9 +46,6 @@ SOCIAL = (('Instagram', 'https://www.instagram.com/tomisdrawingagain/'),
 DEFAULT_PAGINATION = False
 DEFAULT_DATE_FORMAT = '%d %b %Y'
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
 DIRECT_TEMPLATES = []
@@ -57,6 +54,8 @@ LOAD_CONTENT_CACHE = False
 DELETE_OUTPUT_DIRECTORY = True
 
 USE_FOLDER_AS_CATEGORY = True
+
+GITHUB_REPO_URL = "https://github.com/exvertus/thomasflanigan/"
 
 # Local-only settings ---
 RELATIVE_URLS = True
