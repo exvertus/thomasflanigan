@@ -1,4 +1,4 @@
-Title: "Old Van"
+Title: Old Van
 Date: 2022-02-27
 
 Met a huge family with a huge van  

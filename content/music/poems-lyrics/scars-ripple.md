@@ -1,4 +1,4 @@
-Title: "Scars Ripple"
+Title: Scars Ripple
 Date: 2022-01-05
 
 A wretched fear defeated,  

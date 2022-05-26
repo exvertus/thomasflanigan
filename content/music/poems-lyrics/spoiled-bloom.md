@@ -1,7 +1,5 @@
-Title: "The Spoiled Bloom"
+Title: The Spoiled Bloom
 Date: 2022-01-06
-
-##### The Spoiled Bloom
 
 The unstoppable demons of your ancestors you tamed to impotent imps,  
 but the din of your shortcomings punctures those whining whisperings.  

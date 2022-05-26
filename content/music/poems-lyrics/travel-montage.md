@@ -1,7 +1,5 @@
-Title: "Travel Montage"
-Date: 2022-05-08T18:31:25-05:00
-
-##### Travel Montage
+Title: Travel Montage
+Date: 2022-05-08
 
 Moving forward always  
 right to left, over map  

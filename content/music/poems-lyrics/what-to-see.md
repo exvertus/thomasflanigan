@@ -1,7 +1,5 @@
-Title: "You're Watching the What to See Network"
+Title: You're Watching the What to See Network
 Date: 2022-05-08
-
-##### You're Watching the What to See Network
 
 There they stand  
 before me  

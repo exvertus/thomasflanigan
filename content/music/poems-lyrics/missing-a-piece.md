@@ -1,4 +1,4 @@
-Title: "Missing a Piece"
+Title: Missing a Piece
 Date: 2020-03-19
 
 They tick-tock a different way  
