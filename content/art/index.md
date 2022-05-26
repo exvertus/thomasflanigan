@@ -1,4 +1,5 @@
 Title: Art
 
-This is where I will describe what I do with my art.  
-I will make this better later.
+I do a combination of botanicals and surrealist drawings in ink.
+All my artwork for sale are original works of art. 
+No prints or copies!
