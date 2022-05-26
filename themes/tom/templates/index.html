@@ -63,13 +63,15 @@
                 <div class="articles-header">
                     <h2>{% if articles_header is defined %}{{ articles_header }}{% endif %}</h2>
                 </div>
-                <nav>
-                    <ul>
-                        {% for article in articles %}
-                        <li><a href="#{{ article.slug }}">{{ article.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </nav>
+                <div class="content">
+                    <nav class="inner">
+                        <ul>
+                            {% for article in articles %}
+                            <li><a href="#{{ article.slug }}">{{ article.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
             </div>
             {% endif %}
 
