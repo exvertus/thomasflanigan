@@ -4,7 +4,7 @@ Summary: Material Soul Discography
 ### Solo works
 
 * [Roze Blud OST](https://materialsoul.bandcamp.com/album/roze-blud-original-soundtrack/) - Soundtrack to the fast-paced tactical arena shooter, [Roze Blud](https://www.rozeblud.com/)! Available now [on Steam](https://store.steampowered.com/app/1547790/Roze_Blud/).
-* [Digital Piano Recordings](https://materialsoul.bandcamp.com/album/????/) - Single-take recordings of a few classical piano pieces that I recorded on my Kawai MP-11.
+* [Digital Piano Recordings](https://materialsoul.bandcamp.com/album/digital-piano-recordings) - Single-take recordings of a few classical piano pieces that I recorded on my Kawai MP-11.
 
 ### Collabs/Appears on
 
