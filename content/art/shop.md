@@ -1,3 +1,3 @@
 Title: Shop
 
-Shopify coming soon! Until then check out my Etsy shop [MaterialSoulArt](https://www.etsy.com/shop/MaterialSoulArt).
+I am currently working on integrating Shopify! Until then, check out my Etsy shop [MaterialSoulArt](https://www.etsy.com/shop/MaterialSoulArt).
