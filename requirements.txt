@@ -1,0 +1,2 @@
+pelican[markdown]
+pelican-jinja2content

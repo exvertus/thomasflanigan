@@ -1,0 +1,19 @@
+{% macro skills_table(skills_dict = {}) -%}
+{% if skills_dict %}
+<table>
+{% for skill, score in skills_dict %}
+    <tr>
+        <td>{{ skill }}</td>
+        <td>
+        {% for i in range(score) %}
+        <i class="fa fa-star" aria-hidden="true"></i>
+        {% endfor %}
+        {% for i in range(5 - score) %}
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+        {% endfor %}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+{%- endmacro %}

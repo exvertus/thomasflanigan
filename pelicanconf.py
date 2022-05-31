@@ -25,8 +25,9 @@ STATIC_PATHS = ['images']
 THEME = './themes/tom'
 THEME_STATIC_DIR = '.'
 THEME_STATIC_PATHS = ['static']
-PLUGINS = ['directory_index']
-PLUGIN_PATHS = ['plugins\directory-index\pelican\plugins\directory_index']
+PLUGINS = ['directory_index', 'jinja2content']
+PLUGIN_PATHS = [Path('plugins/directory-index/pelican/plugins/directory_index')]
+JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
 
 TIMEZONE = 'America/Chicago'
 DEFAULT_LANG = 'en'
