@@ -51,6 +51,6 @@ I have a neurological disability that is blessing if I am given the room to foll
 I use a 25/5 Pomodoro strategy for shallow work and a hyper-focus mode for deep work, where I can quickly acquire new skills (I love learning!) and complete larger challenging technical projects in a short burst.
 These bursts are momentum-based and can involve over an hour warmup period, but I can become locked in for an extended period of high-productivity once I am fully hyper-focused.  
 
-For complete or poorly defined problems that take multiple days to solve, it is common for novel, elegant and complete solutions to come to me subconsciously after investing time hyper-focused and I always take pride in the results when I am granted this flexibility.  
+For complex or poorly defined problems that take multiple days to solve, it is common for novel, elegant and complete solutions to come to me subconsciously after investing time hyper-focused and I always take pride in the results when I am granted this flexibility.  
 
-My productivity can otherwise become cursed in constant-interuption and high-micromanagement environments and it is severely impacted by an in-office requirement.
+My productivity can otherwise become cursed in constant-interuption and high-micromanagement environments and it is severely impaired by an in-office requirement.
