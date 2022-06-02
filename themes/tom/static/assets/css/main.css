@@ -1551,7 +1551,7 @@ input, select, textarea {
 			-webkit-transition-delay: 0.25s;
 			-ms-transition-delay: 0.25s;
 			transition-delay: 0.25s;
-			padding: 3rem 2rem;
+			padding: 0 2rem;
 			max-height: 40rem;
 			overflow: hidden;
 		}
@@ -1561,9 +1561,9 @@ input, select, textarea {
 	}
 
 	#article-menu div nav ul {
-		/* display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex; */
+		display: -moz-inline-block;
+		display: -webkit-inline-block;
+		display: -ms-inline-block;
 		display: inline-block;
 		margin-bottom: 0;
 		list-style: none;
