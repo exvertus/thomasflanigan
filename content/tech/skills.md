@@ -35,21 +35,23 @@ Summary: Tom Flanigan Skills
 
 ### Soft skills and work-style
 
-I take a 'people and process first' approach when integrating with a team.
-Although I have developed several strong "outside work" friendships through technical collaboration, I do not expect a well-functioning team requires everyone be best friends.
-An environment where everyone feels strong respect, trust, and patience toward one another is however *absolutely necessary*.
-It creates room for harmonious conflict: team members feel comfortable asking tough questions, express important concerns early and often, and graceful criticism without wounding becomes possible.  
-  
+I take a 'people and process first' approach when integrating with a team and actively promote an environment where everyone feels respect, trust, and patience toward one another.
+I believe firmly that room for harmonious conflict is critical: team members feel comfortable asking tough questions, express important concerns early and often, and graceful criticism without wounding becomes possible.
+
 While I am a poet and occassionally write metaphorically (and will sprinkle some gifs and emojis in my chats), I am mostly precise, polite and concise with my written communication on technical projects.  
 
 I am just as strong a verbal communicator.
-As a comprehensive and emphathetic listener I believe deeper conversation with potential for back-and-forth works best over video or in-person.
-I am happy to make myself available for verbal communication, but that availability works best as structured office hours to balance time for my "communicate with the computer" work.  
-  
-I have a neurological disability that is blessing if I am given the room to follow my strict time-management rules I have developed for myself.  
+As a emphathetic and comprehensive listener, I practice the Dale Carnegie approach to interacting with others. 
 
-I use a 25/5 Pomodoro strategy for shallow work and a hyper-focus mode for deep work, where I can quickly acquire new skills (I love learning!) and complete larger challenging technical projects in a short burst.
-These bursts are momentum-based and can involve over an hour warmup period, but I can become locked in for an extended period of high-productivity once I am fully hyper-focused.  
+A well-functioning team does not require everyone be best friends (although I do value the strong "outside work" relationships I've gained through technical collaboration) or routinely exist in the same physical space, but it does require strong ongoing mutual respect and I believe deeper conversation with potential for back-and-forth works best over regular video communication.
+I am happy to make myself available for video communication with clearly defined time windows. 
+I have learned designated office hours are best to balance with distraction-free time for my "communicate with the computer" work.  
+  
+This awareness also is important in how I am able to manage my time well indepedently. It does come with a few caveats that makes me a better fit for some teams over others. I have a neurological disability that is blessing if I am given the room to follow my strict time-management rules I have developed for myself.  
+
+I use a 25/5 Pomodoro strategy for shallow work and a hyper-focus mode for deep work, where I can quickly acquire new skills and apply them to complete larger challenging technical projects in bursts of hightened-productivity.
+These bursts are momentum-based and can involve over an hour warmup period to get in the zone, but I can become locked in for an extended period of elevated flow once I am fully hyper-focused.
+More can be understood about the benefits and limitations of hyperfocusing [here](https://www.additudemag.com/adhd-symptoms-hyperfocus-attention/).  
 
 For complex or poorly defined problems that take multiple days to solve, it is common for novel, elegant and complete solutions to come to me subconsciously after investing time hyper-focused and I always take pride in the results when I am granted this flexibility.  
 
