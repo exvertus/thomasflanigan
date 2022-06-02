@@ -5,19 +5,15 @@ Slug: experience
 ## Tom Flanigan
 
 ### Tech Experience
-##### Software Developer, MEDITECH July 2012-present
+##### Software Developer, MEDITECH July 2012-Jan 2022
 
-* **Systems Development Group, Jan 2020-Jan 2021**
-  
-  _Google Cloud Platform, Kubernetes, Helm, Kustomize_
+* **Systems Development Group, Jan 2020-Jan 2022**
   * Architecting fully-declarative off-the-shelf Jenkins solution running on GKE with Helm and Kustomize
   * Designed and configured build-test jobs to run in parallel on Windows and Linux
   * Migrated 100+ jobs away from a retired Jenkins instance
   * Mentoring new hire on Continuous Integration best-practices, Jenkins, and Google Kubernetes Engine
 
 * **ALM-Tools Group, 2016-2019**
-
-  _Jenkins, Python, Groovy_
   * Served as administrator for company-wide Jenkins instance for dozens of bi-weekly deployments
   * Used unittest.mock library to run all unit tests in under a second, enabling developers to skip latency-sensitive tests while developing on their clients
   * Coded a CLI-wrapper library for using SVN with Python, enabling us to move away from PySVN and the Jenkins/JVM SVNKit to avoid performance and dependency issues
@@ -29,7 +25,6 @@ Slug: experience
   * Wrote build code and managed pipelines for Core Project builds
 
 * **Core Group, 2012-2016**
-
   _M-AT, FS (MEDITECH proprietary languages)_
   * Created an efficiency-testing program for measuring code snippets
   * Designed and coded mail-server interface, allowing Core developers to add automated email functionality
@@ -37,8 +32,8 @@ Slug: experience
   * Created a code library to prevent team from repeating itself with “webComponent” code
 
 ### Non-tech Experience
-##### Sales Associate, Hess Corporation Aug 2008-Sep 2011
-##### Office Clerk and Order Writer for Standard Products, Litecontrol Jan 2007-Sep 2007
+* Sales Associate, Hess Corporation Aug 2008-Sep 2011
+* Office Clerk and Order Writer for Standard Products, Litecontrol Jan 2007-Sep 2007
 ### Education
-##### Ithaca College, Bachelor of Music 2007
-* 3.7 Cumulative GPA, Magna cum Laude
+* Ithaca College, Bachelor of Music 2007
+  * 3.7 Cumulative GPA, Magna cum Laude
