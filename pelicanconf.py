@@ -7,6 +7,8 @@ SITENAME = 'Tom Flanigan'
 SITEURL = 'https://thomasflanigan.com'
 FIRST_YEAR = '2020'
 END_YEAR = datetime.now().year
+TIMEZONE = 'America/Chicago'
+DEFAULT_LANG = 'en'
 
 PATH = 'content'
 # Necessary for now because excludes settings only work on directories and not files.
@@ -25,12 +27,10 @@ STATIC_PATHS = ['images']
 THEME = './themes/tom'
 THEME_STATIC_DIR = '.'
 THEME_STATIC_PATHS = ['static']
+
 PLUGINS = ['directory_index', 'jinja2content']
 PLUGIN_PATHS = [Path('plugins/directory-index/pelican/plugins/directory_index')]
 JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
-
-TIMEZONE = 'America/Chicago'
-DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
