@@ -38,25 +38,19 @@ class IndexGenerator(Generator):
         self.settings['INDEXPAGE_SAVE_AS'] = self.settings.get("INDEXPAGE_SAVE_AS", '{path_no_ext}.html')
         self.index_pages = []
         self.indexes = {}
-
         for arg, value in kwargs.items():
             setattr(self, arg, value)
-
         self.readers = Readers(self.settings)
-
         # templates cache
         self._templates = {}
         self._templates_path = list(self.settings['THEME_TEMPLATES_OVERRIDES'])
-
         theme_templates_path = os.path.expanduser(
             os.path.join(self.theme, 'templates'))
         self._templates_path.append(theme_templates_path)
         theme_loader = FileSystemLoader(theme_templates_path)
-
         simple_theme_path = os.path.dirname(os.path.abspath(__file__))
         simple_loader = FileSystemLoader(
             os.path.join(simple_theme_path, "themes", "simple", "templates"))
-
         self.env = Environment(
             loader=ChoiceLoader([
                 FileSystemLoader(self._templates_path),
@@ -70,18 +64,14 @@ class IndexGenerator(Generator):
         )
 
         log.debug('Template list: %s', self.env.list_templates())
-
         # provide utils.strftime as a jinja filter
         self.env.filters.update({'strftime': DateFormatter()})
-
         # get custom Jinja filters from user settings
         custom_filters = self.settings['JINJA_FILTERS']
         self.env.filters.update(custom_filters)
-
         # get custom Jinja globals from user settings
         custom_globals = self.settings['JINJA_GLOBALS']
         self.env.globals.update(custom_globals)
-
         # get custom Jinja tests from user settings
         custom_tests = self.settings['JINJA_TESTS']
         self.env.tests.update(custom_tests)
@@ -162,7 +152,7 @@ def disable_page_writing(generators):
     Disable normal article and page generation.
     The html5up Dimension theme fits better as index pages.
     """
-    def generate_output_override(self, writer):
+    def generate_output_override(self, _):
         if isinstance(self, ArticlesGenerator):
             log.debug('Skipping normal article generation...')
         if isinstance(self, PagesGenerator):
