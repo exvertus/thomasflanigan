@@ -79,8 +79,7 @@ class IndexGenerator(Generator):
     def generate_context(self):
         """
         Find all index.{ext} files in content folder
-        Add them to self.context['generated_content'] 
-        Careful: context dict ref shared globally between generators
+        Add them to self.context['generated_content']
         """
         for ext in self.readers.extensions:
             glob_pattern = f"**/*{self.settings['DIRECTORY_INDEX_STEM']}.{ext}"
@@ -110,6 +109,10 @@ class IndexGenerator(Generator):
         self._update_context(('indexes', ))
 
     def generate_output(self, writer):
+        """
+        For each index page, generate index.html with 
+        articles and pages at the same depth.
+        """
         for index in self.index_pages:
             index_dir = Path(index.relative_dir)
             if index.metadata.get("articles_header", ''):
