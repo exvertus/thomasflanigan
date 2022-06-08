@@ -6,17 +6,14 @@ Slug: pelican-migration
 
 I recently came across a nice theme I liked in Hugo called [Dimension](https://github.com/your-identity/hugo-theme-dimension),
 based on the responsive [html5up theme](https://html5up.net/dimension) of the same name.
-The thing I liked most about the theme is how, at least at first glance, 
-I could fix a big problem I had with my old site.
+The thing I liked most about the theme is how I could fix a big problem I had with my old site...
 The old layout placed far too much emphasis on my tech skills, 
-while barely mentioning my passion for art and music.
-I love the tech skills I have aquired over the years, and while I coding/configuring 
-(well it's all configuration-as-code these days, so I guess I can just say 'coding' now)
+while barely mentioning my passion for [art](/art/index.html) and [music](/music/index.html).
+I love the tech skills I have aquired over the years, and while coding
 can be a creative outlet and mode of expression in some ways, 
-I often feel more integrated and free when I am spending time at the piano or with a pen and paper,
-where coding can often feel like a means to more external, practical ends.  
+I often feel more integrated and free when I am spending time at the piano or drawing.  
 
-So I really liked the idea of what you see on my homepage now,
+So I really liked the idea of what you see on my [homepage](/index.html) now,
 but I quickly ran into problems trying to apply it to my site with hugo.
 I recently spent a few weeks working on my web-chops, so I had some fresh html/CSS/JS skills I was eager to apply.
 And as it often ironically goes, [Hugo](https://gohugo.io/), 
@@ -28,9 +25,9 @@ I thought that might stretch my "learning new things-applying those things" loop
 
 I took a look at the current options for static site generation that Python has to offer and settled on [Pelican](https://blog.getpelican.com/).
 With this I would only have the [jinja2](https://jinja.palletsprojects.com/) templating syntax to grapple with, something I had much more familiarity with.
-And of course if I required any further customization (and I quickly found out *I would*), 
+And of course if I required any further customization (and I quickly found out I *would*), 
 Pelican provides "sky's the limit" customization via their plugin interface, 
-so with 11 years of on and off Python experience,
+so with 11 years of off-and-on Python experience,
 I was feeling pretty good about undergoing a bigger switch and migrating over.
 
 ### The real work was the customization
@@ -42,8 +39,8 @@ Some of my shortcodes didn't carry over from hugo, but it was pretty easy to rep
 The first wrinkle was the theme and styling.
 Since Dimension is a single-page theme that assumes a fairly flat blog-style layout, 
 it didn't have a good submenu option for listing article-style pages separately out of the box,
-so I needed to add a #article-menu div for when I needed that.
-I added supporting CSS that hooked into the existing stretching on page-load and
+so I needed to add a #article-menu div for when I would need that.
+I added supporting CSS that hooked into the existing stretching on page-load script and
 had to wrestle with some alignment and padding issues:
 
 ```
@@ -56,13 +53,15 @@ had to wrestle with some alignment and padding issues:
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
 etc...
+}
 ```
 
 The second big problem was with Pelican itself.
 Without a custom plugin, Pelican will flatten all the folders you identify as articles and pages.
 While there is only one big article list, 
-Pelican uses things like categories and tags to generate extra pages in order
-to navigate a large article list sensibly (if you let it).
+Pelican does include categories, tags, and pagination.
+With these settings enabled, the site-builder will generate extra pages in order
+to navigate a larger article list sensibly.
 This can work well for a blog centered around one specific subject, 
 but in my case I wanted three sub-index pages: art, music and tech. 
 I organized everything in my content folder before writing my plugin (see screenshot below).

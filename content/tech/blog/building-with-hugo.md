@@ -1,5 +1,5 @@
-Title: "How I Built this Site"
-Summary: "Building static content with hugo"
+Title: How I Built this Site
+Summary: Building static content with hugo
 Date: 2021-05-17
 Tags: tech, how-to, static-site-builds
 Slug: building-with-hugo

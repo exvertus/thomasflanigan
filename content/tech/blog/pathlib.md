@@ -1,5 +1,5 @@
-Title: "The Advantages of Pathlib"
-Summary: "Using Python's Pathlib library"
+Title: The Advantages of Pathlib
+Summary: Using Python's Pathlib library
 Date: 2021-09-01
 Tags: tech, how-to, python
 Slug: pathlib

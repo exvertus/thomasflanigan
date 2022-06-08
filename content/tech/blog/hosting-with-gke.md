@@ -1,5 +1,5 @@
-Title: "How I Host this Site"
-Summary: "Hosting static content with Google Kubernetes Engine"
+Title: How I Host this Site
+Summary: Hosting static content with Google Kubernetes Engine
 Date: 2021-05-28
 Tags: tech, how-to, kubernetes, nginx, automation
 Slug: hosting-kubernetes
