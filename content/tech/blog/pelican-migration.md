@@ -6,25 +6,28 @@ Slug: pelican-migration
 
 I recently came across a nice theme I liked in Hugo called [Dimension](https://github.com/your-identity/hugo-theme-dimension),
 based on the responsive [html5up theme](https://html5up.net/dimension) of the same name.
-The thing I liked most about the theme is how, at least at first glance, I could fix a problem with my old site.
-The old layout I had placed far too much emphasis on my tech skills and barely mentioned my passion for art and music.
-While I love the tech skills I have, and while I see coding/configuring 
+The thing I liked most about the theme is how, at least at first glance, 
+I could fix a big problem I had with my old site.
+The old layout placed far too much emphasis on my tech skills, 
+while barely mentioning my passion for art and music.
+I love the tech skills I have aquired over the years, and while I coding/configuring 
 (well it's all configuration-as-code these days, so I guess I can just say 'coding' now)
 can be a creative outlet and mode of expression in some ways, 
-I often feel much more connected and free spending time at the piano or with a pen and paper than I have coding,
-which can often be a means to more practical ends.  
+I often feel more integrated and free when I am spending time at the piano or with a pen and paper,
+where coding can often feel like a means to more external, practical ends.  
 
 So I really liked the idea of what you see on my homepage now,
 but I quickly ran into problems trying to apply it to my site with hugo.
 I recently spent a few weeks working on my web-chops, so I had some fresh html/CSS/JS skills I was eager to apply.
-And ironically Hugo, the static site building that got me off the ground quickly with a site was now getting in the way.
+And as it often ironically goes, [Hugo](https://gohugo.io/), 
+the tool that got me off the ground quickly with a site, was now getting in the way.
 In order to add serious customization to hugo, I would have to learn the go templating syntax and potentially some golang too.
-I thought that might stretch my learning-applying loop a bit too much, so I went with another option instead...
+I thought that might stretch my "learning new things-applying those things" loop way too wide, so I went with another option instead...
 
 ### Pelican to the rescue
 
 I took a look at the current options for static site generation that Python has to offer and settled on [Pelican](https://blog.getpelican.com/).
-With this I would only have the jinja2 templating syntax to grapple with, something I had much more familiarity with.
+With this I would only have the [jinja2](https://jinja.palletsprojects.com/) templating syntax to grapple with, something I had much more familiarity with.
 And of course if I required any further customization (and I quickly found out *I would*), 
 Pelican provides "sky's the limit" customization via their plugin interface, 
 so with 11 years of on and off Python experience,
@@ -36,7 +39,7 @@ Migrating the content didn't really require anything, since Hugo and Pelican bot
 Some of my shortcodes didn't carry over from hugo, but it was pretty easy to replace that with the
 [jinja2content](https://github.com/pelican-plugins/jinja2content) plugin instead.
 
-The first wrinkle was the theme itself.
+The first wrinkle was the theme and styling.
 Since Dimension is a single-page theme that assumes a fairly flat blog-style layout, 
 it didn't have a good submenu option for listing article-style pages separately out of the box,
 so I needed to add a #article-menu div for when I needed that.
