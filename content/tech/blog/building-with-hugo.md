@@ -4,6 +4,9 @@ Date: 2021-05-17
 Tags: tech, how-to, static-site-builds
 Slug: building-with-hugo
 
+Update: While this still may interest you if you're interested in hugo, I no longer build my site using it.
+I am [now using Pelican](#pelican-migration).
+
 I have been using more cloud tools these days and had an itch to start a blog about it.
 I have a dev ops background without much front-end web experience, 
 so I was happy to find out about tools like [Jekyll](https://jekyllrb.com/) and [Hugo](https://gohugo.io/); a good topic for my first post.
