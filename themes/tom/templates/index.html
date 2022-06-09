@@ -80,6 +80,7 @@
                 {% for article in articles %}
                 <article id="{{ article.slug }}">
                     <h2 class="major">{{ article.title }}</h2>
+                    <h3>{{ article.metadata['summary'] }}</h3>
                     <h5>{{ article.date.strftime(DEFAULT_DATE_FORMAT) }}</h5>
                     {% if article.header_img %}<span class="image main"><img src="{{ article.header_img[0] }}" alt="{{ article.header_img[1] }}" /></span>{% endif %}
                     <p>{{ article.content }}</p>
