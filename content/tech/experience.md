@@ -1,35 +1,35 @@
 Title: Experience
-Modified: 2022-05-30
+Modified: 2022-06-08
 Slug: experience
 
 ## Tom Flanigan
+#### Software Developer, MEDITECH July 2012-Jan 2022
+###### Systems Development Group, Jan 2020-Jan 2022
+* Designed and led a new software-delivery solution for twenty-developer team
+  * Created Continuous Integration roadmap and provided bi-weekly updates to developers and management 
+  * Rolled out and maintained fully-declarative CI-server on our cloud platform
+  * Configured all jobs including main build-test jobs that run in parallel on Windows and Linux
+  * Maintained internal documentation and provided education and guidance to developers using new tools
+* Mentored new-hire training them on Software Delivery best-practices, Python, Jenkins, and Google Cloud Platform
+* Served as scrum master for five-developer sub-team
 
-### Tech Experience
-##### Software Developer, MEDITECH July 2012-Jan 2022
+###### ALM-Tools Group, 2016-2019
+* Administered company-wide Jenkins instance for dozens of bi-weekly deployments
+* Used unittest.mock library to run all unit tests in under a second, enabling developers to skip latency-sensitive tests while developing on their clients
+* Coded a CLI-wrapper library for using SVN with Python, enabling us to move away from PySVN and the Jenkins/JVM SVNKit to avoid performance and dependency issues
+* Updated Python deploy jobs to use Jenkinsfiles and added coverage, version, deployed location to lightweight database, providing a Confluence report to display the latest data for each class of job
+* Adjusted code for Python 3 compatibility to avoid using Python 2 past EOL date
+* Automated record-only merging for abandoning Jira issues triggered from a Jira transition
+* Created Jenkinsfiles, SVN hooks, Jira transition scripts, and rolled out an improved “change number” system for new Ship pipelines
+* Refactored monolithic application build logic to an object-oriented design, modified configurations to build in two environments against one source with parallel pipeline jobs
+* Wrote build code and managed pipelines for Core Project
 
-* **Systems Development Group, Jan 2020-Jan 2022**
-  * Architecting fully-declarative off-the-shelf Jenkins solution running on GKE with Helm and Kustomize
-  * Designed and configured build-test jobs to run in parallel on Windows and Linux
-  * Migrated 100+ jobs away from a retired Jenkins instance
-  * Mentoring new hire on Continuous Integration best-practices, Jenkins, and Google Kubernetes Engine
-
-* **ALM-Tools Group, 2016-2019**
-  * Served as administrator for company-wide Jenkins instance for dozens of bi-weekly deployments
-  * Used unittest.mock library to run all unit tests in under a second, enabling developers to skip latency-sensitive tests while developing on their clients
-  * Coded a CLI-wrapper library for using SVN with Python, enabling us to move away from PySVN and the Jenkins/JVM SVNKit to avoid performance and dependency issues
-  * Updated ALM-Tool’s Python deploy jobs to use Jenkinsfiles, added coverage, version, deployed location to job descriptions, and provided a Confluence report to display the same information in a centralized format
-  * Adjusted code for Python 3 compatibility to avoid using Python 2 past EOL date
-  * Automated record-only merging for abandoning Jira issues triggered from a Jira transition
-  * Created Jenkinsfiles, SVN hooks, Jira transition scripts, and rolled out an improved “change number” system for new Ship pipelines
-  * Refactored monolithic application build code to an object-oriented design, modified configurations to build in two environments against one source with parallel pipeline jobs
-  * Wrote build code and managed pipelines for Core Project builds
-
-* **Core Group, 2012-2016**
-  _M-AT, FS (MEDITECH proprietary languages)_
-  * Created an efficiency-testing program for measuring code snippets
-  * Designed and coded mail-server interface, allowing Core developers to add automated email functionality
-  * Developed a GUI-based search feature for Core Cases (an internally developed ticketing system)
-  * Created a code library to prevent team from repeating itself with “webComponent” code
+###### Core Group, 2012-2016 - M-AT, FS (MEDITECH proprietary languages)
+* Created an efficiency-testing program for measuring code snippets
+* Designed and coded internal mail-server API, enabling Core developers to add automated email functionality
+* Developed GUI search feature for Core Cases (an internally developed ticketing system)
+* Created a code library to prevent team from repeating itself with “webComponents”
+* Improved table-filtering and other GUI desktop-component features 
 
 ### Non-tech Experience
 * Sales Associate, Hess Corporation Aug 2008-Sep 2011
