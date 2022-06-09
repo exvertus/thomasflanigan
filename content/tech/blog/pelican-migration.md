@@ -6,7 +6,8 @@ Slug: pelican-migration
 
 I recently came across a nice theme I liked in Hugo called [Dimension](https://github.com/your-identity/hugo-theme-dimension),
 based on the responsive [html5up theme](https://html5up.net/dimension) of the same name.
-The thing I liked most about the theme is how I could fix a big problem I had with my old site...
+The thing I liked most about the theme is how nicely it fixed a problem with my old site...
+
 The old layout placed far too much emphasis on my tech skills, 
 while barely mentioning my passion for [art](/art/index.html) and [music](/music/index.html).
 I love the tech skills I have aquired over the years, and while coding
