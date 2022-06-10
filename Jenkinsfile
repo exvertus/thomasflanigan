@@ -2,13 +2,14 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'job-pod.yaml'
-            defaultContainer 'hugo'
+            defaultContainer 'python'
         }
     }
     stages {
-        stage('Hugo build') {
+        stage('Pelican build') {
             steps {
-                sh "hugo"
+                sh "pip install -r requirements.txt"
+                sh "make publish"
             }
         }
         stage('Push image') {
@@ -17,19 +18,20 @@ pipeline {
             }
             steps {
                 container('kaniko') {
-                   sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/thomasflanigan:latest"
+                    sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/thomasflanigan:rvtest"
+                //    sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/thomasflanigan:latest"
                 }
             }
         }
-        stage('Deploy image') {
-            when {
-                branch 'main'
-            }
-            steps {
-                container('kubectl') {
-                    sh "kubectl delete pod -l=app=site -n thomasflanigan"
-                }
-            }
-        }
+        // stage('Deploy image') {
+        //     when {
+        //         branch 'main'
+        //     }
+        //     steps {
+        //         container('kubectl') {
+        //             sh "kubectl delete pod -l=app=site -n thomasflanigan"
+        //         }
+        //     }
+        // }
     }
 }
