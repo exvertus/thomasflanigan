@@ -1,6 +1,6 @@
 Title: Migrating my site to Pelican
 Summary: A Site Restructuring Adventure
-Date: 2022-06-06
+Date: 2022-06-12
 Tags: tech, how-to, python, pelican
 Slug: pelican-migration
 
@@ -10,7 +10,7 @@ The thing I liked most about the theme is how nicely it fixed a problem with my 
 
 The old layout placed far too much emphasis on my tech skills, 
 while barely mentioning my passion for [art](/art/index.html) and [music](/music/index.html).
-I love the tech skills I have aquired over the years, and while coding
+I love the tech skills I have acquired over the years, and while coding
 can be a creative outlet and mode of expression in some ways, 
 I often feel more integrated and free when I am spending time at the piano or drawing.  
 

@@ -132,7 +132,7 @@ class IndexGenerator(Generator):
             local_pages = \
                 [page for page in self.context['pages']
                  if Path(page.save_as).parent == index_dir]
-            for each_list in (relative_articles, local_indexes, local_pages):
+            for each_list in (local_indexes, local_pages):
                 each_list.sort(key=lambda page: page.title)
             writer.write_file(
                 name=index.save_as, 

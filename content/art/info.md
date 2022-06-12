@@ -1,7 +1,7 @@
 Title: Info
 
 I drew a lot until the age of 14, when I began to hate my pencil drawings...
-it wasn't until 20 years later that I picked up a pack a Sakura fine-liners to mitigate lockdown boredom.
+it wasn't until 20 years later that I picked up a pack of Sakura fine-liners to mitigate lockdown boredom.
 I have fallen in love with the sharper line-art results.
   
 I do a bit of realism, mostly botanicals.
