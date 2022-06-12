@@ -5,8 +5,23 @@ pipeline {
             defaultContainer 'python'
         }
     }
+    parameters { 
+        booleanParam(name: 'BUILD_TEST', defaultValue: false, description: 'Build a test version of the site') 
+    }
     stages {
-        stage('Pelican build') {
+        stage('Build test') {
+            when {
+                expression { return params.BUILD_TEST }
+            }
+            steps {
+                sh "pip install -r requirements.txt"
+                sh "make html"
+            }
+        }
+        stage('Build live') {
+            when {
+                branch 'main'
+            }
             steps {
                 sh "pip install -r requirements.txt"
                 sh "make publish"

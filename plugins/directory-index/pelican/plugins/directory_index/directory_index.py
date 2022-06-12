@@ -128,10 +128,12 @@ class IndexGenerator(Generator):
             local_indexes = \
                 [index_page for index_page in self.index_pages
                  if index_page.relative_dir 
-                 and Path(index_page.relative_dir).parent == index_dir] 
+                 and Path(index_page.relative_dir).parent == index_dir]
             local_pages = \
                 [page for page in self.context['pages']
                  if Path(page.save_as).parent == index_dir]
+            for each_list in (relative_articles, local_indexes, local_pages):
+                each_list.sort(key=lambda page: page.title)
             writer.write_file(
                 name=index.save_as, 
                 template=self.get_template(index.template),
