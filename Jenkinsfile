@@ -18,6 +18,16 @@ pipeline {
                 sh "make html"
             }
         }
+        stage('Push test image') {
+            when {
+                expression { return params.BUILD_TEST }
+            }
+            steps {
+                container('kaniko') {
+                   sh "/kaniko/executor --dockerfile Dockerfile --context dir://${env.WORKSPACE} --verbosity debug --destination gcr.io/tom-personal-287221/tfsite-test:latest"
+                }
+            }
+        }
         stage('Build live') {
             when {
                 branch 'main'
@@ -27,7 +37,7 @@ pipeline {
                 sh "make publish"
             }
         }
-        stage('Push image') {
+        stage('Push live image') {
             when {
                 branch 'main'
             }
@@ -37,7 +47,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy image') {
+        stage('Deploy live') {
             when {
                 branch 'main'
             }
