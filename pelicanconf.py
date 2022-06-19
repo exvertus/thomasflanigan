@@ -49,6 +49,8 @@ QUICKLINKS = (
     ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
     ('Github', 'https://github.com/exvertus/'),
     ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
+QUICKLINKS_SAVE_AS = 'quicklinks.html'
+QUICKLINKS_HEADER = 'Links'
 
 DEFAULT_PAGINATION = False
 DEFAULT_DATE_FORMAT = '%d %b %Y'

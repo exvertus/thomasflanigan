@@ -148,6 +148,15 @@ class IndexGenerator(Generator):
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)
+        if self.settings.get('QUICKLINKS', None):
+            writer.write_file(
+                name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
+                context=self.context,
+                template_name='quicklinks',
+                url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
+                links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
+            )
+        log.debug('break here')
 
 def get_generators(pelican):
     return IndexGenerator
