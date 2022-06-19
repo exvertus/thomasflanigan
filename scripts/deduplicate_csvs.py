@@ -20,16 +20,6 @@ def consolidate_csvs(*csvfiles):
                 if row:
                     this_set.add(tuple(row))
         csv_sets[filepath] = this_set
-    # debugging stuff
-    first_set = csv_sets[args.files[0].expanduser()]
-    second_set = csv_sets[args.files[1].expanduser()]
-    difference = first_set - second_set
-    with open(pathlib.Path('~/Desktop/art/deleted_followers.csv').expanduser(), 'w') as wf:
-        csvwriter = csv.writer(wf)
-        for row in FIELD_ROWS:
-            csvwriter.writerow(row)
-        csvwriter.writerows(difference)
-    # end debugging stuff
     return list(set().union(*csv_sets.values()))
 
 def results_to_csv(target, results):
