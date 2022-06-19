@@ -42,10 +42,10 @@ AUTHOR_FEED_RSS = None
 QUICKLINKS = (
     ('Instagram', 'https://www.instagram.com/material_soul/'),
     ('Etsy', 'https://www.etsy.com/shop/MaterialSoulArt'),
-    ('Deviant Art', 'https://www.deviantart.com/material-soul'),
-    ('Twitter', 'https://twitter.com/Material__Soul'),
-    ('Tumblr', 'https://www.tumblr.com/blog/material-soul'),
-    ('Facebook', 'https://www.facebook.com/materialsoul'),
+    # ('Deviant Art', 'https://www.deviantart.com/material-soul'),
+    # ('Twitter', 'https://twitter.com/Material__Soul'),
+    # ('Tumblr', 'https://www.tumblr.com/blog/material-soul'),
+    # ('Facebook', 'https://www.facebook.com/materialsoul'),
     ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
     ('Github', 'https://github.com/exvertus/'),
     ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
