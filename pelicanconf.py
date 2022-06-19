@@ -39,10 +39,10 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-SOCIAL = (('Instagram', 'https://www.instagram.com/tomisdrawingagain/'),
+SOCIAL = (('Instagram', 'https://www.instagram.com/material_soul/'),
           ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
           ('Github', 'https://github.com/exvertus/'),
-          ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'))
+          ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
 
 DEFAULT_PAGINATION = False
 DEFAULT_DATE_FORMAT = '%d %b %Y'
