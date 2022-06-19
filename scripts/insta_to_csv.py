@@ -10,6 +10,7 @@ log = logging.getLogger(__name__).setLevel(logging.INFO)
 
 CLASS_PATTERN = re.compile("^notranslate")
 BASE_PATH = "https://www.instagram.com"
+FIELD_ROWS = (('username', 'link'), )
 
 def parse_followers(read_filepath):
     log.info(f"Parsing followers from ${read_filepath}...")
@@ -20,11 +21,11 @@ def parse_followers(read_filepath):
     return followers
 
 def followers_to_csv(followers, write_filepath):
-    fields = ('username', 'link')
     followers = [(f.strip('/') ,urljoin(BASE_PATH, f)) for f in followers]
     with open(write_filepath, 'w') as wf:
         csvwriter = csv.writer(wf)
-        csvwriter.writerow(fields)
+        for row in FIELD_ROWS:
+            csvwriter.writerow(row)
         csvwriter.writerows(followers)
     log.info(f"wrote output to ${write_filepath}")
 
@@ -34,7 +35,8 @@ if __name__ == '__main__':
     parser.add_argument('data', help='path to readable file',
         type=pathlib.Path)
     parser.add_argument('target', type=pathlib.Path,
-        help='path to write CSV output to', default='../build/output.csv')
+        help='path to write CSV output to', 
+        default=f"../build/${__name__}-output.csv")
     args = parser.parse_args()
     followers = parse_followers(args.data.expanduser())
     followers_to_csv(args.target.expanduser())
