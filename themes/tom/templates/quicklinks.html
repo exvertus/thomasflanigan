@@ -17,18 +17,13 @@
                 </div>
                 <div class="content">
                     <div class="inner">
-                        <h1><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
-                        {% if page.subtitle %}<h2><strong>{{ page.subtitle }}</strong></h2>{% endif %}
-                        {% if page.content %}<p>{{ page.content }}</p>{% endif %}
+                        <h1>{{ QUICKLINKS_HEADER }}</h1>
                     </div>
                 </div>
                 <nav>
                     <ul>
-                        {% for index_page in local_indexes %}
-                        <li><a href="{{ SITEURL }}/{{ index_page.url }}">{{ index_page.title }}</a></li>
-                        {% endfor %}
-                        {% for local_page in local_pages %}
-                        <li><a href="{{ SITEURL }}/{{ local_page.relative_dir }}/#{{ local_page.slug }}">{{ local_page.title }}</a></li>
+                        {% for name, link in QUICKLINKS %}
+                        <li><a href="{{ link }}">{{ name }}</a></li>
                         {% endfor %}
                     </ul>
                 </nav>

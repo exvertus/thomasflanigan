@@ -152,6 +152,7 @@ class IndexGenerator(Generator):
             writer.write_file(
                 name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
                 template=self.get_template('quicklinks'),
+                path_to_root='/',
                 context=self.context,
                 template_name='quicklinks',
                 url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
