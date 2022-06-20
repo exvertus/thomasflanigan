@@ -39,10 +39,18 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-SOCIAL = (('Instagram', 'https://www.instagram.com/material_soul/'),
-          ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
-          ('Github', 'https://github.com/exvertus/'),
-          ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
+QUICKLINKS = (
+    ('Instagram', 'https://www.instagram.com/material_soul/'),
+    ('Etsy', 'https://www.etsy.com/shop/MaterialSoulArt'),
+    # ('Deviant Art', 'https://www.deviantart.com/material-soul'),
+    # ('Twitter', 'https://twitter.com/Material__Soul'),
+    # ('Tumblr', 'https://www.tumblr.com/blog/material-soul'),
+    # ('Facebook', 'https://www.facebook.com/materialsoul'),
+    ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
+    ('Github', 'https://github.com/exvertus/'),
+    ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
+QUICKLINKS_SAVE_AS = 'quicklinks.html'
+QUICKLINKS_HEADER = 'Links'
 
 DEFAULT_PAGINATION = False
 DEFAULT_DATE_FORMAT = '%d %b %Y'

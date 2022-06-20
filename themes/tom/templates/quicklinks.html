@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <title>{{ SITENAME }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ path_to_root }}assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="{{ path_to_root }}assets/css/noscript.css" /></noscript>
+</head>
+<body id="index" class="is-preload">
+
+    <div id="wrapper">
+
+            <header id="header">
+                <div class="logo">
+                    <a href="{{ SITEURL }}/"><span class="icon fa-gem"></span></a>
+                </div>
+                <div class="content">
+                    <div class="inner">
+                        <h1>{{ QUICKLINKS_HEADER }}</h1>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        {% for name, link in QUICKLINKS %}
+                        <li><a href="{{ link }}">{{ name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </header>
+
+            <footer id="footer">
+                <p class="copyright">&copy; {{ FIRST_YEAR }}-{{ END_YEAR }} {{ AUTHOR }}. Powered by <a href="https://getpelican.com/">Pelican</a>,</p>
+                <p class="copyright"><a href="https://www.python.org/">Python</a> and <a href="https://html5up.net/dimension">Dimension</a> from <a href="https://html5up.net">HTML5 UP</a>.</p>
+                {% if GITHUB_REPO_URL is defined %}<p class="copyright">The code for this website can be found on <a href="https://getpelican.com/">Github</a>.</p>{% endif %}
+            </footer>
+
+    </div>
+
+    <div id="bg"></div>
+
+    <script src="{{ path_to_root }}assets/js/jquery.min.js"></script>
+    <script src="{{ path_to_root }}assets/js/browser.min.js"></script>
+    <script src="{{ path_to_root }}assets/js/breakpoints.min.js"></script>
+    <script src="{{ path_to_root }}assets/js/util.js"></script>
+    <script src="{{ path_to_root }}assets/js/main.js"></script>
+</body>
+</html>
