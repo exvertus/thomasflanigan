@@ -32,7 +32,9 @@ PLUGINS = ['directory_index', 'jinja2content']
 PLUGIN_PATHS = [Path('plugins/directory-index/pelican/plugins/directory_index')]
 JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
 
-# Feed generation is usually not desired when developing
+# Feeds
+FEED_DOMAIN = SITEURL
+FEED_RSS = 'feeds'
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
