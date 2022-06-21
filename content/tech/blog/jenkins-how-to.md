@@ -45,7 +45,7 @@ it really starts to feel more like a pseudo-declarative project using Helm.
 
 ### Kustomize is better
 
-Thankfully a friend pointed me to a newer tool, kustomize.
+Thankfully, after reaching out a friend pointed me to a newer tool, kustomize.
 I will again refer you [youtube](https://www.youtube.com/watch?v=WWJDbHo-OeY) for more details, 
 but the TLDR is that kustomize lets me organize my project like this:
 ```
@@ -64,4 +64,49 @@ aren't specified or contain different values in helm-base.
 So in less-technical terms, helm-base becomes "the rest of the world's best-pratice default yaml config" of Jenkins, and overlays can be thought of as "our deviation(s) from it". Since it is a yaml to yaml operation, I can keep stacking overlays on top of one another, like if I wanted to build a `helm-base > test > live` inheritence relationship, 
 `helm-base > in-house-base > *multiple-in-house-jenkins-instances`, etc.
 
-### Basic example on Google Kubernetes Engine
+### A basic example
+
+So how does it work? Using the `helm template` command,
+I can build the Jenkins helm-base folder after [installing Helm](https://helm.sh/docs/intro/install/)
+and pulling the Jenkins chart:
+
+```
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+helm template example jenkins/jenkins -n helm-base > helm-base/jenkins.yaml
+```
+
+Applying this configuration will get me the default Jenkins—
+a completely configured and runnable Jenkins instance that I could run as-is—
+but in order to demonstrate some of the kustomization I'll add a simple overlay:
+
+```
+# overlays/example/kustomization.yaml
+namePrefix: demo-
+namespace: temp
+resources:
+  - ../../helm-base
+
+patches:
+- target:
+    kind: ConfigMap
+    name: example-jenkins
+- patch: |-
+    - op: replace
+      path: /data/plugins.txt
+      value: |-
+        github:latest
+```
+
+Here I am "kustomizing" the list of plugins by updating the file defined in helm-base.
+With the file in this ConfigMap swapped out, this Jenkins instance should come with the latest github plugin pre-installed. Finally, I will apply it with the familiar kubectl apply, but use the -k flag:
+
+```
+kubectl apply -k overlays/example
+```
+
+After signing on giving the pod a chance to start, I can hop on and verify the github plugin is there.
+
+# Closer to the applied config
+
+Kustomize puts the code in better peer review territory than the k8s-behind-the-curtains `helm install` approach. With a yaml-to-yaml solution that mirrors the applied Kubernetes config, the code that changes more frequently will be in that deviation-from-the-default overlays folder and it is much easier to see the impact on the applied configuration, which you can also print out with `kubectl apply -k --dry-run=server`. I can also update base as often or as little as I want, like when I turn my Jenkins back on after some time away—a helm-base update is as easy re-running the helm repo update and template commands in a branch and using the diff of base to adjust anything that changed out from under the overlay(s).
