@@ -22,7 +22,7 @@ nevermind updating the version of Jenkins itself,
 which would be perpetually spewing out warnings like "deprecated" and "not secure".
 
 Knowing containers provided a code-managed way out of some of the 
-traditional maintainence headaches, I used an oppurtunity I had while supporting a smaller independent team to roll out a google cloud-friendly instance running on kubernetes, which had me quickly settling on [Helm](https://helm.sh/).
+traditional maintainence headaches, I used an oppurtunity I had while supporting a smaller independent team to roll out a google cloud-friendly instance running on Kubernetes, which had me quickly settling on [Helm](https://helm.sh/).
 
 I'll gloss some of the additional details because this [youtube on 'The Jenkins Journey'](https://www.youtube.com/watch?v=IDoRWieTcMc&t=213s) will probably give you a better idea of how Jenkins will make a solution like Helm as its usage and needs grow.
 
@@ -33,21 +33,21 @@ did make it easier to get Jenkins off the ground without having to know much Kub
 
 My existing experience configuring Jenkins started to make using Helm feel like putting the training wheels back on after already learning to ride a bike.
 I could usually get it to do what I wanted *eventually*,
-but it was too arduous to keep solving the "how do I do this through the Helm config?"
+but it was arduous to keep solving the "how do I do this through the Helm config?"
 puzzle each time I needed to configure something new in Jenkins.
 
 Moreover, what is Helm actually doing with the *Kubernetes config*?
-Since the end k8s code Helm deploys doesn't exist in the repository,
+Since the k8s code Helm ultimately applies doesn't exist in the repository,
 there is no meaningful review process for Jenkins configuration 
 changes unless another team member already knows what Helm will spit out.
 And wasn't a big reason I started down this path in the first place to
 get all configuration into my versioned codebase?
 While those are indirectly expressed in Helm's values.yaml file,
-it really starts to feel more like a pseudo-declarative project using Helm.
+it really starts to feel more like a pseudo-declarative project.
 
 ### Kustomize is better
 
-Thankfully, after reaching out a friend pointed me to a newer tool, [kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/).
+Thankfully, a friend pointed me to a newer tool, [kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/).
 I will again refer you [youtube](https://www.youtube.com/watch?v=WWJDbHo-OeY) for more details, 
 but the TLDR is that kustomize lets me organize my project like this:
 ```
@@ -58,7 +58,7 @@ jenkins
 ```
 In this case, my `helm-base` folder holds a yaml config of what Helm
 *would* deploy if I was still using it as a package/deploy manager.
-The line connecting that folder to `overlays/gke-tom` is showing that
+The line on the right side connecting that folder to `overlays/gke-tom` is showing that
 gke-tom inherits from helm-base and *overlays* the gke-tom code over it,
 essentially inserting and replacing fields in the configuration that
 aren't specified or contain different values in helm-base.
@@ -83,7 +83,12 @@ fully configured and runnable Jenkins instance that I could run as-is—but
 in order to demonstrate some of the kustomization I'll add a simple overlay:
 
 ```
-# overlays/example/kustomization.yaml
+# helm-base/kustomization.yaml:
+
+resources:
+  - jenkins.yaml
+
+# overlays/example/kustomization.yaml:
 
 namePrefix: demo-
 namespace: temp
@@ -102,7 +107,7 @@ patches:
 ```
 
 Here I am kustomizing the list of plugins by updating the file defined in helm-base.
-With the file in this ConfigMap swapped out, this Jenkins instance should come with the latest github plugin pre-installed. Finally, I will apply it with the familiar kubectl apply, but use the -k flag, which will merge the overlays before sending it to Kubernetes:
+With the file in this ConfigMap swapped out, this Jenkins instance should come with the latest github plugin pre-installed. Finally, I apply it with the familiar kubectl apply, but use the -k flag, which will merge the base and overlays before sending the result to Kubernetes:
 
 ```
 kubectl apply -k overlays/example
@@ -114,6 +119,6 @@ After signing on giving the pod a chance to start, I can hop on and verify the g
 
 ### Closer to the applied config
 
-Kustomize puts the code in better peer review territory than the k8s-behind-the-curtains `helm install` approach. With a yaml-to-yaml solution that mirrors the applied Kubernetes config, the code that changes more frequently will be in that deviation-from-the-default overlays folder and it is much easier to see the impact on the applied configuration, which you can also print out with `kubectl apply -k --dry-run=server` command. 
+Kustomize puts the code in better peer review territory than the k8s-behind-the-curtains `helm install` approach. With a yaml-to-yaml solution that mirrors the applied Kubernetes config, the code that changes more frequently will be in that deviation-from-the-default overlays folder and it is much easier to see the impact on the applied configuration, which you can also print out with the `kubectl apply -k --dry-run=server` command. 
 
 I can also update base as often or as little as I want, like when I turn my Jenkins back on after some time away. A helm-base update is as easy re-running the helm repo update and template commands on top of a git branch and using the diff of the new base to adjust anything that changed out from under the overlays.
