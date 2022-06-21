@@ -5,7 +5,7 @@ Slug: jenkins-how-to
 
 I have a few automation projects nearing the top of my to-do list
 (there is a lot of repetitive work to do when you post and sell art online... yikes!),
-so I recently dusted off [my repo's](https://github.com/exvertus/jenkins) code to turn my personal Jenkins instance back on.
+so I recently dusted off [my rep's](https://github.com/exvertus/jenkins) to turn my personal Jenkins instance back on.
 In updating it, I was reminded that it was a bit of process settling on a fully-declaritive solution I liked,
 so I wanted to make a post about what I learned in case anyone finds themselves walking down the same path.
 
@@ -13,8 +13,7 @@ so I wanted to make a post about what I learned in case anyone finds themselves 
 
 My Jenkins experience goes back to the non-containerized era,
 when I was serving on a team that managed a company-wide "old-school" Jenkins instance.
-Running on a tradition VM, when our machine's neared capacity, 
-our team would need to request a new VM, set it up manually, 
+When our machines neared capacity, our team would need to request a new VM, set it up manually, 
 and ensure the proper dependencies were on the machine.
 Moreover, the monolithic Jenkins would routinely be in "plugin-hell",
 where so many plugins are installed to a single instance, they begin
@@ -46,7 +45,23 @@ it really starts to feel more like a pseudo-declarative project using Helm.
 
 ### Kustomize is better
 
-Thankfully I was pointed to a newer tool, kustomize.
-I began using it as a 
+Thankfully a friend pointed me to a newer tool, kustomize.
+I will again refer you [youtube](https://www.youtube.com/watch?v=WWJDbHo-OeY) for more details, 
+but the TLDR is that kustomize lets me organize my project like this:
+```
+jenkins
+├── helm-base ╍╍╍╍╷
+└── overlays      ╎
+    └── gke-tom ╍╍╵
+```
+In this case, my `helm-base` folder holds a yaml config of what Helm
+*would* deploy if I was still using it as a package/deploy manager.
+The line connecting that folder to `overlays/gke-tom` is showing that
+gke-tom inherits from helm-base and *overlays* the gke-tom code over it,
+essentially inserting and replacing fields in the configuration that
+aren't specified or contain different values in helm-base.
 
-# Example on Google Kubernetes Engine
+So in less-technical terms, helm-base becomes "the rest of the world's best-pratice default yaml config" of Jenkins, and overlays can be thought of as "our deviation(s) from it". Since it is a yaml to yaml operation, I can keep stacking overlays on top of one another, like if I wanted to build a `helm-base > test > live` inheritence relationship, 
+`helm-base > in-house-base > *multiple-in-house-jenkins-instances`, etc.
+
+### Basic example on Google Kubernetes Engine
