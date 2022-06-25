@@ -34,7 +34,8 @@ JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
 
 # Feeds
 FEED_DOMAIN = SITEURL
-FEED_RSS = 'feeds'
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+FEED_RSS = None
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
