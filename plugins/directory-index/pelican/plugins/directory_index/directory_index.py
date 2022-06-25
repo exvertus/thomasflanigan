@@ -41,6 +41,8 @@ class IndexGenerator(Generator):
         for arg, value in kwargs.items():
             setattr(self, arg, value)
         self.readers = Readers(self.settings)
+        self.articles_gen = None
+        self.pages_gen = None
         # templates cache
         self._templates = {}
         self._templates_path = list(self.settings['THEME_TEMPLATES_OVERRIDES'])
@@ -113,6 +115,7 @@ class IndexGenerator(Generator):
         For each index page, generate index.html with 
         articles and pages at the same depth.
         """
+        self.articles_gen.generate_feeds(writer)
         for index in self.index_pages:
             index_dir = Path(index.relative_dir)
             if index.metadata.get("articles_header", ''):
@@ -158,7 +161,6 @@ class IndexGenerator(Generator):
                 url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
                 links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
             )
-        log.debug('break here')
 
 def get_generators(pelican):
     return IndexGenerator
@@ -169,14 +171,22 @@ def disable_page_writing(generators):
     The html5up Dimension theme fits better as index pages.
     """
     def generate_output_override(self, _):
-        if isinstance(self, ArticlesGenerator):
-            log.debug('Skipping normal article generation...')
-        if isinstance(self, PagesGenerator):
-            log.debug('Skipping normal pages generation...')
+        pass
 
     for generator in generators:
-        if isinstance(generator, (ArticlesGenerator, PagesGenerator)):
+        if isinstance(generator, IndexGenerator):
+            index_gen = generator
+            break
+
+    for generator in generators:
+        if isinstance(generator, ArticlesGenerator):
+            index_gen.articles_gen = generator
             generator.generate_output = types.MethodType(generate_output_override, generator)
+            log.debug('Skipping normal article generation...')
+        if isinstance(generator, PagesGenerator):
+            index_gen.pages_gen = generator
+            generator.generate_output = types.MethodType(generate_output_override, generator)
+            log.debug('Skipping normal pages generation...')
 
 def register():
     signals.get_generators.connect(get_generators)
