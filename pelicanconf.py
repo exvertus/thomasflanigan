@@ -21,7 +21,8 @@ PAGE_PATHS = [p.absolute() for p in Path(PATH).glob('**/*.md')
               if (p.stem != DIRECTORY_INDEX_STEM and p.absolute() not in ARTICLE_PATHS)]
 OUTPUT_PATH = 'output/'
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
-ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
+ARTICLE_URL = ARTICLE_SAVE_AS = '{path_no_ext}.html'
+PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 STATIC_PATHS = ['images']
 
 THEME = './themes/tom'

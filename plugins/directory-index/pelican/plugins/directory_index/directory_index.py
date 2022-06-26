@@ -2,6 +2,7 @@ import logging
 import os
 import types
 from pathlib import Path
+from urllib.parse import (urlparse, urljoin)
 
 from pelican.generators import Generator, ArticlesGenerator, PagesGenerator, signals
 from pelican.contents import Content
@@ -45,13 +46,6 @@ class IndexPage(Content):
         """
         return Path(article.relative_dir).parent == self.index_dir
 
-    def adjust_article_link(self, article):
-        """
-        Adjust field values in article link for feed urls
-        """
-        # TODO: Remove test code below
-        log.info('look at article obj')
-
 class IndexGenerator(Generator):
     # TODO: Add caching by importing CachingGenerator
     def __init__(self, context, settings, path, theme, output_path, **kwargs):
@@ -59,6 +53,7 @@ class IndexGenerator(Generator):
         # risks over-sending generator_init signals... 
         # other base methods do not send signals
         self.context = context
+        self.context['index_gen'] = self
         self.settings = settings
         self.path = path
         self.theme = theme
@@ -67,7 +62,11 @@ class IndexGenerator(Generator):
         self.settings['INDEXPAGE_URL'] = self.settings.get("INDEXPAGE_URL", '{path_no_ext}.html')
         self.settings['INDEXPAGE_SAVE_AS'] = self.settings.get("INDEXPAGE_SAVE_AS", '{path_no_ext}.html')
         self.index_pages = []
+        self.all_articles = []
+        self.all_pages = []
         self.indexes = {}
+        self.url_dict = {}
+        self.index_dict = {}
         for arg, value in kwargs.items():
             setattr(self, arg, value)
         self.readers = Readers(self.settings)
@@ -139,8 +138,31 @@ class IndexGenerator(Generator):
                 self.add_static_links(index_page)
 
         self._update_context(('indexes', ))
+        self.map_pages()
+
+    def map_pages(self):
+        """
+        Build index of corrected article and page urls.
+        """
+        self.all_articles = self.context.get('articles', [])
+        self.all_pages = self.context.get('pages', [])
+        for article in self.all_articles:
+            rel_dir = Path(article.relative_dir).parent
+            dirs = ""
+            if not rel_dir == Path('.'): dirs = f"{rel_dir}/"
+            self.url_dict[article.url] = \
+                f"{dirs}#{article.slug}"
+        for page in self.all_pages:
+            rel_dir = Path(page.relative_dir)
+            dirs = ""
+            if not rel_dir == Path('.'): dirs = f"{rel_dir}/"
+            self.index_dict[page.url] = \
+                f"{dirs}#{page.slug}"
 
     def add_quicklinks(self, writer):
+        """
+        Add quicklinks feature if set
+        """
         if self.settings.get('QUICKLINKS', None):
             writer.write_file(
                 name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
@@ -157,9 +179,6 @@ class IndexGenerator(Generator):
         For each index page, generate index.html with 
         articles and pages at the same depth.
         """
-        self.all_articles = self.context.get('articles', [])
-        # Need to ensure index pages are sorted shallow to deep
-        self.index_pages.sort(key=lambda inx : len(Path(inx.relative_dir).parts))
         for index in self.index_pages:
             index.get_path()
             articles_header = index.get_article_header()
@@ -167,14 +186,13 @@ class IndexGenerator(Generator):
             relative_articles = []
             for article in self.all_articles:
                 if index.article_belongs(article):
-                    # index.adjust_article_link(article)
                     relative_articles.append(article)
             local_indexes = \
                 [index_page for index_page in self.index_pages
                  if index_page.relative_dir 
                  and Path(index_page.relative_dir).parent == index.index_dir]
             local_pages = \
-                [page for page in self.context['pages']
+                [page for page in self.all_pages
                  if Path(page.save_as).parent == index.index_dir]
             for each_list in (local_indexes, local_pages):
                 each_list.sort(key=lambda page: page.title)
@@ -225,7 +243,11 @@ def disable_page_writing(generators):
                 types.MethodType(page_generate_output_override, generator)
 
 def adjust_feed(context, feed):
-    log.debug("replace links here")
+    for fi in feed.items:
+        url = urlparse(fi['link'])
+        url_tail = \
+            f"{url.path}{url.query}{url.fragment}".strip("/")
+        fi['link'] = urljoin(context['SITEURL'], context['index_gen'].url_dict[url_tail])
 
 def register():
     signals.get_generators.connect(get_generators)
