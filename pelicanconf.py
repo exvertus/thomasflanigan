@@ -34,13 +34,9 @@ JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
 
 # Feeds
 FEED_DOMAIN = SITEURL
-FEED_ALL_RSS = 'feeds/all.rss.xml'
-FEED_RSS = None
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+FEED_RSS = 'feeds/all.rss.xml'
+FEED_ALL_RSS = FEED_ALL_ATOM = CATEGORY_FEED_ATOM = None
+AUTHOR_FEED_RSS = TRANSLATION_FEED_ATOM = AUTHOR_FEED_ATOM = None
 
 QUICKLINKS = (
     ('Instagram', 'https://www.instagram.com/material_soul/'),

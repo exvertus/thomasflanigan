@@ -45,6 +45,13 @@ class IndexPage(Content):
         """
         return Path(article.relative_dir).parent == self.index_dir
 
+    def adjust_article_link(self, article):
+        """
+        Adjust field values in article link for feed urls
+        """
+        # TODO: Remove test code below
+        log.info('look at article obj')
+
 class IndexGenerator(Generator):
     # TODO: Add caching by importing CachingGenerator
     def __init__(self, context, settings, path, theme, output_path, **kwargs):
@@ -133,12 +140,24 @@ class IndexGenerator(Generator):
 
         self._update_context(('indexes', ))
 
+    def add_quicklinks(self, writer):
+        if self.settings.get('QUICKLINKS', None):
+            writer.write_file(
+                name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
+                template=self.get_template('quicklinks'),
+                path_to_root='/',
+                context=self.context,
+                template_name='quicklinks',
+                url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
+                links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
+            )
+
     def generate_output(self, writer):
         """
         For each index page, generate index.html with 
         articles and pages at the same depth.
         """
-        all_articles = self.context.get('articles', [])
+        self.all_articles = self.context.get('articles', [])
         # Need to ensure index pages are sorted shallow to deep
         self.index_pages.sort(key=lambda inx : len(Path(inx.relative_dir).parts))
         for index in self.index_pages:
@@ -146,9 +165,9 @@ class IndexGenerator(Generator):
             articles_header = index.get_article_header()
             path_to_root = "../" * len(index.index_dir.parts)
             relative_articles = []
-            for article in all_articles:
+            for article in self.all_articles:
                 if index.article_belongs(article):
-                    # fix save_as still
+                    # index.adjust_article_link(article)
                     relative_articles.append(article)
             local_indexes = \
                 [index_page for index_page in self.index_pages
@@ -173,17 +192,7 @@ class IndexGenerator(Generator):
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)
-        if self.settings.get('QUICKLINKS', None):
-            writer.write_file(
-                name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
-                template=self.get_template('quicklinks'),
-                path_to_root='/',
-                context=self.context,
-                template_name='quicklinks',
-                url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
-                links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
-            )
-        self.articles_gen.generate_feeds(writer)
+        self.add_quicklinks(writer)
 
 def get_generators(pelican):
     return IndexGenerator
@@ -193,8 +202,12 @@ def disable_page_writing(generators):
     Disable normal article and page generation.
     The html5up Dimension theme fits better as index pages.
     """
-    def generate_output_override(self, _):
-        pass
+    def article_generate_output_override(self, _):
+        log.debug('Skipping normal article generation...')
+
+    def page_generate_output_override(self, writer):
+        log.debug('Skipping normal pages generation...')
+        signals.page_writer_finalized.send(self, writer=writer)
 
     for generator in generators:
         if isinstance(generator, IndexGenerator):
@@ -204,13 +217,17 @@ def disable_page_writing(generators):
     for generator in generators:
         if isinstance(generator, ArticlesGenerator):
             index_gen.articles_gen = generator
-            generator.generate_output = types.MethodType(generate_output_override, generator)
-            log.debug('Skipping normal article generation...')
+            generator.generate_pages = \
+                types.MethodType(article_generate_output_override, generator)
         if isinstance(generator, PagesGenerator):
             index_gen.pages_gen = generator
-            generator.generate_output = types.MethodType(generate_output_override, generator)
-            log.debug('Skipping normal pages generation...')
+            generator.generate_output = \
+                types.MethodType(page_generate_output_override, generator)
+
+def adjust_feed(context, feed):
+    log.debug("replace links here")
 
 def register():
     signals.get_generators.connect(get_generators)
     signals.all_generators_finalized.connect(disable_page_writing)
+    signals.feed_generated.connect(adjust_feed)
