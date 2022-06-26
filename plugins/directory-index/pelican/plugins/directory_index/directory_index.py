@@ -6,7 +6,7 @@ from pathlib import Path
 from pelican.generators import Generator, ArticlesGenerator, PagesGenerator, signals
 from pelican.contents import Content
 from pelican.readers import Readers
-from pelican.utils import DateFormatter
+from pelican.utils import (DateFormatter, order_content)
 
 from jinja2 import ChoiceLoader, Environment, FileSystemLoader, PrefixLoader
 
@@ -21,6 +21,29 @@ class IndexPage(Content):
     def _expand_settings(self, key):
         klass = 'draft_page' if self.status == 'draft' else None
         return super()._expand_settings(key, klass)
+
+    def get_path(self):
+        self.index_dir = Path(self.relative_dir)
+
+    def get_article_header(self):
+        if self.metadata.get("articles_header", ''):
+            return self.metadata.get("articles_header")
+        elif not self.index_dir.parts:
+            return 'All Articles'
+        else:
+            return  f"{self.index_dir.parts[-1].capitalize()} Articles"
+
+    def page_belongs(self, page):
+        """
+        True if page is a supported sub-dir of this index
+        """
+        log.info('break here')
+
+    def article_belongs(self, article):
+        """
+        True if article is a supported sub-dir of this index
+        """
+        log.info('break here')
 
 class IndexGenerator(Generator):
     # TODO: Add caching by importing CachingGenerator
@@ -115,26 +138,25 @@ class IndexGenerator(Generator):
         For each index page, generate index.html with 
         articles and pages at the same depth.
         """
-        self.articles_gen.generate_feeds(writer)
+        all_articles = self.context.get('articles', [])
+        # Need to ensure index pages are sorted shallow to deep
+        self.index_pages.sort(key=lambda inx : len(Path(inx.relative_dir).parts))
         for index in self.index_pages:
-            index_dir = Path(index.relative_dir)
-            if index.metadata.get("articles_header", ''):
-                articles_header = index.metadata.get("articles_header")
-            elif not index_dir.parts:
-                articles_header = 'All Articles'
-            else:
-                articles_header =  f"{index_dir.parts[-1].capitalize()} Articles"
-            path_to_root = "../" * len(index_dir.parts)
-            relative_articles = \
-                [article for article in self.context.get('articles', [])
-                 if Path(article.save_as).is_relative_to(index_dir)]
+            index.get_path()
+            articles_header = index.get_article_header()
+            path_to_root = "../" * len(index.index_dir.parts)
+            relative_articles = []
+            for article in all_articles:
+                if index.article_belongs(article):
+                    # fix save_as still
+                    relative_articles.append(article)
             local_indexes = \
                 [index_page for index_page in self.index_pages
                  if index_page.relative_dir 
-                 and Path(index_page.relative_dir).parent == index_dir]
+                 and Path(index_page.relative_dir).parent == index.index_dir]
             local_pages = \
                 [page for page in self.context['pages']
-                 if Path(page.save_as).parent == index_dir]
+                 if Path(page.save_as).parent == index.index_dir]
             for each_list in (local_indexes, local_pages):
                 each_list.sort(key=lambda page: page.title)
             writer.write_file(
@@ -161,6 +183,7 @@ class IndexGenerator(Generator):
                 url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
                 links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
             )
+        self.articles_gen.generate_feeds(writer)
 
 def get_generators(pelican):
     return IndexGenerator
