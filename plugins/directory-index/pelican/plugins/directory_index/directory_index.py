@@ -7,7 +7,7 @@ from urllib.parse import (urlparse, urljoin)
 from pelican.generators import Generator, ArticlesGenerator, PagesGenerator, signals
 from pelican.contents import Content
 from pelican.readers import Readers
-from pelican.utils import (DateFormatter, order_content)
+from pelican.utils import DateFormatter
 
 from jinja2 import ChoiceLoader, Environment, FileSystemLoader, PrefixLoader
 
