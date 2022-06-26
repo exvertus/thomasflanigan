@@ -2,6 +2,7 @@ import logging
 import os
 import types
 from pathlib import Path
+from urllib.parse import (urlparse, urljoin)
 
 from pelican.generators import Generator, ArticlesGenerator, PagesGenerator, signals
 from pelican.contents import Content
@@ -22,6 +23,29 @@ class IndexPage(Content):
         klass = 'draft_page' if self.status == 'draft' else None
         return super()._expand_settings(key, klass)
 
+    def get_path(self):
+        self.index_dir = Path(self.relative_dir)
+
+    def get_article_header(self):
+        if self.metadata.get("articles_header", ''):
+            return self.metadata.get("articles_header")
+        elif not self.index_dir.parts:
+            return 'All Articles'
+        else:
+            return  f"{self.index_dir.parts[-1].capitalize()} Articles"
+
+    def page_belongs(self, page):
+        """
+        True if page is a supported sub-dir of this index
+        """
+        return Path(page.relative_dir) == self.index_dir
+
+    def article_belongs(self, article):
+        """
+        True if article is a supported sub-dir of this index
+        """
+        return Path(article.relative_dir).parent == self.index_dir
+
 class IndexGenerator(Generator):
     # TODO: Add caching by importing CachingGenerator
     def __init__(self, context, settings, path, theme, output_path, **kwargs):
@@ -29,6 +53,7 @@ class IndexGenerator(Generator):
         # risks over-sending generator_init signals... 
         # other base methods do not send signals
         self.context = context
+        self.context['index_gen'] = self
         self.settings = settings
         self.path = path
         self.theme = theme
@@ -37,10 +62,16 @@ class IndexGenerator(Generator):
         self.settings['INDEXPAGE_URL'] = self.settings.get("INDEXPAGE_URL", '{path_no_ext}.html')
         self.settings['INDEXPAGE_SAVE_AS'] = self.settings.get("INDEXPAGE_SAVE_AS", '{path_no_ext}.html')
         self.index_pages = []
+        self.all_articles = []
+        self.all_pages = []
         self.indexes = {}
+        self.url_dict = {}
+        self.index_dict = {}
         for arg, value in kwargs.items():
             setattr(self, arg, value)
         self.readers = Readers(self.settings)
+        self.articles_gen = None
+        self.pages_gen = None
         # templates cache
         self._templates = {}
         self._templates_path = list(self.settings['THEME_TEMPLATES_OVERRIDES'])
@@ -107,6 +138,41 @@ class IndexGenerator(Generator):
                 self.add_static_links(index_page)
 
         self._update_context(('indexes', ))
+        self.map_pages()
+
+    def map_pages(self):
+        """
+        Build index of corrected article and page urls.
+        """
+        self.all_articles = self.context.get('articles', [])
+        self.all_pages = self.context.get('pages', [])
+        for article in self.all_articles:
+            rel_dir = Path(article.relative_dir).parent
+            dirs = ""
+            if not rel_dir == Path('.'): dirs = f"{rel_dir}/"
+            self.url_dict[article.url] = \
+                f"{dirs}#{article.slug}"
+        for page in self.all_pages:
+            rel_dir = Path(page.relative_dir)
+            dirs = ""
+            if not rel_dir == Path('.'): dirs = f"{rel_dir}/"
+            self.index_dict[page.url] = \
+                f"{dirs}#{page.slug}"
+
+    def add_quicklinks(self, writer):
+        """
+        Add quicklinks feature if set
+        """
+        if self.settings.get('QUICKLINKS', None):
+            writer.write_file(
+                name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
+                template=self.get_template('quicklinks'),
+                path_to_root='/',
+                context=self.context,
+                template_name='quicklinks',
+                url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
+                links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
+            )
 
     def generate_output(self, writer):
         """
@@ -114,24 +180,20 @@ class IndexGenerator(Generator):
         articles and pages at the same depth.
         """
         for index in self.index_pages:
-            index_dir = Path(index.relative_dir)
-            if index.metadata.get("articles_header", ''):
-                articles_header = index.metadata.get("articles_header")
-            elif not index_dir.parts:
-                articles_header = 'All Articles'
-            else:
-                articles_header =  f"{index_dir.parts[-1].capitalize()} Articles"
-            path_to_root = "../" * len(index_dir.parts)
-            relative_articles = \
-                [article for article in self.context.get('articles', [])
-                 if Path(article.save_as).is_relative_to(index_dir)]
+            index.get_path()
+            articles_header = index.get_article_header()
+            path_to_root = "../" * len(index.index_dir.parts)
+            relative_articles = []
+            for article in self.all_articles:
+                if index.article_belongs(article):
+                    relative_articles.append(article)
             local_indexes = \
                 [index_page for index_page in self.index_pages
                  if index_page.relative_dir 
-                 and Path(index_page.relative_dir).parent == index_dir]
+                 and Path(index_page.relative_dir).parent == index.index_dir]
             local_pages = \
-                [page for page in self.context['pages']
-                 if Path(page.save_as).parent == index_dir]
+                [page for page in self.all_pages
+                 if Path(page.save_as).parent == index.index_dir]
             for each_list in (local_indexes, local_pages):
                 each_list.sort(key=lambda page: page.title)
             writer.write_file(
@@ -148,17 +210,7 @@ class IndexGenerator(Generator):
                 relative_urls=self.settings['RELATIVE_URLS'],
                 override_output=hasattr(index, 'override_save_as'),
                 url=index.url)
-        if self.settings.get('QUICKLINKS', None):
-            writer.write_file(
-                name=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
-                template=self.get_template('quicklinks'),
-                path_to_root='/',
-                context=self.context,
-                template_name='quicklinks',
-                url=self.settings.get('QUICKLINKS_SAVE_AS', 'quicklinks.html'),
-                links_header=self.settings.get('QUICKLINKS_HEADER', 'Links'),
-            )
-        log.debug('break here')
+        self.add_quicklinks(writer)
 
 def get_generators(pelican):
     return IndexGenerator
@@ -168,16 +220,36 @@ def disable_page_writing(generators):
     Disable normal article and page generation.
     The html5up Dimension theme fits better as index pages.
     """
-    def generate_output_override(self, _):
-        if isinstance(self, ArticlesGenerator):
-            log.debug('Skipping normal article generation...')
-        if isinstance(self, PagesGenerator):
-            log.debug('Skipping normal pages generation...')
+    def article_generate_output_override(self, _):
+        log.debug('Skipping normal article generation...')
+
+    def page_generate_output_override(self, writer):
+        log.debug('Skipping normal pages generation...')
+        signals.page_writer_finalized.send(self, writer=writer)
 
     for generator in generators:
-        if isinstance(generator, (ArticlesGenerator, PagesGenerator)):
-            generator.generate_output = types.MethodType(generate_output_override, generator)
+        if isinstance(generator, IndexGenerator):
+            index_gen = generator
+            break
+
+    for generator in generators:
+        if isinstance(generator, ArticlesGenerator):
+            index_gen.articles_gen = generator
+            generator.generate_pages = \
+                types.MethodType(article_generate_output_override, generator)
+        if isinstance(generator, PagesGenerator):
+            index_gen.pages_gen = generator
+            generator.generate_output = \
+                types.MethodType(page_generate_output_override, generator)
+
+def adjust_feed(context, feed):
+    for fi in feed.items:
+        url = urlparse(fi['link'])
+        url_tail = \
+            f"{url.path}{url.query}{url.fragment}".strip("/")
+        fi['link'] = urljoin(context['SITEURL'], context['index_gen'].url_dict[url_tail])
 
 def register():
     signals.get_generators.connect(get_generators)
     signals.all_generators_finalized.connect(disable_page_writing)
+    signals.feed_generated.connect(adjust_feed)

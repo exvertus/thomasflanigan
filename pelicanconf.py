@@ -21,7 +21,8 @@ PAGE_PATHS = [p.absolute() for p in Path(PATH).glob('**/*.md')
               if (p.stem != DIRECTORY_INDEX_STEM and p.absolute() not in ARTICLE_PATHS)]
 OUTPUT_PATH = 'output/'
 PATH_METADATA = '(?P<path_no_ext>.*)\..*'
-ARTICLE_URL = ARTICLE_SAVE_AS = PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
+ARTICLE_URL = ARTICLE_SAVE_AS = '{path_no_ext}.html'
+PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
 STATIC_PATHS = ['images']
 
 THEME = './themes/tom'
@@ -32,12 +33,11 @@ PLUGINS = ['directory_index', 'jinja2content']
 PLUGIN_PATHS = [Path('plugins/directory-index/pelican/plugins/directory_index')]
 JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
 
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+# Feeds
+FEED_DOMAIN = SITEURL
+FEED_RSS = 'feeds/all.rss.xml'
+FEED_ALL_RSS = FEED_ALL_ATOM = CATEGORY_FEED_ATOM = None
+AUTHOR_FEED_RSS = TRANSLATION_FEED_ATOM = AUTHOR_FEED_ATOM = None
 
 QUICKLINKS = (
     ('Instagram', 'https://www.instagram.com/material_soul/'),
