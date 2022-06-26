@@ -37,13 +37,13 @@ class IndexPage(Content):
         """
         True if page is a supported sub-dir of this index
         """
-        log.info('break here')
+        return Path(page.relative_dir) == self.index_dir
 
     def article_belongs(self, article):
         """
         True if article is a supported sub-dir of this index
         """
-        log.info('break here')
+        return Path(article.relative_dir).parent == self.index_dir
 
 class IndexGenerator(Generator):
     # TODO: Add caching by importing CachingGenerator
