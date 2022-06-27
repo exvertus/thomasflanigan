@@ -45,27 +45,31 @@ LinkedIn does indeed provide an [API path](https://docs.microsoft.com/en-us/link
 Step 2 is where things got messy.
 First I found a [python-linkedin lib](https://github.com/ozgur/python-linkedin) that looked promising, until I noticed the last update was in 2015, a year before Microsoft acquired LinkedIn. No thanks.
 
-Next I found the more current [linkedin-api](https://github.com/tomquirk/linkedin-api). It initially seemed promising until I looked closer for how to share and could not find one. This library leans on an alternative service for its endpoints called Voyager and it looks like the share endpoint [has not been exposed](https://github.com/tomquirk/linkedin-api/issues/106) in the python lib yet. I initially tried to add the feature myself, but after going well down the path of forking the repo, configuring a dev build, getting the tests (which make requests to the live server while also using a timer-delay to prevent throttling, resulting in minutes-long test runs) to pass, and looking at the code, I started to question all the time I was spending to add a fairly simple feature to a python project screaming for a refactor. So I went to sleep that night thinking I would be writing a minified python client-wrapper in some utils directory of my site's repository in order to call it from a new post-step in my Jenkinsfile after a successfull build-deploy from the 'main' branch.
+Next I found the more current [linkedin-api](https://github.com/tomquirk/linkedin-api). It initially seemed promising until I looked closer for how to share and could not find one. This library leans on an alternative service for its endpoints called Voyager and it looks like the share endpoint [has not been exposed](https://github.com/tomquirk/linkedin-api/issues/106) in the python lib yet. I initially tried to add the feature myself, but after going well down the path of forking the repo, configuring a dev build, setting up an account for the .env file, getting the tests (which make requests to the live server while also using a timer-delay to prevent throttling, resulting in minutes-long test runs) to pass, and looking at the code, I started to question all the time I was spending to add a fairly simple feature to a python project screaming for a refactor. So I went to sleep that night thinking I would be writing a minimal python client-wrapper in a utils directory of my site's repository in order to call it from a new post-step in my Jenkinsfile after a successfull build-deploy from the 'main' branch.
 
-If I lost you because of the technical mumbo-jumbo, that was the point. The fact that this automation gets very complicated very quickly is why it has not been more widely available until very recently. Keep reading.
+If I lost you because of the technical mumbo-jumbo, that was kind of the point. In fact, you can forget everything from this section except this part: that building and configuring this automation gets very complicated very quickly. That fact is a key to understanding a problem I have been increasingly concerned with, but that a platform I just discovered named Zapier is already fixing. Sorry for the technical derailment. Keep reading.
 
 ### Discovering Zapier
 
-really nothing else? expand scope before making my own wrapper and client
+It felt fitting that I should taste some of the discouragement that keeps automation prohibitive for most, and perhaps the frustration was the necessary motivation for getting myself out of the professional software automator box enough to find Zapier.
+
+
 TODO: what does sharing the Zap do?
 Share how-to and that you had to adjust plugin for RSS
 Easy to configure and test with real data
 
 ### Automation Democratization? It's *about time*...
 
-...and not just about saving people more of it. It's about time because of all beautiful things that individuals and small cash-strapped teams have to give each other that we've all been missing out on...
+...and not just about saving people more of it. It's about time automation become widely available because of what we've *all* been missing out on.
 
 I'll repeat the axiom I opened with here: *the less something costs to create, the more it will be produced*.
 
 If you share my interest in economics, you may have already guessed at the inspiration for this axiom: "if you want more of something, subsidize it" and the inverse, "if you want less of something, tax it".
-You may also recall a similar price-control phenomenon,
-where effective price-caps tend to result in shortages and price-floors, surpluses.
-But if I were to pick 
+You may recall a similar price-control phenomenon,
+where effective price-floors tend towards surpluses, and shortages tend to follow price-caps. It will help to similarly hold the inverse in mind: the *more* something costs to create, the *less* it will be produced.
+
+Now you can understand why I have increasingly come to feel urgency
+
 
 artists left behind when it comes to automation
 applies to ALL 1-person businesses and side-hustles
