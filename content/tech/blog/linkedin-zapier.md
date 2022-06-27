@@ -30,32 +30,42 @@ Without process improvements this can quickly give rise to a lethargic creative 
 I have seen first hand how much this can hollow-out a software development team's productivity, but much has already been said about the impact technical debt creates in a corporate setting and the stand-stills it can usher in if not take seriously.
 I do not dismiss that debate as much as want stay focused on something much closer to my heart of late---enabling automation for the *individual*.
 
-A proliferation of automation accessibility can solve some big problems we might not even be fully aware we have, but I will try to connect the dots on that broader more speculative assertion after I show you how easy automation has helped me personally in more concrete terms: automatically sharing to my LinkedIn each time I publish a new post on my site (like this one).
+A proliferation of automation accessibility can solve some big problems we might not even be fully aware we have, but I will try to connect the dots on that broader and more speculative assertion below. That will be easier to do if I first show you how easy automation has helped me personally in more recent and concrete terms: automatically sharing to my LinkedIn each time I publish a new post on my site (like this one).
 
 ### How automation usually goes
 
-linkedIn API, prefer client/wrapper in python
-super-old repo
-newer repo but doesn't have share option because of backend implementation
-really nothing else? expand scope before making my own wrapper and client
+So I started the process as many others with experience in the software automation world would:
+1. Review the [API documentation](https://docs.microsoft.com/en-us/linkedin/) to ensure the data I require for my automation is available via public endpoint(s) in the first place.
+2. Search for an existing API-client that wraps things like authentication and endpoint calls in my preferred programming language.
+3. Import and use the existing API-client if it is available, otherwise write a minimal implementation of one myself.
+
+Step 1 was easy enough. 
+LinkedIn does indeed provide an [API path](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin#creating-a-share-on-linkedin) enabling automatic sharing, including my need to [share a url](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin#create-an-article-or-url-share).
+
+Step 2 is where things got messy.
+First I found a [python-linkedin lib](https://github.com/ozgur/python-linkedin) that looked promising, until I noticed the last update was in 2015, a year before Microsoft acquired LinkedIn. No thanks.
+
+Next I found the more current [linkedin-api](https://github.com/tomquirk/linkedin-api). It initially seemed promising until I looked closer for how to share and could not find one. This library leans on an alternative service for its endpoints called Voyager and it looks like the share endpoint [has not been exposed](https://github.com/tomquirk/linkedin-api/issues/106) in the python lib yet. I initially tried to add the feature myself, but after going well down the path of forking the repo, configuring a dev build, getting the tests (which make requests to the live server while also using a timer-delay to prevent throttling, resulting in minutes-long test runs) to pass, and looking at the code, I started to question all the time I was spending to add a fairly simple feature to a python project screaming for a refactor. So I went to sleep that night thinking I would be writing a minified python client-wrapper in some utils directory of my site's repository in order to call it from a new post-step in my Jenkinsfile after a successfull build-deploy from the 'main' branch.
+
+If I lost you because of the technical mumbo-jumbo, that was the point. The fact that this automation gets very complicated very quickly is why it has not been more widely available until very recently. Keep reading.
 
 ### Discovering Zapier
 
+really nothing else? expand scope before making my own wrapper and client
 TODO: what does sharing the Zap do?
 Share how-to and that you had to adjust plugin for RSS
 Easy to configure and test with real data
 
 ### Automation Democratization? It's *about time*...
 
-...and not just about saving people it. It's about time because of all beautiful things that we have to give each other that we've all been missing out on...
+...and not just about saving people more of it. It's about time because of all beautiful things that individuals and small cash-strapped teams have to give each other that we've all been missing out on...
 
 I'll repeat the axiom I opened with here: *the less something costs to create, the more it will be produced*.
 
-For those that share my interest in economics, you may draw some parallels
-between other statements like "if you want more of something, subsidize it" and
-"if you want less of something, tax it". 
-You may also recall the similar price-control phenomenon,
-where price-caps can lead to shortages and price-floors can lead to surpluses.
+If you share my interest in economics, you may have already guessed at the inspiration for this axiom: "if you want more of something, subsidize it" and the inverse, "if you want less of something, tax it".
+You may also recall a similar price-control phenomenon,
+where effective price-caps tend to result in shortages and price-floors, surpluses.
+But if I were to pick 
 
 artists left behind when it comes to automation
 applies to ALL 1-person businesses and side-hustles
