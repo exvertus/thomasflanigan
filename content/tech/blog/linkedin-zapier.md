@@ -27,11 +27,11 @@ but when each productive iteration requires an arduous process that is left unch
 a feeling of dread is coupled to the creation process.
 It can become so internalized that it is shrugged off as a "given" cost to producing whatever could come next.
 
-Without process improvements this can quickly give rise to a lethargic creative depression: 
+Without process improvements this can quickly give rise to a lethargic creative-depression: 
 new ideas increasingly fall under the shadow of 'too much of a bother'. 
 Ideas carrying the potency to be big breakthroughs are ironically rejected for their potential to 'open a Pandora's box'.
 I have seen first hand how much this can hollow-out a software development team's productivity, 
-but much has already been written about the impact technical debt creates in a corporate environment, 
+but much has already been written about the impact technical debt creates in that setting 
 and the stand-stills and hidden inefficiencies it can usher in if not taken seriously.
 I do not dismiss that debate as much as want stay focused on something much closer to my heart of late---enabling automation for the *individual*.
 
@@ -49,9 +49,9 @@ LinkedIn does indeed provide an [API path](https://docs.microsoft.com/en-us/link
 Step 2 is where things got messy.
 First I found a [python-linkedin lib](https://github.com/ozgur/python-linkedin) that looked promising, until I noticed the last update was in 2015, a year before Microsoft acquired LinkedIn. No thanks.
 
-Next I found the more current [linkedin-api](https://github.com/tomquirk/linkedin-api). It initially seemed promising until I looked closer for how to share and could not find one. This library leans on an alternative service for its endpoints called Voyager and it looks like the share endpoint [has not been exposed](https://github.com/tomquirk/linkedin-api/issues/106) in the python lib yet. I initially tried to add the feature myself, but after going well down the path of forking the repo, configuring a dev build, setting up an account for the .env file for the tests (which make requests to the live server while also using a timer-delay to prevent throttling, resulting in minutes-long test runs) to pass, I started to question this approach. 
+Next I found the more current [linkedin-api](https://github.com/tomquirk/linkedin-api). It initially seemed promising until I looked closer for a way to create a share and could not find one. This library leans on an alternative service for its endpoints called Voyager and it looks like the share endpoint [has not been exposed](https://github.com/tomquirk/linkedin-api/issues/106) in the python lib yet. I initially tried to add the feature myself, but after going well down the path of forking the repo, configuring a dev build, setting up an account for the .env file for the tests to pass (which make requests to the live service while also using a timer-delay to prevent throttling, resulting in minutes-long test runs), I started to question this approach. 
 After looking at the code, I began to have doubts about the time I would save spending so much effort to add a fairly simple feature to a python project screaming for a refactor. 
-So I went to sleep that night thinking I would be writing a minimal python client-wrapper in a utils directory of my site's repository to call from a new post-step in my Jenkinsfile after a successfull build-deploy from the 'main' branch of my site's repo...
+So I went to sleep that night thinking I would be writing a minimal python client-wrapper in a utils directory of my site's repository to call from a new post-step in my Jenkinsfile after a successful build-deploy from the 'main' branch of my site's repo...
 
 So I think it is safe to say my experience demonstrates that even when you know what you are doing, building and configuring automation gets complicated quickly. That fact is a key to understanding a problem I have been increasingly concerned with, but that a platform I just discovered named Zapier is already fixing. 
 
@@ -62,7 +62,7 @@ Perhaps the frustration was the necessary motivation for getting myself out of t
 which I think is easy enough for someone with no programming background to use themselves.
 
 Zapier allows you to create what they call "Zaps" that you configure for each unit of automation.
-They also let me [share my Zap](https://zapier.com/shared/2a8c0753b0c2ef3026bf9487b4fb21c92db7e351) for others to refer to and copy themselves if they have the same use-case.
+I can also [share my Zap](https://zapier.com/shared/2a8c0753b0c2ef3026bf9487b4fb21c92db7e351) for others to refer to and copy themselves if they have the same use-case.
 
 [My Zap](https://zapier.com/shared/2a8c0753b0c2ef3026bf9487b4fb21c92db7e351) is about as simple as you can make one. 
 The trigger for activating it is something that will routinely poll my site's [RSS feed](https://en.wikipedia.org/wiki/RSS).
@@ -87,16 +87,17 @@ Here the inversion is no less true: the *more* something costs to create, the *l
 
 Simply *running* most simple automations is usually not costly, 
 the true cost comes in the complexity in coding, configuring and maintaining the code and infrastructure to keep it on. 
-Yet corporations with software needs dedicate full-time well-paid positions so they can automate, because they have correctly identified its worth. 
+Yet corporations with software needs still value it enough to hire specialized engineers to build automation, 
+because they have correctly identified its worth. 
 
-But how well do those outside the software and IT world understand the value of automation?
+But how well do those outside the tech world understand the value of automation?
 
 When I moved to Austin I began meeting other indpendent artists and talked to a few owners of small businesses in the creative industry around town. 
 Contrasting their utilization of automation against my time building it for years in the corporate tech industry, 
 it felt like tech corporations had sailed into a new era on some automation-laden super-yacht while the rest of the world gets left behind with only oars and paddles.
-It helped me realize how much of an oppurtunity there is for more widespread automation, 
-and regret that it haven't been aware of a platform like Zapier sooner. 
-What is the cost of not having this automation? What have we been missing out on up until recently? 
+It helped me realize how much of an oppurtunity there is for more widespread automation 
+and I regretted not being aware of a platform like Zapier sooner. 
+What is the cost of *not* having this automation? What have we been missing out on? 
 
 In talking to indepdent artists, I realized how many are spending hours each week on at least partially-automatable tasks. 
 For example:
@@ -111,7 +112,7 @@ That's potentially hundreds of hours a year that each *each* artist is spending 
 And this does not just apply to indepedent artists, but any single-person or small business that relies on an online operation.
 I went through the initial trouble of automating my site's build, deployment, and LinkedIn notification steps
 because I don't want some exciting idea I have for a post to be accompanied by repetitive barriers to its production,
-just as I don't want an artist whose content I enjoy to have to face those same headwinds.
+just as I don't want an artist or music producer whose content I enjoy to have to face similar headwinds.
 
 So I hope I have encouraged you to check out Zapier and other free-tier automation platforms, 
 or at least help spread the word to those that can benifit.
