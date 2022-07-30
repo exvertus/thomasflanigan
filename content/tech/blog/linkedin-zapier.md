@@ -119,7 +119,7 @@ I went through the initial trouble of automating my site's build, deployment, an
 because I don't want some exciting idea I have for a post to be accompanied by repetitive barriers to its production,
 just as I don't want an artist whose content I enjoy to have to face those same headwinds.
 
-So I hope I have encouraged you to check out Zapier and other free-to-start automation platforms, 
+So I hope I have encouraged you to check out Zapier and other free-tier automation platforms, 
 or at least help spread the word to those that can benifit.
 Access to automation extends a power that can go beyond simply saving time. 
 I am excited to see what new things will be created, 
