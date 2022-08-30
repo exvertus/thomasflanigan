@@ -28,7 +28,7 @@ Summary: Tom Flanigan Skills
     ('Html', 3),
     ('VSCode (favored IDE currently)', 3),
     ('Eclipse', 3),
-    ('*Mongo/NoSQL', 2),
+    ('*Mongo/NoSQL', 3),
     ('*CSS', 1),
     ('SQL', 1),
     )) }}

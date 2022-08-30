@@ -9,5 +9,5 @@ Title: Projects
 
 ### Next up
 
-* DirectoryIndexes - Pelican plugin that further divides articles and pages according to their relative-paths in the content folder. Also enables custom index.html's at each folder level.
-* 2nd-Dimension - Custom Pelican theme heavily inspired by the html5up Dimension theme. This is the "2nd" Dimension in that Dimension is a single index theme, but this can be combined with the DirectoryIndexes plugin to add sub-index pages.
+* [drawing-automation](https://github.com/exvertus/drawing-automation) - Automation code run against my inkdrawings DB collection.
+* [platform-distributor](https://github.com/exvertus/platform-distributor) - Distribute content across media APIs.
