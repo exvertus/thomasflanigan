@@ -1,36 +1,26 @@
 from pathlib import Path
-from datetime import datetime
 
 # Common settings ---
 AUTHOR = 'Tom Flanigan'
 SITENAME = 'Tom Flanigan'
 SITEURL = 'https://thomasflanigan.com'
-FIRST_YEAR = '2020'
-END_YEAR = datetime.now().year
+SITESUBTITLE = "Art, Music, Tech"
 TIMEZONE = 'America/Chicago'
 DEFAULT_LANG = 'en'
 
 PATH = 'content'
-# Necessary for now because excludes settings only work on directories and not files.
-# TODO: Move this piece to plugin or submit feature to Pelican to support exc files.
-poems = tuple(Path(PATH).glob('**/music/poems-lyrics/*.md'))
-blog = tuple(Path(PATH).glob('**/tech/blog/*.md'))
-ARTICLE_PATHS = [p.absolute() for p in (poems + blog)]
-DIRECTORY_INDEX_STEM = 'index'
-PAGE_PATHS = [p.absolute() for p in Path(PATH).glob('**/*.md')
-              if (p.stem != DIRECTORY_INDEX_STEM and p.absolute() not in ARTICLE_PATHS)]
+ARTICLE_PATHS = [p.absolute() for p in Path(PATH).glob('**/articles/*.md')]
+PAGE_PATHS = [p.absolute() for p in Path(PATH).glob('**/pages/*.md')]
 OUTPUT_PATH = 'output/'
-PATH_METADATA = '(?P<path_no_ext>.*)\..*'
-ARTICLE_URL = ARTICLE_SAVE_AS = '{path_no_ext}.html'
-PAGE_URL = PAGE_SAVE_AS = '{path_no_ext}.html'
+# PATH_METADATA = '(?P<path_no_ext>.*)\..*'
 STATIC_PATHS = ['images']
 
-THEME = './themes/tom'
+THEME = './themes/html5up-massively'
 THEME_STATIC_DIR = '.'
 THEME_STATIC_PATHS = ['static']
+FEATURED_ARTICLE = -1
 
-PLUGINS = ['directory_index', 'jinja2content']
-PLUGIN_PATHS = [Path('plugins/directory-index/pelican/plugins/directory_index')]
+PLUGINS = ['jinja2content']
 JINJA2CONTENT_TEMPLATES = [Path(PATH, '_templates').absolute()]
 
 # Feeds
@@ -39,7 +29,7 @@ FEED_RSS = 'feeds/all.rss.xml'
 FEED_ALL_RSS = FEED_ALL_ATOM = CATEGORY_FEED_ATOM = None
 AUTHOR_FEED_RSS = TRANSLATION_FEED_ATOM = AUTHOR_FEED_ATOM = None
 
-QUICKLINKS = (
+SOCIAL = (
     ('Instagram', 'https://www.instagram.com/material_soul/'),
     ('Etsy', 'https://www.etsy.com/shop/MaterialSoulArt'),
     # ('Deviant Art', 'https://www.deviantart.com/material-soul'),
@@ -49,20 +39,12 @@ QUICKLINKS = (
     ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
     ('Github', 'https://github.com/exvertus/'),
     ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
-QUICKLINKS_SAVE_AS = 'quicklinks.html'
-QUICKLINKS_HEADER = 'Links'
 
-DEFAULT_PAGINATION = False
 DEFAULT_DATE_FORMAT = '%d %b %Y'
-
-DISPLAY_PAGES_ON_MENU = False
-DISPLAY_CATEGORIES_ON_MENU = False
-DIRECT_TEMPLATES = []
+DEFAULT_PAGINATION = False
 
 LOAD_CONTENT_CACHE = False
 DELETE_OUTPUT_DIRECTORY = True
-
-USE_FOLDER_AS_CATEGORY = True
 
 GITHUB_REPO_URL = "https://github.com/exvertus/thomasflanigan/"
 
