@@ -1,5 +1,9 @@
 Title: Sand Castle
 Date: 2019-01-20
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: sandcastle
 
 How was it that I entered here?  
 The first few rooms I don’t recall,  

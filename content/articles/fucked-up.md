@@ -1,5 +1,9 @@
 Title: Fucked Up
-Date: 2020-03-19
+Summary: A Poem
+Date: 2020-03-19 12:00
+Category: Poems
+Tags: poem
+Slug: fucked-up
 
 Starve the beast  
 Keep him on his leash  

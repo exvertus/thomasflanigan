@@ -1,7 +1,8 @@
 Title: How I Built this Site
 Summary: Building static content with hugo
-Date: 2021-05-17
-Tags: tech, how-to, static-site-builds
+Date: 2021-05-17 12:00
+Category: Tech
+Tags: tech, how-to, static-site
 Slug: building-with-hugo
 
 Update: While this still may interest you if you're interested in hugo, I no longer build my site using it.

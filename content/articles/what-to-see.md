@@ -1,5 +1,9 @@
 Title: You're Watching the What to See Network
 Date: 2022-06-03
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: what-to-see
 
 There they stand  
 before me  

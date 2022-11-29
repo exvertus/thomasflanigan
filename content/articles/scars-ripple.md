@@ -1,5 +1,9 @@
 Title: Scars Ripple
 Date: 2022-01-05
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: scars-ripple
 
 A wretched fear defeated,  
 a monster laid to rest.  

@@ -1,4 +1,10 @@
 Title: Projects
+Date: 2022-11-06 12:00
+Modified: 2022-11-06 12:00
+Slug: projects
+Tags: project, tech
+Category: Tech
+Summary: Current Projects
 
 ### Current
 

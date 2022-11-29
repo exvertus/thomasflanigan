@@ -1,5 +1,9 @@
 Title: Travel Montage
 Date: 2022-05-08
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: travel-montage
 
 Moving forward always  
 right to left, over map  

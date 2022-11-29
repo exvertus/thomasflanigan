@@ -1,6 +1,7 @@
 Title: Zapier automation for LinkedIn posts
 Summary: Automation 'for the little guy' will have a big impact
-Date: 2022-06-26
+Date: 2022-06-26 12:00
+Category: Tech
 Tags: tech, how-to, linkedin, automation, zapier
 Slug: linkedin-zapier
 

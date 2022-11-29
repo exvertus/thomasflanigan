@@ -1,6 +1,8 @@
 Title: How I run my Jenkins cloud instance
 Summary: Jenkins + helm template + kubectl apply -k
-Date: 2022-06-20
+Date: 2022-06-20 12:00
+Category: Tech
+Tags: tech, how-to, jenkins
 Slug: jenkins-how-to
 
 I have a few automation projects nearing the top of my to-do list

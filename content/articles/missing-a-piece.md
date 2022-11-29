@@ -1,5 +1,9 @@
 Title: Missing a Piece
 Date: 2020-03-19
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: missing-a-piece
 
 They tick-tock a different way  
 I thought I was unique  

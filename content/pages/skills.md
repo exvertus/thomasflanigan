@@ -1,7 +1,9 @@
 Title: Skills
-Modified: 2022-05-30
+Modified: 2022-11-06 12:00
 Slug: skills
 Summary: Tom Flanigan Skills
+Category: Tech
+Tags: skills
 
 ### Tech skills
 

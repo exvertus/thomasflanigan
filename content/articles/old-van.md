@@ -1,5 +1,9 @@
 Title: Old Van
 Date: 2022-02-27
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: oldvan
 
 Met a huge family with a huge van  
 it was a long time ago  

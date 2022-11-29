@@ -1,5 +1,8 @@
 Title: Discography
+Slug: discography
 Summary: Material Soul Discography
+Tags: music
+Category: Music
 
 ### Solo works
 

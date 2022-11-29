@@ -1,5 +1,9 @@
 Title: The Spoiled Bloom
 Date: 2022-01-10
+Summary: A Poem
+Category: Poems
+Tags: poem
+Slug: spoiled-bloom
 
 The unstoppable demons of your ancestors you tamed to impotent imps,  
 but the din of your shortcomings punctures those whining whisperings.  
