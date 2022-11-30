@@ -30,15 +30,14 @@ FEED_ALL_RSS = FEED_ALL_ATOM = CATEGORY_FEED_ATOM = None
 AUTHOR_FEED_RSS = TRANSLATION_FEED_ATOM = AUTHOR_FEED_ATOM = None
 
 SOCIAL = (
-    ('Instagram', 'https://www.instagram.com/material_soul/'),
-    ('Etsy', 'https://www.etsy.com/shop/MaterialSoulArt'),
     # ('Deviant Art', 'https://www.deviantart.com/material-soul'),
     # ('Twitter', 'https://twitter.com/Material__Soul'),
     # ('Tumblr', 'https://www.tumblr.com/blog/material-soul'),
     # ('Facebook', 'https://www.facebook.com/materialsoul'),
     ('Bandcamp', 'https://materialsoul.bandcamp.com/'),
     ('Github', 'https://github.com/exvertus/'),
-    ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),)
+    ('LinkedIn','https://www.linkedin.com/in/thomas-flanigan/'),
+    ('Instagram', 'https://www.instagram.com/material_soul/'),)
 
 DEFAULT_DATE_FORMAT = '%d %b %Y'
 DEFAULT_PAGINATION = False
