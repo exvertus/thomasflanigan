@@ -1,6 +1,6 @@
 Title: The Spoiled Bloom
 Date: 2022-01-10
-Summary: A Poem
+Summary: The unstoppable demons of your ancestors...
 Category: Poems
 Tags: poem
 Slug: spoiled-bloom

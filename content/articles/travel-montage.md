@@ -1,6 +1,6 @@
 Title: Travel Montage
 Date: 2022-05-08
-Summary: A Poem
+Summary: Moving forward always...
 Category: Poems
 Tags: poem
 Slug: travel-montage

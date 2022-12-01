@@ -1,6 +1,6 @@
 Title: Scars Ripple
 Date: 2022-01-05
-Summary: A Poem
+Summary: A wretched fear defeated...
 Category: Poems
 Tags: poem
 Slug: scars-ripple
