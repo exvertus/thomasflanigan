@@ -1,6 +1,6 @@
 Title: Art & Music
 Slug: art-music
-Summary: My Art and Music
+Summary: My Creations
 Tags: art, music
 
 ## Discography
@@ -9,7 +9,7 @@ Tags: art, music
 
 * [Roze Blud OST](https://materialsoul.bandcamp.com/album/roze-blud-original-soundtrack/) - Soundtrack to the fast-paced tactical arena shooter, [Roze Blud](https://www.rozeblud.com/)! Available now [on Steam](https://store.steampowered.com/app/1547790/Roze_Blud/).
 * [Digital Piano Recordings](https://materialsoul.bandcamp.com/album/digital-piano-recordings) - Single-take recordings of a few classical piano pieces that I recorded on my Kawai MP-11.
-* [Vapor and Mash](https://materialsoul.bandcamp.com/album/vapors-and-mash) - Vaporwave and mashup-inspired album currently in progress.
+* [Vapors and Mash](https://materialsoul.bandcamp.com/album/vapors-and-mash) - Vaporwave and mashup-inspired album (in progress).
 
 ### Collabs/Featured on
 
@@ -20,9 +20,7 @@ from [Ashes From A Winter Skull](https://stonebeetz.bandcamp.com/album/ashes-fro
 
 ## Drawings
 
-### Portfolio
-
-I will have a more exhaustive portfolio coming soon. 
-For now a selection of my art can be found on my instagram page [@material_soul](https://www.instagram.com/material_soul/).
+I will have a more exhaustive portfolio directly on my site next month. 
+I plan to delete all social media soon, but for now a selection of my art can be found on my instagram page [@material_soul](https://www.instagram.com/material_soul/).
 
 See something you like? Most of my drawings are for sale. Email [orders@thomasflanigan.com](mailto:orders@thomasflanigan.com) for more details.
