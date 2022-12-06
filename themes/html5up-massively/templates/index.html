@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% set ns = namespace(featured=None, unfeatured=[]) %}
+<!-- Main -->
+	<div id="main">
+
+		{% if FEATURED_ARTICLE %}
+			{% if FEATURED_ARTICLE is eq(-1) %}
+				{% set ns.featured = articles[0] %}
+			{% else %}
+				{% for article in articles if article.slug == FEATURED_ARTICLE %}
+					{% set ns.featured = article %}
+				{% endfor %}
+			{% endif %}
+		<!-- Featured Post -->
+		{{ post_preview(ns.featured, featured=True) }}
+		{% endif %}
+
+		{% for ao in articles if ao.slug is ne ns.featured.slug %}
+			{% set ns.unfeatured = ns.unfeatured + [ao] %}
+		{% endfor %}
+		{{ posts(article_list=ns.unfeatured) }}
+
+		{{ paginator() }}
+
+	</div>
+{% endblock content %}

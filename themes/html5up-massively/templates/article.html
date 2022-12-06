@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ article.title|striptags }}{% endblock %}
+
+{% block head %}
+  {{ super() }}
+	{% if article.description %}
+	<meta name="description" content="{{ article.description }}" />
+	{% endif %}
+
+	{% for tag in article.tags %}
+	<meta name="tags" content="{{ tag }}" />
+	{% endfor %}
+{% endblock head %}
+
+{% block content %}
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+            <section class="post">
+                <header class="major">
+                    <span class="date">{{ article.date.strftime("%b %d %Y") }}</span>
+                    <h1>{{ article.title }}</h1>
+                    <p>{{ article.summary }}</p>
+                </header>
+                {% if article.mainimage %}
+                <div class="image main"><img src="{{ SITEURL }}/{{ article.mainimage }}" alt="" /></div>
+                {% endif %}
+                <p>{{ article.content }}</p>
+            </section>
+
+    </div>
+{% endblock content %}

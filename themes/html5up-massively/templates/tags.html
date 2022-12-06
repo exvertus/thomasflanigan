@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Main -->
+<div id="main">
+
+    <section class="post">
+        {{ post_header("Tags") }}
+    </section>
+
+    <!-- Posts -->
+        <section class="posts">
+            {% for tag, _ in tags|sort %}
+            <article>
+                <header>
+                    <span class="date">•••</span>
+                    <h2><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag.name }}</a></h2>
+                </header>
+            </article>
+            {% endfor %}
+        </section>
+    
+    {{ paginator() }}
+
+</div>
+{% endblock %}

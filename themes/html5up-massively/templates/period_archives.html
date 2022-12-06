@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Main -->
+<div id="main">
+
+    <section class="post">
+        {{ post_header("Archives for " + period.reverse.join(' ')) }}
+    </section>
+    {{ posts(article_list=dates) }}
+
+    {{ paginator() }}
+
+</div>
+{% endblock %}

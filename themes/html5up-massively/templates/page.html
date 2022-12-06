@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ page.title|striptags }}{% endblock %}
+
+{% block content %}
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+            <section class="post">
+                {{ post_header(page.title, summary=page.summary, date=page.date) }}
+                {% if page.mainimage %}
+                <div class="image main"><img src="{{ SITEURL }}/{{ page.mainimage }}" alt="" /></div>
+                {% endif %}
+                <p>{{ page.content }}</p>
+            </section>
+
+    </div>
+{% endblock %}
