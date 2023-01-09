@@ -1,0 +1,44 @@
+{   
+    "options": {
+        "output-html": "../../build/resume-base/thomas-flanigan.html"
+    },
+    "resume": {
+        "contact": {
+            "name": "Thomas Flanigan",
+            "nickname": "Tom",
+            "email": "tom@thomasflanigan.com",
+            "phone": "1.617.785.5442"
+        },
+        "introduction": {
+            "job": "Devops & Software Engineer",
+            "summary": "",
+            "website": "",
+            "social": ""
+        },
+        "skills": [
+            {"name": "", "score": 5}
+        ],
+        "experiences": [
+            {
+                "organization": "MEDITECH",
+                "title": "Software Developer",
+                "start_date": "07/12/2012",
+                "end_date": "03/03/2022",
+                "website": "https://ehr.meditech.com/",
+                "description": "",
+                "highlights": [
+                    ""
+                ]
+            }
+        ],
+        "academics": [
+            {
+                "institution": "Ithaca College",
+                "location": "Ithaca, New York",
+                "website": "https://www.ithaca.edu/",
+                "degree": "Bachelor of Music",
+                "gpa": "3.7 (Magna cum Laude)"
+            }
+        ]
+    }
+}  
