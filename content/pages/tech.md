@@ -10,7 +10,7 @@ Tags: tech
     ('Python', 5),
     ('Jenkins', 5),
     ('Git', 5),
-    ('Subversion', 4),
+    ('Subversion', 5),
     ('Jira & Altassian Suite', 4),
     ('Google Cloud Platform', 4),
     ('Intellij', 4),
