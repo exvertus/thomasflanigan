@@ -11,7 +11,7 @@
         },
         "introduction": {
             "job": "Devops & Software Engineer",
-            "summary": "",
+            "summary": "You should hire me because I'm just that awesome.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -41,9 +41,15 @@
                 "start_date": "07/12/2012",
                 "end_date": "03/03/2022",
                 "website": "https://ehr.meditech.com/",
-                "description": "",
+                "description": "Dev-ops focused role since 2016 after starting on an in-house desktop/web application.",
                 "highlights": [
-                    ""
+                    "Used MEDITECH proprietary languages to add an efficiency-testing application, mail-server API, and search feature while maintaining web and desktop display libraries.",
+                    "Rolled out and maintained Jenkins CI solution on GCP.",
+                    "Administered 100+ company-wide biweekly CI/CD Deployments.",
+                    "Authored dozens of features and bug-fixes for Jira-SVN integration.",
+                    "Oversaw migration from Python 2 to 3 and refactored and improved coverage for server Python projects.",
+                    "Provided developer-education through presentations, classes, 1-on-1s, documentation.",
+                    "Served as scrum master and created roadmaps for software delivery-related epics."
                 ]
             }
         ],
