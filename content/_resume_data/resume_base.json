@@ -12,8 +12,8 @@
         "introduction": {
             "job": "Devops & Software Engineer",
             "summary": "",
-            "website": "",
-            "social": ""
+            "website": "https://thomasflanigan.com/",
+            "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
         "skills": [
             {"name": "Python", "score": 5},
@@ -24,6 +24,8 @@
             {"name": "Jira/Altassian", "score": 4},
             {"name": "Docker", "score": 4},
             {"name": "Scrum master", "score": 4},
+            {"name": "Windows", "score": 4},
+            {"name": "Linux", "score": 3},
             {"name": "Kubernetes", "score": 3},
             {"name": "Java/Groovy", "score": 3},
             {"name": "HTML", "score": 3},
