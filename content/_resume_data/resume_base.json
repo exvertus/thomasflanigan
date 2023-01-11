@@ -7,11 +7,16 @@
             "name": "Thomas Flanigan",
             "nickname": "Tom",
             "email": "tom@thomasflanigan.com",
-            "phone": "1.617.785.5442"
+            "phone": "1.617.785.5442",
+            "location": {
+                "city": "Austin",
+                "state": "TX",
+                "country": "United States"
+            }
         },
         "introduction": {
-            "job": "Devops & Software Engineer",
-            "summary": "You should hire me because I'm just that awesome.",
+            "job": "Devops & Software Development",
+            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ experience to an organization that values my eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to learn and teach as I continue my track-record of enabling development teams to deliver high-quality software fast.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -21,15 +26,15 @@
             {"name": "Git", "score": 5},
             {"name": "SVN", "score": 5},
             {"name": "Google Cloud Platform", "score": 4},
-            {"name": "Jira/Altassian", "score": 4},
+            {"name": "Jira & Altassian", "score": 4},
             {"name": "Docker", "score": 4},
             {"name": "Scrum master", "score": 4},
             {"name": "Windows", "score": 4},
             {"name": "Linux", "score": 3},
             {"name": "Kubernetes", "score": 3},
-            {"name": "Java/Groovy", "score": 3},
+            {"name": "Java & Groovy", "score": 3},
             {"name": "HTML", "score": 3},
-            {"name": "Mongo/NoSQL", "score": 3},
+            {"name": "Mongo & NoSQL", "score": 3},
             {"name": "JS", "score": 2},
             {"name": "CSS", "score": 2},
             {"name": "SQL", "score": 1}
@@ -39,11 +44,11 @@
                 "organization": "MEDITECH",
                 "title": "Software Developer",
                 "start_date": "07/12/2012",
-                "end_date": "03/03/2022",
+                "end_date": "01/03/2022",
                 "website": "https://ehr.meditech.com/",
-                "description": "Dev-ops focused role since 2016 after starting on an in-house desktop/web application.",
+                "description": "Dev-ops focused developer since 2016. Before that I supported an in-house proprietary-lang desktop/web application.",
                 "highlights": [
-                    "Used MEDITECH proprietary languages to add an efficiency-testing application, mail-server API, and search feature while maintaining web and desktop display libraries.",
+                    "Used MEDITECH proprietary languages to add an efficiency-testing application, mail-server API, and search-feature while maintaining web and desktop display libraries.",
                     "Rolled out and maintained Jenkins CI solution on GCP.",
                     "Administered 100+ company-wide biweekly CI/CD Deployments.",
                     "Authored dozens of features and bug-fixes for Jira-SVN integration.",
