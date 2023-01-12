@@ -1,22 +1,22 @@
 {   
     "options": {
-        "output-html": "../../build/resume-base/thomas-flanigan.html"
+        "output-html": "../../build/base/thomas-flanigan.html"
     },
     "resume": {
         "contact": {
             "name": "Thomas Flanigan",
             "nickname": "Tom",
             "email": "tom@thomasflanigan.com",
-            "phone": "1.617.785.5442",
+            "phone": "(617) 785-5442",
             "location": {
-                "city": "Austin",
+                "city": "Pflugerville",
                 "state": "TX",
                 "country": "United States"
             }
         },
         "introduction": {
             "job": "Devops & Software Development",
-            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ experience to an organization that values my eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to learn and teach as I continue my track-record of enabling development teams to deliver high-quality software fast.",
+            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ experience to an organization that values my eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to teach and learn as I continue my track-record of enabling development teams to deliver high-quality software fast.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -46,14 +46,15 @@
                 "start_date": "07/12/2012",
                 "end_date": "01/03/2022",
                 "website": "https://ehr.meditech.com/",
-                "description": "Dev-ops focused developer since 2016. Before that I supported an in-house proprietary-lang desktop/web application.",
+                "description": "Dev-ops since 2016. Before that I developed for an internal, proprietary-language application.",
                 "highlights": [
-                    "Used MEDITECH proprietary languages to add an efficiency-testing application, mail-server API, and search-feature while maintaining web and desktop display libraries.",
-                    "Rolled out and maintained Jenkins CI solution on GCP.",
-                    "Administered 100+ company-wide biweekly CI/CD Deployments.",
-                    "Authored dozens of features and bug-fixes for Jira-SVN integration.",
-                    "Oversaw migration from Python 2 to 3 and refactored and improved coverage for server Python projects.",
-                    "Provided developer-education through presentations, classes, 1-on-1s, documentation.",
+                    "Added an efficiency-testing application, mail-server API, and search-feature to Core project.",
+                    "Supported web and desktop display libraries with MEDITECH proprietary languages.",
+                    "Designed and maintained Jenkins CI solution on GCP.",
+                    "Administered 100+ company-wide biweekly deployments.",
+                    "Authored dozens of features and bug-fixes for Jira-SVN integration and automation.",
+                    "Oversaw migration from Python 2 to 3; refactored and improved coverage for serveral Python projects.",
+                    "Provided developer-education through mentoring, presentations, classes, office hours, and documentation.",
                     "Served as scrum master and created roadmaps for software delivery-related epics."
                 ]
             }

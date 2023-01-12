@@ -1,0 +1,13 @@
+{
+    "options": {
+        "output-html": "../../build/music-tech/thomas-flanigan.html",
+        "parent-data": "./base.json",
+        "patches": [
+            {
+                "op": "",
+                "path": "",
+                "value": ""
+            }
+        ]
+    }
+}
