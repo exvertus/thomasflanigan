@@ -16,7 +16,7 @@
         },
         "introduction": {
             "job": "Devops & Software Development",
-            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ experience to an organization that values my eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to teach and learn as I continue my track-record of enabling development teams to deliver high-quality software fast.",
+            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ years experience to an organization that values an eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to teach and learn as I continue my track-record of enabling development teams to deliver high-quality software fast.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -46,14 +46,14 @@
                 "start_date": "07/12/2012",
                 "end_date": "01/03/2022",
                 "website": "https://ehr.meditech.com/",
-                "description": "Dev-ops since 2016. Before that I developed for an internal, proprietary-language application.",
+                "description": "Dev-ops since 2016. Prior to that I developed for an internal application written in proprietary languages.",
                 "highlights": [
                     "Added an efficiency-testing application, mail-server API, and search-feature to Core project.",
                     "Supported web and desktop display libraries with MEDITECH proprietary languages.",
                     "Designed and maintained Jenkins CI solution on GCP.",
                     "Administered 100+ company-wide biweekly deployments.",
                     "Authored dozens of features and bug-fixes for Jira-SVN integration and automation.",
-                    "Oversaw migration from Python 2 to 3; refactored and improved coverage for serveral Python projects.",
+                    "Oversaw migration from Python 2 to 3; refactored and improved coverage for several Python projects.",
                     "Provided developer-education through mentoring, presentations, classes, office hours, and documentation.",
                     "Served as scrum master and created roadmaps for software delivery-related epics."
                 ]

@@ -4,9 +4,19 @@
         "parent-data": "./base.json",
         "patches": [
             {
-                "op": "",
-                "path": "",
-                "value": ""
+                "op": "replace",
+                "path": "/introduction/summary",
+                "value": "I am a developer and SDLC-specialist compelled to apply my 10+ years experience to solving problems for fellow musicians. With a comprehensive eye for efficiency and constant imrpovement, I intend to go all-in with my broad creative approach and talent for undertaking complex projects. Balancing strong communication with business awareness and an unyeidling commitment to paying down technical debt, I am a key long-term advocate for teams I serve. Embodying both an insatiable independent drive and a patience to teach and encourage others, I want to make a big impact with my code contributions while inspiring my collaborators to confidently produce and deliver high-quality software essential to today's musicians."
+            },
+            {
+                "op": "add",
+                "path": "/skills/0",
+                "value": {"name": "Reaper 6", "score": 3}
+            },
+            {
+                "op": "add",
+                "path": "/skills/0",
+                "value": {"name": "Reason 10", "score": 4}
             }
         ]
     }
