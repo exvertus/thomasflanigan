@@ -1,0 +1,72 @@
+{   
+    "options": {
+        "output-html": "../../build/base/thomas-flanigan.html"
+    },
+    "resume": {
+        "contact": {
+            "name": "Thomas Flanigan",
+            "nickname": "Tom",
+            "email": "tom@thomasflanigan.com",
+            "phone": "(617) 785-5442",
+            "location": {
+                "city": "Pflugerville",
+                "state": "TX",
+                "country": "United States"
+            }
+        },
+        "introduction": {
+            "job": "Devops & Software Development",
+            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ years experience to an organization that values an eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to teach and learn as I continue my track-record of enabling development teams to deliver high-quality software fast.",
+            "website": "https://thomasflanigan.com/",
+            "social": "https://www.linkedin.com/in/thomas-flanigan/"
+        },
+        "skills": [
+            {"name": "Python", "score": 5},
+            {"name": "Jenkins", "score": 5},
+            {"name": "Git", "score": 5},
+            {"name": "SVN", "score": 5},
+            {"name": "Google Cloud Platform", "score": 4},
+            {"name": "Jira & Altassian", "score": 4},
+            {"name": "Docker", "score": 4},
+            {"name": "Scrum master", "score": 4},
+            {"name": "Windows", "score": 4},
+            {"name": "Linux", "score": 3},
+            {"name": "Kubernetes", "score": 3},
+            {"name": "Java & Groovy", "score": 3},
+            {"name": "HTML", "score": 3},
+            {"name": "Mongo & NoSQL", "score": 3},
+            {"name": "JS", "score": 2},
+            {"name": "CSS", "score": 2},
+            {"name": "SQL", "score": 1}
+        ],
+        "experiences": [
+            {
+                "organization": "MEDITECH",
+                "title": "Software Developer",
+                "start_date": "07/12/2012",
+                "end_date": "01/03/2022",
+                "website": "https://ehr.meditech.com/",
+                "description": "Dev-ops since 2016. Prior to that I developed for an internal application written in proprietary languages.",
+                "highlights": [
+                    "Added an efficiency-testing application, mail-server API, and search-feature to Core project.",
+                    "Supported web and desktop display libraries with MEDITECH proprietary languages.",
+                    "Designed and maintained Jenkins CI solution on GCP.",
+                    "Administered 100+ company-wide biweekly deployments.",
+                    "Authored dozens of features and bug-fixes for Jira-SVN integration and automation.",
+                    "Oversaw migration from Python 2 to 3; refactored and improved coverage for several Python projects.",
+                    "Provided developer-education through mentoring, presentations, classes, office hours, and documentation.",
+                    "Served as scrum master and created roadmaps for software delivery-related epics."
+                ]
+            }
+        ],
+        "academics": [
+            {
+                "institution": "Ithaca College",
+                "location": "Ithaca, New York",
+                "website": "https://www.ithaca.edu/",
+                "degree": "Bachelor of Music",
+                "gpa": "3.7 (Magna cum Laude)"
+            }
+        ]
+    }
+}  
