@@ -110,7 +110,7 @@
 											}
 						%}
 						{% for platform, url in SOCIAL %}
-							<li><a href="{{ SITEURL }}/{{ url }}" class="{{ social_icons.get(platform) }}"><span class="label">{{ platform|capitalize }}</span></a></li>
+							<li><a href="{{ url }}" class="{{ social_icons.get(platform) }}"><span class="label">{{ platform|capitalize }}</span></a></li>
 						{% endfor %}
 						</ul>
 						{% endif %}
