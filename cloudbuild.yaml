@@ -1,0 +1,21 @@
+steps:
+- id: 'install'
+  name: 'python'
+  args: ['pip', 'install', '-r', 'requirements.txt']
+- id: 'html'
+  name: 'python'
+  args: ['make', 'html']
+- id: 'build'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '${_AR_PATH}/$PROJECT_ID/darnbot/${_IMAGE}:$COMMIT_SHA', '.']
+- id: 'push'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/thomasflanigan:latest']
+# - id: 'deploy'
+#   name: 'gcr.io/cloud-builders/gke-deploy'
+#   args:
+#   - apply
+#   - --filename=k8s-config.yaml
+#   - --location=${_LOCATION}
+#   - --cluster=${_CLUSTER}
+# tags: ['tf-site']
