@@ -10,7 +10,7 @@ steps:
   args: ['build', '-t', '${_AR_PATH}/$PROJECT_ID/darnbot/${_IMAGE}:$COMMIT_SHA', '.']
 - id: 'push'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/thomasflanigan:latest']
+  args: ['push', '${_AR_PATH}/$PROJECT_ID/darnbot/${_IMAGE}:$COMMIT_SHA']
 # - id: 'deploy'
 #   name: 'gcr.io/cloud-builders/gke-deploy'
 #   args:
