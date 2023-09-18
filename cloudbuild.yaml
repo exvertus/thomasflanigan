@@ -15,11 +15,17 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   # args: ['push', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA']
   args: ['push', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:test']
-# - id: 'deploy'
-#   name: 'gcr.io/cloud-builders/gke-deploy'
-#   args:
-#   - apply
-#   - --filename=k8s-config.yaml
-#   - --location=${_LOCATION}
-#   - --cluster=${_CLUSTER}
-# tags: ['tf-site']
+- id: 'substitute'
+  name: 'gcr.io/$PROJECT_ID/envsubst'
+  env:
+  - 'IMAGE_NAME=${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA'
+  script: |
+    mkdir build && envsubst < k8s-config.yaml > build/k8s-config.yaml
+- id: 'deploy'
+  name: 'gcr.io/cloud-builders/gke-deploy'
+  args:
+  - apply
+  - --filename=build/k8s-config.yaml
+  - --location=${_LOCATION}
+  - --cluster=${_CLUSTER}
+tags: ['tf-site']

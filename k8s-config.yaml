@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: gcr.io/$PROJECT_ID/thomasflanigan:latest
+        image: $IMAGE_NAME
         imagePullPolicy: Always
         ports:
         - containerPort: 80
