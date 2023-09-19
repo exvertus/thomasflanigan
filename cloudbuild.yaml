@@ -1,0 +1,29 @@
+steps:
+- id: 'install'
+  name: 'python'
+  entrypoint: 'pip'
+  args: ['install', '-r', 'requirements.txt', '--user']
+- id: 'html'
+  name: 'python'
+  entrypoint: 'python'
+  args: ['-m', 'pelican', 'content', '-o', 'output', '-s', 'publishconf.py']
+- id: 'build'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA', '.']
+- id: 'push'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA']
+- id: 'substitute'
+  name: 'gcr.io/$PROJECT_ID/envsubst'
+  env:
+  - 'IMAGE_NAME=${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA'
+  script: |
+    mkdir build && envsubst < k8s-config.yaml > build/k8s-config.yaml
+- id: 'deploy'
+  name: 'gcr.io/cloud-builders/gke-deploy'
+  args:
+  - apply
+  - --filename=build/k8s-config.yaml
+  - --location=${_LOCATION}
+  - --cluster=${_CLUSTER}
+tags: ['tf-site']
