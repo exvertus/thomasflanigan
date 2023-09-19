@@ -19,7 +19,7 @@ Tags: tech
     ('Sublime Text', 4),
     ('Agile Development', 4),
     ('DevOps/12 Factor Methodology', 4),
-    ('Internal Pen Testing', 3),
+    ('Pen Testing Tools', 3),
     ('DevSecOps', 3),
     ('Security Automation', 3),
     ('Docker & Containers', 3),
