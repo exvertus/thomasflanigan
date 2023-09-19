@@ -9,12 +9,10 @@ steps:
   args: ['-m', 'pelican', 'content', '-o', 'output', '-s', 'publishconf.py']
 - id: 'build'
   name: 'gcr.io/cloud-builders/docker'
-  # args: ['build', '-t', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA', '.']
-  args: ['build', '-t', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:test', '.']
+  args: ['build', '-t', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA', '.']
 - id: 'push'
   name: 'gcr.io/cloud-builders/docker'
-  # args: ['push', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA']
-  args: ['push', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:test']
+  args: ['push', '${_AR_PATH}/$PROJECT_ID/thomasflanigan/${_IMAGE}:$COMMIT_SHA']
 - id: 'substitute'
   name: 'gcr.io/$PROJECT_ID/envsubst'
   env:
