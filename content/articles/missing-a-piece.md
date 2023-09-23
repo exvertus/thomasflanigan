@@ -1,6 +1,6 @@
 Title: Missing a Piece
 Date: 2020-03-19
-Summary: They tick-tock a different way...
+Summary: A poem...
 Category: Poems
 Tags: poem
 Slug: missing-a-piece
