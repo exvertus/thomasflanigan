@@ -22,6 +22,13 @@ spec:
       - name: nginx
         image: $IMAGE_NAME
         imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
         ports:
         - containerPort: 80
 ---
@@ -61,7 +68,7 @@ spec:
                 port:
                   number: 8080
 ---
-apiVersion: networking.gke.io/v1beta1
+apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
   name: site-cert
