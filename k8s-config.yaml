@@ -53,20 +53,16 @@ metadata:
     kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.global-static-ip-name: thomasflanigan
     networking.gke.io/managed-certificates: site-cert
+    kubernetes.io/ingress.class: "gce"
     networking.gke.io/v1beta1.FrontendConfig: site-fe
   name: site-ingress
   namespace: thomasflanigan
 spec:
-  rules:
-    - http:
-        paths:
-          - path: /*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: site-svc
-                port:
-                  number: 8080
+  defaultBackend:
+    service:
+      name: site-svc
+      port:
+        number: 8080
 ---
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
