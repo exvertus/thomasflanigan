@@ -1,6 +1,6 @@
 Title: Sand Castle
 Date: 2019-01-20
-Summary: How was it that I entered here?...
+Summary: A poem...
 Category: Poems
 Tags: poem
 Slug: sandcastle
