@@ -138,8 +138,7 @@ to feed in our node version, Cloud Build will install our bot into a
 serverless node container.
 After which, 'npm run owasp' is called.
 
-There was one minor wrinkle I ran into,
-because we use a light-weight container 
+There was one minor wrinkle I ran into because we use a light-weight container 
 to run our bot. 
 It was necessary to install the default jre in order to handle 
 java calls that OWASP Dependency-check required.
