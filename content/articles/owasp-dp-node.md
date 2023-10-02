@@ -66,7 +66,7 @@ So how can we know to trust an imported software library?
 Well, we could review every single line of a given dependency ourselves.
 But going to that extreme takes away all the complexity-abstraction value,
 and will have us feeling like we are in 
-[one of Borges' short stories](https://en.wikipedia.org/wiki/On_Exactitude_in_Science).
+[a short story by Borges](https://en.wikipedia.org/wiki/On_Exactitude_in_Science).
 While it is not feasible to eliminate all vulnerabilities absolutely, 
 there is an 
 open-source solution to quickly scan an application for 
