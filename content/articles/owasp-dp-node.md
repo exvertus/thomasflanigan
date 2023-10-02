@@ -183,7 +183,8 @@ Trust will always at some level be necessary,
 but *verified* trust needs to be the new normal.
 
 I hope this post helps if you want to set this up for yourself. 
-If you are passionate about improving the security, consider
+If you are passionate about improving security, consider
 getting involved with your [local OWASP chapter](https://owasp.org/chapters/).
 
-If you have any questions or requests for a post on a similar topic, send me a message on [LinkedIn](https://www.linkedin.com/in/thomas-flanigan/).
+If you have any questions or requests for a post on a similar topic, 
+please send me a message on [LinkedIn](https://www.linkedin.com/in/thomas-flanigan/).
