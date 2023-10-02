@@ -176,10 +176,10 @@ I have cut off our specific vulnerabilities for obvious reasons...
 
 Trust has become increasingly hard to come by these past few years, 
 and commonly-used open-source libraries sadly have not escaped this fact.
-Thankfully however, tools like OWASP Dependency-check also offer hope
+Thankfully, tools like OWASP Dependency-check also offer hope
 of staying ahead of the pack, provided by the same open-source community
 that is under attack by nefarious entities. 
-Trust will always at some level be necessary, 
+Some level of trust will always be necessary, 
 but *verified* trust needs to be the new normal.
 
 I hope this post helps if you want to set this up for yourself. 
