@@ -27,8 +27,8 @@ vast majority
 of code that gets executed for a given application is *not* written 
 or directly maintained by the same people responsible for developing that 
 application. 
-This is further exaserbated by the fact that most
-dependencies have depedencies of their own, which can in turn have dependencies,
+This is further exacerbated by the fact that most
+dependencies have dependencies of their own, which can in turn have dependencies,
 etc.
 And a developer will mostly only be interested in the dependencies they 
 directly import.
@@ -69,52 +69,107 @@ While it is not feasible to eliminate all vulnerabilities, there is an
 open-source solution to quickly scan an application for dependencies with 
 *known* vulnerabilities.
 
-## OWASP Dependency-check
+## OWASP Dependency-check how-to
 
+In light of this situation, 
+I wanted to share how I recently added 
+[OWASP Dependency-check](https://owasp.org/www-project-dependency-check/) 
+automation to a project, and how easy it was.
 
+The project is a NodeJS discord bot that my friends and I maintain and deploy 
+onto a shared GKE instance.
+While we have kept it mostly up-to-date,
+it has sprawled out to include quite a few features over the years,
+and we're now relying on quite a few dependencies to run the project.
 
+The first thing I needed to do was add one more dev dependency to our 
+package.json file, as well as an entrypoint to the OWASP call:
 
+```
+# /package.json
+{
+  "name": "darnbot",
+  ...
+  "scripts": {
+    "owasp": "owasp-dependency-check --project darnbot -f HTML -f JSON -o owasp",
+    ...
+  },
+  "devDependencies": {
+    "owasp-dependency-check": "^0.0.21",
+    ...
+  }
+}
+```
 
+The new "scripts" line will allow us to call 'npm run owasp' to start the scan,
+with the requested HTML and JSON artifacts dropped in an 'owasp' folder, 
+specified by the -o argument.
 
+Now onto the [Cloud Build](https://cloud.google.com/build?hl=en) code, which I
+split off into a separate file from our [normal cloudbuild.yaml](https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration#yaml) file.
+I wanted to do it this way to run manually for now, until we are ready for
+more integrated automation in our pipeline triggered by changes to main:
 
-I. Introduction
-Briefly introduce OWASP Dependency-Check.
-Explain the importance of Software Composition Analysis (SCA).
-Introduce Google Cloud Build.
-Brief overview of what the post will cover.
+```
+# /owasp-dp.yaml
+steps:
+- id: 'install'
+  name: 'node:${_NODE_VERSION}'
+  entrypoint: 'npm'
+  args: ['install']
+- id: 'owasp'
+  name: 'node:${_NODE_VERSION}'
+  script: |
+    apt-get update
+    apt-get install -y default-jre
+    npm run owasp
+artifacts:
+  objects:
+    location: gs://$_ARTIFACT_BUCKET
+    paths: ['owasp/dependency-check-report.html','owasp/dependency-check-report.json']
+```
 
-II. The Problem
-Discuss the issues with managing dependencies.
-Explain the risks of using outdated or vulnerable dependencies.
-Highlight the need for automated tools to manage dependencies.
+After using a [substitution](https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values)
+to feed in our node version, we install our code to a serverless node container.
+After which, the 'npm run owasp' is called.
 
-III. The Solution: OWASP Dependency-Check
-Discuss the features and benefits of OWASP Dependency-Check.
-Explain how it can be used for Node.js projects.
+One minor wrinkle I ran into is because we use a light-weight container 
+to run our bot, it was necessary to install the default jre in order to handle 
+java calls that OWASP Dependency-check required.
+Installing java each time is fine for now since this is only run on-demand,
+but before incorporating this into our main branch's cloudbuild.yaml,
+I would move the apt-get lines to a second Dockerfile inheriting our
+built image so it is not needlessly installed for every change to main.
 
-IV. Setting Up OWASP Dependency-Check on Google Cloud Build
-A. Prerequisites
-css
-Copy code
-  - Explain what the reader needs to follow along (Google Cloud account, Node.js project, etc.)
-B. Step-by-Step Guide
-vbnet
-Copy code
-  - Step 1: Configuring the Google Cloud Build.
-  - Step 2: Integrating OWASP Dependency-Check into the build pipeline.
-  - Step 3: Configuring OWASP Dependency-Check for a Node.js project.
-  - Step 4: Reviewing and addressing the scan results.
-C. Tips and Best Practices
-sql
-Copy code
-  - Offer tips and best practices for working with OWASP Dependency-Check and Google Cloud Build.
+Under artifacts you can see we are taking the html and json reports and
+saving them to a Google Cloud Storage bucket.
+
+Finally, in order to run the automation, we need to add a trigger through the
+GCP UI:
+
+![Cloud Build UI](/images/posts/owasp-dp-node/cloud-build.png)
+
+After configuring and saving, GCP creates a build with a 'Run' button on the
+Build Triggers page so we can run the build:
+
+![Cloud Build Run](/images/posts/owasp-dp-node/cloud-build-run.png)
+
+![Cloud Build Steps](/images/posts/owasp-dp-node/cloud-build-steps.png)
+
+Jumping over to the Storage bucket, we can take a look at the HTML results.
+Looks like we've got a bit of work to do:
+
+![Summary of results](/images/posts/owasp-dp-node/owasp-results.png)
+
+If you set this up for yourself, you'll be able to view more detail
+about each detected vulnerability farther down the page.
+I have cut off our specific vulnerabilities for obvious reasons.
+
+## Conclusion
 
 VI. Conclusion
 Summarize the main points.
 Encourage readers to integrate OWASP Dependency-Check in their Google Cloud Build pipelines for Node.js projects.
-
-VII. Further Resources
-Provide links to the OWASP Dependency-Check documentation, Google Cloud Build documentation, and other relevant resources.
 
 VIII. Contact Information
 Provide contact information for readers who have questions or need further assistance.
