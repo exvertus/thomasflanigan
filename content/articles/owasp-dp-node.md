@@ -7,18 +7,18 @@ Slug: owasp-dp-node
 
 ##### It's 2023: do you know what's in your application?
 
-Standing on the shoulders of giants is an important in a lot of contexts,
+Standing on the shoulders of giants is important in a lot of contexts,
 and software development is certainly no exception.
 
 Developers in higher-level languages become allergic to re-inventing wheels
 for good reason. 
-Chances are someone else has already encountered the same programming problem
-you are currently encountering. 
-Thankfully there is often an efficient solution, encouraging good 
-design patterns, in the form of a code library---just waiting to be easily 
-imported with a single line of code.
+The chances are high someone has already encountered the same programming problem
+you are currently encountering, 
+and there is often an efficient solution, encouraging good 
+design patterns, in the form of a code library, just waiting to be easily 
+imported with a single line.
 
-So relying heavily on upstream code has become second-nature because of this 
+Relying on open-source dependencies has become second-nature thanks to the 
 expressive power it lends by abstracting away complexity. 
 Why spend the time and effort writing your own webserver, when you can simply
 import Flask or Django, and have a working webapp after a few minutes of coding?
@@ -56,7 +56,7 @@ to be getting more sophisticated and common every day:
 * [CSO: Supply chain attacks increased over 600% this year and companies are falling behind](https://www.csoonline.com/article/573925/supply-chain-attacks-increased-over-600-this-year-and-companies-are-falling-behind.html)
 * [Wired: A New Supply Chain Attack Hit Close to 100 Victims—and Clues Point to China](https://www.wired.com/story/carderbee-china-hong-kong-supply-chain-attack/)
 
-Even when not intentional, zero-day vulnerabilities like 
+Even when not intentionally planted, zero-day vulnerabilities like 
 [Heartbleed](https://en.wikipedia.org/wiki/Heartbleed), 
 [Cloudbleed](https://en.wikipedia.org/wiki/Cloudbleed),
 and [Log4j](https://en.wikipedia.org/wiki/Log4Shell) often lie dormant
@@ -66,7 +66,7 @@ So how can we know to trust an imported software library?
 Well, we could review every single line of a given dependency ourselves.
 But going to that extreme takes away all the complexity-abstraction value,
 and will have us feeling like we are in 
-[one of Borges' short stories](https://en.wikipedia.org/wiki/On_Exactitude_in_Science).
+[a short story by Borges](https://en.wikipedia.org/wiki/On_Exactitude_in_Science).
 While it is not feasible to eliminate all vulnerabilities absolutely, 
 there is an 
 open-source solution to quickly scan an application for 
@@ -138,12 +138,11 @@ to feed in our node version, Cloud Build will install our bot into a
 serverless node container.
 After which, 'npm run owasp' is called.
 
-There was one minor wrinkle I ran into,
-because we use a light-weight container 
+There was one minor wrinkle I ran into because we use a light-weight container 
 to run our bot. 
 It was necessary to install the default jre in order to handle 
 java calls that OWASP Dependency-check required.
-Installing java each time is fine for now since this is only run on-demand,
+Installing java each time is fine for now since this build is only run on-demand,
 but before incorporating this into our main branch's cloudbuild.yaml,
 I would move the apt-get lines to a second Dockerfile inherited from our
 main built and deployed image,
@@ -175,7 +174,7 @@ I have cut off our specific vulnerabilities for obvious reasons...
 
 ##### Conclusion
 
-Trust has become a increasingly hard to come by these past few years, 
+Trust has become increasingly hard to come by these past few years, 
 and commonly-used open-source libraries sadly have not escaped this fact.
 Thankfully however, tools like OWASP Dependency-check also offer hope
 of staying ahead of the pack, provided by the same open-source community
@@ -183,7 +182,9 @@ that is under attack by nefarious entities.
 Trust will always at some level be necessary, 
 but *verified* trust needs to be the new normal.
 
-I hope this post helps if you want to set this up for yourself. If you have
-any questions or requests for a post on a similar topic, send me a message on 
-[LinkedIn](https://www.linkedin.com/in/thomas-flanigan/) and consider
+I hope this post helps if you want to set this up for yourself. 
+If you are passionate about improving security, consider
 getting involved with your [local OWASP chapter](https://owasp.org/chapters/).
+
+If you have any questions or requests for a post on a similar topic, 
+please send me a message on [LinkedIn](https://www.linkedin.com/in/thomas-flanigan/).
