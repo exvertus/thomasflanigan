@@ -1,5 +1,5 @@
 Title: Art/Artist
-Date: 2023-09-23
+Date: 2023-10-03
 Summary: Inspired by and dedicated to David Lynch...
 Category: Poems
 Tags: poem
