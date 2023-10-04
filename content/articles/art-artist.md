@@ -1,6 +1,6 @@
 Title: Art/Artist
 Date: 2023-09-23
-Summary: A poem...
+Summary: Inspired by and dedicated to David Lynch...
 Category: Poems
 Tags: poem
 Slug: art-artist
