@@ -22,7 +22,7 @@ you are no seer
 the world only turns  
 on pain and fear  
   
-Can you not see my path of pain?
-Dreams are too high up on a shelf
-Do not reach for yours while I've given up on mine
-You must learn, like me, to hate yourself"
+Can you not see my path of pain?  
+Dreams are too high up on a shelf  
+Do not reach for yours while I've given up on mine  
+You must learn, like me, to hate yourself"  
