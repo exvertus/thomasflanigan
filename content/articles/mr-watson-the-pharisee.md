@@ -20,7 +20,7 @@ How dare he see while I am blind?
 Naive young boy  
 you are no seer  
 the world only turns  
-on pain and fear  
+on wounds and fear  
   
 Can you not see my path of pain?  
 Dreams are too high up on a shelf  
