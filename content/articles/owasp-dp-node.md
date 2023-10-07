@@ -12,31 +12,29 @@ and software development is certainly no exception.
 
 Developers in higher-level languages become allergic to re-inventing wheels
 for good reason. 
-The chances are high someone has already encountered the same programming problem
+Chances are high that someone has already encountered the same programming problem
 you are currently encountering, 
 and there is often an efficient solution, encouraging good 
 design patterns, in the form of a code library, just waiting to be easily 
 imported with a single line.
 
-Relying on open-source dependencies has become second-nature thanks to the 
-expressive power it lends by abstracting away complexity. 
-Why spend the time and effort writing your own webserver, when you can simply
+Relying on open-source dependencies has become second-nature. 
+Why spend time and effort writing your own webserver, when you can simply
 import Flask or Django, and have a working webapp after a few minutes of coding?
 
 The ubiquity of importing our way out of most programming problems means the 
 vast majority 
-of code that gets executed for a given application is *not* written 
-or directly maintained by the same people responsible for developing that 
+of code executed for a given application is *not* written 
+or directly maintained by the people responsible for developing that 
 application. 
 This is further exacerbated by the fact that most
 dependencies have dependencies of their own, which can in turn have dependencies,
-etc.
-And a developer will mostly only be interested in the dependencies they 
+etc., and a developer will mostly only be interested in the dependencies they 
 directly import.
 
 ![Dependency Percent and Visibility](/images/posts/owasp-dp-node/dependencies.png)
   
-I am as guilty as the next person of slapping together projects by mostly
+I am as guilty as the next person of quickly getting projects off the ground by
 importing open-source libraries found by reading doc and searching 
 StackOverflow.
 I did it for years serving in a SDLC-automation role, and while I do miss
@@ -63,8 +61,8 @@ and [Log4j](https://en.wikipedia.org/wiki/Log4Shell) often lie dormant
 in systems for years, waiting to be exploited.
 
 So how can we know to trust an imported software library?
-Well, we could review every single line of a given dependency ourselves.
-But going to that extreme takes away all the complexity-abstraction value,
+Well, we could review every single line of a given dependency ourselves,
+but going to that extreme takes away all the complexity-abstraction value
 and will have us feeling like we are in 
 [a short story by Borges](https://en.wikipedia.org/wiki/On_Exactitude_in_Science).
 While it is not feasible to eliminate all vulnerabilities absolutely, 
@@ -72,17 +70,17 @@ there is an
 open-source solution to quickly scan an application for 
 dependencies with *known* vulnerabilities.
 
-##### OWASP Dependency-check how-to
+##### OWASP Dependency-Check how-to
 
 In light of this situation, 
 I wanted to share how I recently added 
-[OWASP Dependency-check](https://owasp.org/www-project-dependency-check/) 
+[OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) 
 automation to a project, and how easy it was.
 
 The project is a NodeJS discord bot that my friends and I maintain and deploy 
 onto a shared GKE instance.
 While we have kept it mostly up-to-date,
-it has sprawled out to include quite a few features over the years,
+it has sprawled out to include many features over the years,
 and we're now relying on quite a few dependencies to run the project.
 
 The first thing I needed to do was add one more dev dependency to our 
@@ -109,7 +107,7 @@ The new line under "scripts" will allow us to call 'npm run owasp' to start the 
 with the requested HTML and JSON artifacts dropped in an /owasp folder, 
 specified by the -o argument.
 
-Now onto the [Cloud Build](https://cloud.google.com/build?hl=en) code, which I
+Now onto the [Cloud Build](https://cloud.google.com/build?hl=en) code which I
 split off into a separate file from our main build + deploy [cloudbuild.yaml](https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration#yaml) file.
 I wanted to configure it to trigger the build manually until we are ready for
 more integrated automation in our pipeline triggered by changes to main:
@@ -141,7 +139,7 @@ After which, 'npm run owasp' is called.
 There was one minor wrinkle I ran into because we use a light-weight container 
 to run our bot. 
 It was necessary to install the default jre in order to handle 
-java calls that OWASP Dependency-check required.
+java calls that OWASP Dependency-Check required.
 Installing java each time is fine for now since this build is only run on-demand,
 but before incorporating this into our main branch's cloudbuild.yaml,
 I would move the apt-get lines to a second Dockerfile inherited from our
@@ -176,7 +174,7 @@ I have cut off our specific vulnerabilities for obvious reasons...
 
 Trust has become increasingly hard to come by these past few years, 
 and commonly-used open-source libraries sadly have not escaped this fact.
-Thankfully, tools like OWASP Dependency-check also offer hope
+Thankfully, tools like OWASP Dependency-Check also offer hope
 of staying ahead of the pack, provided by the same open-source community
 that is under attack by nefarious entities. 
 Some level of trust will always be necessary, 
