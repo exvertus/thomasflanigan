@@ -3,11 +3,11 @@ Slug: tech
 Summary: Tech Skills and Experience
 Tags: tech
 
-### Development | Automation | Cloud | Security
+### Development, Automation, Cloud, and Security
 
 With over a decade in tech, I've transitioned from app development, through SDLC automation and cloud infrastructure, to app security. My forte is mentoring and building automated solutions, ensuring agile teams are equipped for success. With a keen focus on addressing technical debt and a track record in leading pivotal, transformative projects, I am passionate about both doing and teaching, aiming to enhance both software security and efficiency.
 
-Contact me for an up-to-date resume.
+[Contact me](mailto:employers@thomasflanigan.com) for an up-to-date resume.
 
 ### Skills and Tools
 
