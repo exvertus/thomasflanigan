@@ -5,7 +5,7 @@ Tags: tech
 
 ### Development, Automation, Cloud, and Security
 
-With over a decade in tech, I've transitioned from app development, through SDLC automation and cloud infrastructure, to app security. My forte is mentoring and building automated solutions, ensuring agile teams are equipped for success. With a keen focus on addressing technical debt and a track record in leading pivotal, transformative projects, I am passionate about both doing and teaching, aiming to enhance both software security and efficiency.
+In my tech journey spanning over a decade, I've evolved from app development, through the intricacies of SDLC automation and cloud engineering, to the challenges of app security. What sets me apart is not just my aptitude for developing automated solutions, but my commitment to mentoring the next wave of tech professionals. Having spearheaded pivotal projects with a keen eye on eradicating technical debt, I'm drawn to the symbiotic relationship between enhancing software security and optimizing development.
 
 [Contact me](mailto:employers@thomasflanigan.com) for an up-to-date resume.
 

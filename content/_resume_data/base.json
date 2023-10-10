@@ -6,7 +6,7 @@
         "contact": {
             "name": "Thomas Flanigan",
             "nickname": "Tom",
-            "email": "tom@thomasflanigan.com",
+            "email": "employers@thomasflanigan.com",
             "phone": "(617) 785-5442",
             "location": {
                 "city": "Pflugerville",
@@ -16,7 +16,7 @@
         },
         "introduction": {
             "job": "DevOps and Cloud Security Engineer",
-            "summary": "With over a decade in tech, I've transitioned from app development, through SDLC automation and cloud infrastructure, to app security. My forte is mentoring and building automated solutions, ensuring agile teams are equipped for success. With a keen focus on addressing technical debt and a track record in leading pivotal, transformative projects, I am passionate about both doing and teaching, aiming to enhance both software security and efficiency.",
+            "summary": "In my tech journey spanning over a decade, I've evolved from app development, through the intricacies of SDLC automation and cloud mastery, to the challenges of app security. What sets me apart is not just my aptitude for developing automated solutions, but my commitment to mentoring the next wave of tech professionals. Having spearheaded pivotal projects with a keen eye on eradicating technical debt, I'm drawn to the symbiotic relationship between enhancing software security and optimizing development.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -72,7 +72,7 @@
                 "highlights": [
                     "Added an efficiency-testing application, mail-server API, and search-feature to Core project.",
                     "Supported web and desktop display libraries with MEDITECH proprietary languages.",
-                    "Designed and maintained Jenkins CI solution on GCP.",
+                    "Designed and maintained MEDITECH's first cloud Jenkins CI solution on GCP.",
                     "Administered 100+ company-wide biweekly deployments.",
                     "Authored dozens of features and bug-fixes for Jira-SVN integration and automation.",
                     "Oversaw migration from Python 2 to 3; refactored and improved coverage for several Python projects.",
