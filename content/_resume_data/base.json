@@ -15,8 +15,8 @@
             }
         },
         "introduction": {
-            "job": "Devops & Software Development",
-            "summary": "I am a developer and SDLC-specialist eager to bring my 10+ years experience to an organization that values an eye for efficiency and drive for constant improvement. I have a reputation for delivering on complex projects and am strongly committed to paying down technical debt. I seek to teach and learn as I continue my track-record of enabling development teams to deliver high-quality software fast.",
+            "job": "DevOps and Cloud Security Engineer",
+            "summary": "With over a decade in tech, I've transitioned from app development, through SDLC automation and cloud infrastructure, to app security. My forte is mentoring and building automated solutions, ensuring agile teams are equipped for success. With a keen focus on addressing technical debt and a track record in leading pivotal, transformative projects, I am passionate about both doing and teaching, aiming to enhance both software security and efficiency.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -25,28 +25,50 @@
             {"name": "Jenkins", "score": 5},
             {"name": "Git", "score": 5},
             {"name": "SVN", "score": 5},
+            {"name": "SDLC Automation", "score": 5},
             {"name": "Google Cloud Platform", "score": 4},
             {"name": "Jira & Altassian", "score": 4},
-            {"name": "Docker", "score": 4},
+            {"name": "Agile", "score": 4},
+            {"name": "DevOps", "score": 4},
+            {"name": "Automated Testing", "score": 4},
+            {"name": "Docker & Containers", "score": 4},
             {"name": "Scrum master", "score": 4},
             {"name": "Windows", "score": 4},
-            {"name": "Linux", "score": 3},
+            {"name": "Linux", "score": 4},
             {"name": "Kubernetes", "score": 3},
-            {"name": "Java & Groovy", "score": 3},
+            {"name": "Azure", "score": 3},
+            {"name": "Java", "score": 3},
             {"name": "HTML", "score": 3},
+            {"name": "Pen Testing Tools", "score": 3},
             {"name": "Mongo & NoSQL", "score": 3},
+            {"name": "Terraform", "score": 2},
             {"name": "JS", "score": 2},
             {"name": "CSS", "score": 2},
             {"name": "SQL", "score": 1}
         ],
         "experiences": [
             {
+                "organization": "Texas Farm Bureau Insurance",
+                "title": "Applications Cyber Security Engineer (Contractor, through Dogwood Management Partners LLC)",
+                "start_date": "03/27/2023",
+                "end_date": "09/27/2023",
+                "website": "https://www.txfb-ins.com/",
+                "description": "Spearheading shift-left security solutions.",
+                "highlights": [
+                    "Integrated Software Bill of Materials automation for Python projects with OWASP-CycloneDX.",
+                    "Authored risk assessment documentation for out of date software.",
+                    "Migrated documentation to a Docs as Code solution on Azure DevOps.",
+                    "Scripted cloud solution for converting vulnerability scan results into ADO tickets.",
+                    "Added OWASP Dependency-Check automation to Maven pipelines."
+                ]
+            },
+            {
                 "organization": "MEDITECH",
                 "title": "Software Developer",
                 "start_date": "07/12/2012",
                 "end_date": "01/03/2022",
                 "website": "https://ehr.meditech.com/",
-                "description": "Dev-ops since 2016. Prior to that I developed for an internal application written in proprietary languages.",
+                "description": "Application Development, SDLC Automation, and Cloud Infrastructure.",
                 "highlights": [
                     "Added an efficiency-testing application, mail-server API, and search-feature to Core project.",
                     "Supported web and desktop display libraries with MEDITECH proprietary languages.",
