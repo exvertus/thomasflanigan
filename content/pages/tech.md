@@ -20,7 +20,7 @@ Contact me for an up-to-date resume.
     ('SDLC Automation', 5),
     ('Google Cloud Platform', 4),
     ('Jira & Altassian Suite', 4),
-    ('Agile Development', 4),
+    ('Agile', 4),
     ('DevOps', 4),
     ('Automated Testing', 4),
     ('Docker & Containers', 4),
