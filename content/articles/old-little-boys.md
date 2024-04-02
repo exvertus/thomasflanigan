@@ -13,7 +13,7 @@ for my words nip and bite
 Thief and lying schemer  
 insists on his facade  
 Peter Pan the dreamer  
-can't fly near men of God  
+can't fly near sons of God  
   
 Mr Class and Quality  
 moves about his pawns  
