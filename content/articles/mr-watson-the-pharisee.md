@@ -23,6 +23,6 @@ the world only turns
 on wounds and fear  
   
 Can you not see my path of pain?  
-Dreams are too high up on a shelf  
-Do not reach for yours while I've given up on mine  
-You must learn, like me, to hate yourself"  
+I've placed my dreams high on a shelf  
+Don't reach for yours while I've given up on mine  
+You must learn, like me, to hate yourself!"  
