@@ -15,8 +15,8 @@
             }
         },
         "introduction": {
-            "job": "DevOps and AppSec Engineer",
-            "summary": "With over a decade of experience in tech, I specialize in Application Development and DevOps, with a dash of security and growing interest in AI. Known for my ability to enhance team productivity and project outcomes, I lead by example, fostering a culture of trust, honesty, and mutual respect. My technical expertise is complemented by a strong commitment to automating solutions and optimizing processes. I actively engage in mentoring and supporting my peers, promoting a team environment that is greater than the sum of its parts.",
+            "job": "Senior DevOps and AppSec Engineer",
+            "summary": "An accomplished DevOps engineer with over ten years of experience, I have a strong foundation in application development enhanced by a robust skill set in application security. I am passionate about leading initiatives that drive team efficiency and project success. By implementing cutting-edge solutions and automating workflows, I significantly optimize processes and improve security postures. My commitment to professional development and team mentorship fosters a collaborative workplace where innovative solutions thrive.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -31,15 +31,15 @@
             },
             {
                 "category": "Project Management",
-                "details": ["Jira & Atlassian", "Agile Methodologies", "Scrum Master"]
+                "details": ["Jira & Atlassian", "Trello", "Agile Methodologies", "Scrum Master", "CI/CD Pipelines"]
             },
             {
                 "category": "Programming & Scripting",
-                "details": ["Java", "HTML & CSS", "JS", "CSS", "SQL & noSQL"]
+                "details": ["Python", "Java", "HTML & CSS", "JS & TS", "SQL & noSQL"]
             },
             {
                 "category": "Security & Testing",
-                "details": ["Pen Testing Tools", "Automated Testing"]
+                "details": ["Supply Chain Security", "Pen Testing Tools", "Automated Testing", "Threat Modeling"]
             },
             {
                 "category": "Emerging Tech",
@@ -53,14 +53,14 @@
                 "start_date": "03/27/2023",
                 "end_date": "09/27/2023",
                 "website": "https://www.txfb-ins.com/",
-                "description": "Led shift-left security solutions, focusing on automation and vulnerability management.",
+                "description": "Directed the implementation of shift-left security strategies, significantly improving automation and proactive vulnerability management across critical projects.",
                 "highlights": [
-                    "Integrated Software Bill of Materials automation for Python projects with OWASP-CycloneDX.",
-                    "Authored risk assessment documentation for out of date software.",
-                    "Migrated documentation to a Docs as Code solution on Azure DevOps.",
-                    "Scripted cloud solution for converting vulnerability scan results into ADO tickets.",
-                    "Added OWASP Dependency-Check automation to Maven pipelines.",
-                    "Initiated and conducted regular mental wellness check-ins to support team members during remote work transitions."
+                    "Led a team of developers in implementing a comprehensive roadmap and coding standards, which significantly accelerated the adoption of modern best-practices and integration with cloud services.",
+                    "Developed and integrated a Software Bill of Materials automation process using OWASP-CycloneDX, enhancing security compliance for all Python projects.",
+                    "Transitioned technical documentation to a Docs as Code approach using Azure DevOps, streamlining updates and collaboration.",
+                    "Engineered a cloud-based solution to automate the transformation of vulnerability scan outputs into actionable Azure DevOps tickets, eliminating ~30 hours per sprint of manual management.",
+                    "Enhanced Maven pipelines with OWASP Dependency-Check automation, bolstering security measures for Java projects.",
+                    "Provided strategic guidance as a technical advisor on managed cloud services, influencing key decisions on system architectures and workload optimizations."
                 ]
             },
             {
@@ -68,17 +68,17 @@
                 "title": "Software Developer",
                 "start_date": "07/12/2012",
                 "end_date": "01/03/2022",
-                "website": "https://ehr.meditech.com/",
-                "description": "Advanced application development with a focus on SDLC automation and cloud infrastructure. Actively engaged in mentoring and promoting a modern tech approach among team members.",
+                "website": "https://www.meditech.com/",
+                "description": "Pioneered application development initiatives with a focus on SDLC automation and cloud-based infrastructure, fostering a culture of innovation and continuous improvement among development teams.",
                 "highlights": [
-                    "Added an efficiency-testing application, mail-server API, and search-feature to Core project.",
-                    "Supported web and desktop display libraries with MEDITECH proprietary languages.",
-                    "Designed and maintained MEDITECH's first cloud Jenkins CI solution on GCP.",
-                    "Administered 100+ company-wide biweekly deployments.",
-                    "Authored dozens of features and bug-fixes for Jira-SVN integration and automation.",
-                    "Oversaw migration from Python 2 to 3; refactored and improved coverage for several Python projects.",
-                    "Provided developer-education through mentoring, presentations, classes, office hours, and documentation.",
-                    "Served as scrum master and created roadmaps for software delivery-related epics."
+                    "Developed an efficiency-testing application, integrated a mail-server API, and enhanced search functionality within the Core project, boosting system performance and user satisfaction.",
+                    "Supported and optimized web and desktop display libraries using MEDITECH's proprietary languages, enhancing application development efficiency and accessibility.",
+                    "Architected and managed MEDITECH's inaugural Jenkins CI solution on Google Cloud Platform, significantly reducing Jenkins update risk and plugin management.",
+                    "Managed over 100 company-wide biweekly deployments, ensuring smooth, error-free releases and minimal downtime.",
+                    "Engineered and documented numerous features and bug fixes for Jira-SVN integration, automating routine tasks and increasing team productivity.",
+                    "Directed the migration from Python 2 to Python 3, overseeing a team that refactored and enhanced codebase integrity and test coverage.",
+                    "Led developer education initiatives, providing mentoring, workshops, and documentation that improved coding practices and software quality across the company.",
+                    "Functioned as scrum master while devising software delivery roadmaps that aligned with strategic goals and accelerated project timelines."
                 ]
             }
         ],
