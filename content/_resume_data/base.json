@@ -43,7 +43,7 @@
             },
             {
                 "category": "Emerging Tech",
-                "details": ["Image Classification with AI", "Prompt Engineering", "LangChain"]
+                "details": ["Finetuning (Image Classification)", "Prompt Engineering", "LangChain"]
             }
         ],
         "experiences": [
@@ -58,6 +58,7 @@
                     "Led a team of developers in implementing a comprehensive roadmap and coding standards, which significantly accelerated the adoption of modern best-practices and integration with cloud services.",
                     "Developed and integrated a Software Bill of Materials automation process using OWASP-CycloneDX, enhancing security compliance for all Python projects.",
                     "Transitioned technical documentation to a Docs as Code approach using Azure DevOps, streamlining updates and collaboration.",
+                    "Formalized meeting expectations, including the use of agendas, eliminating ~50 hours in wasted meeting time per sprint.",
                     "Engineered a cloud-based solution to automate the transformation of vulnerability scan outputs into actionable Azure DevOps tickets, eliminating ~30 hours per sprint of manual management.",
                     "Enhanced Maven pipelines with OWASP Dependency-Check automation, bolstering security measures for Java projects.",
                     "Provided strategic guidance as a technical advisor on managed cloud services, influencing key decisions on system architectures and workload optimizations."
@@ -65,7 +66,7 @@
             },
             {
                 "organization": "MEDITECH",
-                "title": "Software Developer",
+                "title": "Senior Software Developer",
                 "start_date": "07/12/2012",
                 "end_date": "01/03/2022",
                 "website": "https://www.meditech.com/",
