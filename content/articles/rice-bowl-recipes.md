@@ -94,5 +94,6 @@ Heat up the beans:
 
 Grab a bowl and pour the cooked chicken and beans over rice. Add cheese, chips, guac, sour cream, and pico. Squeeze a lime slice over that and add chopped cilantro.
 
+![Mexican Chicken and Rice Bowl](/images/posts/rice-bowl-recipes/mexican-chicken-rice.png)
 
 For both of these recipes, you can pack the leftovers in the fridge. They will keep for 4-5 days.
