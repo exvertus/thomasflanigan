@@ -20,7 +20,5 @@ from [Ashes From A Winter Skull](https://stonebeetz.bandcamp.com/album/ashes-fro
 
 ## Drawings
 
-I will have a more exhaustive portfolio directly on my site next month. 
-I plan to delete all social media soon, but for now a selection of my art can be found on my instagram page [@material_soul](https://www.instagram.com/material_soul/).
-
-See something you like? Most of my drawings are for sale. Email [orders@thomasflanigan.com](mailto:orders@thomasflanigan.com) for more details.
+I will have a more exhaustive portfolio directly on my site soon. 
+For now a limited selection of my art can be found on my instagram page [@material_soul](https://www.instagram.com/material_soul/).

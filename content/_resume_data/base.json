@@ -15,8 +15,8 @@
             }
         },
         "introduction": {
-            "job": "Senior DevOps and AppSec Engineer",
-            "summary": "An accomplished DevOps engineer with over ten years of experience, I have a strong foundation in application development enhanced by a robust skill set in application security. I am passionate about leading initiatives that drive team efficiency and project success. By implementing cutting-edge solutions and automating workflows, I significantly optimize processes and improve security postures. My commitment to professional development and team mentorship fosters a collaborative workplace where innovative solutions thrive.",
+            "job": "AppDev | DevOps | AppSec",
+            "summary": "I am passionate about enhancing team efficiency and fostering conditions for success. With my experience in automation and dedication to learning, teaching, and listening, I aim to be a key contributor to a culture of innovation and continuous improvement.",
             "website": "https://thomasflanigan.com/",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
@@ -31,19 +31,19 @@
             },
             {
                 "category": "Project Management",
-                "details": ["Jira & Atlassian", "Trello", "Agile Methodologies", "Scrum Master", "CI/CD Pipelines"]
+                "details": ["Jira & Atlassian", "Trello", "Agile", "Scrum Master", "CI/CD Pipelines"]
             },
             {
                 "category": "Programming & Scripting",
-                "details": ["Python", "Java", "HTML & CSS", "JS & TS", "SQL & noSQL"]
+                "details": ["Python", "JS & TS", "Java", "HTML & CSS", "SQL & noSQL"]
             },
             {
                 "category": "Security & Testing",
-                "details": ["Supply Chain Security", "Pen Testing Tools", "Automated Testing", "Threat Modeling"]
+                "details": ["Supply Chain Security", "Nessus/Tenable", "MS Defender", "Automated Testing", "Threat Modeling"]
             },
             {
                 "category": "Emerging Tech",
-                "details": ["Finetuning (Image Classification)", "Prompt Engineering", "LangChain"]
+                "details": ["Finetuning (Image Classification)", "Prompt Engineering", "LangChain", "Copilot & LLM Coding"]
             }
         ],
         "experiences": [
@@ -58,10 +58,10 @@
                     "Led a team of developers in implementing a comprehensive roadmap and coding standards, which significantly accelerated the adoption of modern best-practices and integration with cloud services.",
                     "Developed and integrated a Software Bill of Materials automation process using OWASP-CycloneDX, enhancing security compliance for all Python projects.",
                     "Transitioned technical documentation to a Docs as Code approach using Azure DevOps, streamlining updates and collaboration.",
-                    "Formalized meeting expectations, including the use of agendas, eliminating ~50 hours in wasted meeting time per sprint.",
+                    "Formalized meeting expectations, including the use of agendas, eliminating ~50 hours in wasted meeting time for the security team each sprint.",
                     "Engineered a cloud-based solution to automate the transformation of vulnerability scan outputs into actionable Azure DevOps tickets, eliminating ~30 hours per sprint of manual management.",
                     "Enhanced Maven pipelines with OWASP Dependency-Check automation, bolstering security measures for Java projects.",
-                    "Provided strategic guidance as a technical advisor on managed cloud services, influencing key decisions on system architectures and workload optimizations."
+                    "Provided strategic guidance as a technical advisor on managed cloud services, guiding key decisions on system architectures and workload optimizations."
                 ]
             },
             {
@@ -74,8 +74,8 @@
                 "highlights": [
                     "Developed an efficiency-testing application, integrated a mail-server API, and enhanced search functionality within the Core project, boosting system performance and user satisfaction.",
                     "Supported and optimized web and desktop display libraries using MEDITECH's proprietary languages, enhancing application development efficiency and accessibility.",
-                    "Architected and managed MEDITECH's inaugural Jenkins CI solution on Google Cloud Platform, significantly reducing Jenkins update risk and plugin management.",
-                    "Managed over 100 company-wide biweekly deployments, ensuring smooth, error-free releases and minimal downtime.",
+                    "Architected and managed MEDITECH's Jenkins CI solution on Google Cloud Platform, significantly reducing Jenkins update risk and plugin management headaches.",
+                    "Managed over 100 company-wide biweekly deployments, ensuring smooth, error-free releases and >99% uptime during business hours.",
                     "Engineered and documented numerous features and bug fixes for Jira-SVN integration, automating routine tasks and increasing team productivity.",
                     "Directed the migration from Python 2 to Python 3, overseeing a team that refactored and enhanced codebase integrity and test coverage.",
                     "Led developer education initiatives, providing mentoring, workshops, and documentation that improved coding practices and software quality across the company.",
