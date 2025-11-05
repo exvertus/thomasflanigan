@@ -6,44 +6,43 @@
         "contact": {
             "name": "Thomas Flanigan",
             "nickname": "Tom",
-            "email": "tom@thomasflanigan.com",
+            "email": "tflanig1@gmail.com",
             "phone": "(617) 785-5442",
             "location": {
-                "city": "Machester",
+                "city": "Manchester",
                 "state": "NH",
                 "country": "United States"
             }
         },
         "introduction": {
-            "job": "AppDev | DevOps | AppSec",
-            "summary": "I am passionate about enhancing team efficiency and fostering conditions for success. With my experience in automation and dedication to learning, teaching, and listening, I aim to be a key contributor to a culture of innovation and continuous improvement.",
-            "website": "https://thomasflanigan.com/",
+            "job": "Application Development | DevOps | Software Delivery",
+            "summary": "I am passionate about enhancing team efficiency and fostering conditions for success. With over a decade of experience in both proprietary and open-source development environments, I bring strong debugging, optimization, and automation skills. My focus on learning, teaching, and continuous improvement allows me to help teams innovate and deliver reliably. Currently expanding my expertise in C++ and applied machine learning.",
             "social": "https://www.linkedin.com/in/thomas-flanigan/"
         },
         "skills": [
             {
-                "category": "Core Technical Skills",
-                "details": ["Python", "Jenkins", "Git", "SVN", "SDLC Automation"]
-            },
-            {
-                "category": "Cloud & DevOps",
-                "details": ["Google Cloud Platform", "Azure", "Docker & Containers", "Kubernetes", "Terraform"]
-            },
-            {
-                "category": "Project Management",
-                "details": ["Jira & Atlassian", "Trello", "Agile", "Scrum Master", "CI/CD Pipelines"]
+                "category": "Core Focus",
+                "details": ["CI/CD Architecture and Automation", "Version Control & Release Management (Git, SVN)", "Software Delivery Lifecycle Optimization", "Developer Experience (DevEx) Enablement"]
             },
             {
                 "category": "Programming & Scripting",
-                "details": ["Python", "JS & TS", "Java", "HTML & CSS", "SQL & noSQL"]
+                "details": ["Python (advanced)", "Groovy (intermediate)", "C++ (currently learning)", "JavaScript & TypeScript (familiar)"]
+            },
+            {
+                "category": "Cloud & Containers",
+                "details": ["Google Cloud Platform", "Azure", "Docker & Containers", "Kubernetes"]
+            },
+            {
+                "category": "Project Management",
+                "details": ["Jira & Atlassian", "Agile", "Scrum Master"]
             },
             {
                 "category": "Security & Testing",
-                "details": ["Supply Chain Security", "Nessus/Tenable", "MS Defender", "Automated Testing", "Threat Modeling"]
+                "details": ["Supply Chain Security", "Nessus/Tenable", "MS Defender", "Automated Testing"]
             },
             {
                 "category": "Emerging Tech",
-                "details": ["Finetuning (Image Classification)", "Prompt Engineering", "LangChain", "Copilot & LLM Coding"]
+                "details": ["Finetuning (Image Classification)", "Prompt Engineering", "LangChain"]
             }
         ],
         "experiences": [
@@ -53,12 +52,11 @@
                 "start_date": "03/27/2023",
                 "end_date": "09/27/2023",
                 "website": "https://www.txfb-ins.com/",
-                "description": "Directed the implementation of shift-left security strategies, significantly improving automation and proactive vulnerability management across critical projects.",
+                "description": "Updated security strategies, improving automation and proactive vulnerability management across critical projects.",
                 "highlights": [
                     "Led a team of developers in implementing a comprehensive roadmap and coding standards, which significantly accelerated the adoption of modern best-practices and integration with cloud services.",
                     "Developed and integrated a Software Bill of Materials automation process using OWASP-CycloneDX, enhancing security compliance for all Python projects.",
                     "Transitioned technical documentation to a Docs as Code approach using Azure DevOps, streamlining updates and collaboration.",
-                    "Formalized meeting expectations, including the use of agendas, eliminating ~50 hours in wasted meeting time for the security team each sprint.",
                     "Engineered a cloud-based solution to automate the transformation of vulnerability scan outputs into actionable Azure DevOps tickets, eliminating ~30 hours per sprint of manual management.",
                     "Enhanced Maven pipelines with OWASP Dependency-Check automation, bolstering security measures for Java projects.",
                     "Provided strategic guidance as a technical advisor on managed cloud services, guiding key decisions on system architectures and workload optimizations."
@@ -72,14 +70,14 @@
                 "website": "https://www.meditech.com/",
                 "description": "Pioneered application development initiatives with a focus on SDLC automation and cloud-based infrastructure, fostering a culture of innovation and continuous improvement among development teams.",
                 "highlights": [
-                    "Developed an efficiency-testing application, integrated a mail-server API, and enhanced search functionality within the Core project, boosting system performance and user satisfaction.",
-                    "Supported and optimized web and desktop display libraries using MEDITECH's proprietary languages, enhancing application development efficiency and accessibility.",
-                    "Architected and managed MEDITECH's Jenkins CI solution on Google Cloud Platform, significantly reducing Jenkins update risk and plugin management headaches.",
-                    "Managed over 100 company-wide biweekly deployments, ensuring smooth, error-free releases and >99% uptime during business hours.",
-                    "Engineered and documented numerous features and bug fixes for Jira-SVN integration, automating routine tasks and increasing team productivity.",
-                    "Directed the migration from Python 2 to Python 3, overseeing a team that refactored and enhanced codebase integrity and test coverage.",
+                    "Architected and managed MEDITECH's Jenkins CI solution on GKE, significantly reducing Jenkins update risk and enhancing cross-platform automation and integration efforts.",
+                    "Functioned as scrum master while devising software delivery roadmaps that aligned with strategic goals and accelerated project timelines.",
                     "Led developer education initiatives, providing mentoring, workshops, and documentation that improved coding practices and software quality across the company.",
-                    "Functioned as scrum master while devising software delivery roadmaps that aligned with strategic goals and accelerated project timelines."
+                    "Over 100 company-wide biweekly deployments, ensuring smooth, error-free releases and >99% uptime during business hours.",
+                    "Engineered numerous features and bug fixes for Jira-SVN integration, automating routine tasks and increasing developer productivity.",
+                    "Directed the migration from Python 2 to Python 3, overseeing a team that refactored and enhanced codebase integrity and test coverage.",
+                    "Developed an efficiency-testing application, integrated a mail-server API, and enhanced search functionality within the Core project, boosting system performance.",
+                    "Supported and optimized web and desktop display libraries built in MEDITECH's proprietary languages, developing advanced debugging and optimization skills in complex, performance-critical environments."
                 ]
             }
         ],
